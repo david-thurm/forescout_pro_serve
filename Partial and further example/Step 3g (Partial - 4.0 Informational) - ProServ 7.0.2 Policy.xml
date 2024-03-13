@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="1059783878718033360" NAME="4.0 Informational">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-6414633596258029779" NAME="4.X Switch Integration Audit Policy" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3939381508039203125" NAME="Switch Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Switch Device-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="4811463213766703492" TYPE="equals">
+                                    <VALUE VALUE2="Switch Device"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5377461187847758702" NAME="VPN Segments" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: VPN Segments-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vpn_ip" LABEL="VPN IP" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="VPN" PLUGIN_UNIQUE_NAME="vpn3k" PLUGIN_VESRION="4.3.1" PLUGIN_VESRION_NUMBER="43010038" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="767794945787445363" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7395753391097398341" NAME="Wireless Segments" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Wireless Segments-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2584121459647960501" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-568758872283840810" NAME="Switch Mac Notification Trap Received" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Switch Mac Notification Trap Received-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="trap_received" LABEL="Trap Received" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.14.2" PLUGIN_VESRION_NUMBER="81402297" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="2128613300322431472" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-7051960714656907129" OPTIONS_DIGEST="c9ff8c56f9e7d458663e5544a6614016">
+                                    <OPT VALUE="up"/>
+                                    <OPT VALUE="mac_learned"/>
+                                    <OPT VALUE="down"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3767482713076538922" NAME="Switch Port Desc" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Switch Port Desc-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7849778835031596382" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4471346459065513554" NAME="Virtual MAC Addresses" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Virtual MAC Addresses-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="20.0.8" PLUGIN_VESRION_NUMBER="200080003" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="1365988905242772876" OPTIONS_DIGEST="ef7010a607bc6eb77fe81827ec40f3ba">
+                                    <OPT VALUE="microsoft corporation"/>
+                                    <OPT VALUE="vmware, inc."/>
+                                    <OPT VALUE="microsoft"/>
+                                    <OPT VALUE="microsoft corp."/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7641690726751914155" NAME="Offline Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Offline Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3847342688240633766" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1938657912371881575" NAME="No Switch Information" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="If there are corporate manageable Mobile devices on the network, a separate 1.2.3.2 Mobile Device Manageability policy should be created and properly rolled out using criteria from the corporate MDM." ENABLED="false" ID="-5989574969234056522" NAME="4.X Mobile Devices by OS" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="2275566937491766543" NAME="P-Mobile"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="604800000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7278444999587465408" NAME="iOS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: iOS-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="5022429469935815350" MATCH_SUBTREE="true">
+                                        <PATH VALUE="iOS"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7849259109915618334" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Apple/Apple iDevice"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1893600248792049253" NAME="Kindle Fire" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Kindle Fire-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ebanner_http" LABEL="HTTP User Agent" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="5829492399703571276" TYPE="regexp">
+                                    <VALUE VALUE2=".*(Android.*Kindle|Silk/).*"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="310781537064853434" NAME="Android" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Android-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="6490745168805772150" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Android"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2075492885982049334" NAME="Kindle" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Kindle-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-8940023504131971269" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Amazon/Amazon Kindle"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2417367932249152716" NAME="Windows Mobile" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Windows Mobile-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="1020559840977820341" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Windows/Windows Mobile"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4461032860377483757" NAME="Blackberry" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Blackberry-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-3188552794489650910" MATCH_SUBTREE="true">
+                                    <PATH VALUE="BlackBerry Limited"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8672348325722561446" NAME="Symbian" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Symbian-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-7997043036445149726" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Symbian"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1424472387910217950" NAME="Palm" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Palm-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-2438971760291960064" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Palm OS"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5233452142777986809" NAME="Unknown Mobile Device Type" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-2155119392037267708" NAME="4.X Mac OS Running Fusion" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: 4.X Mac OS Running Fusion-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="4199599958423946340" TYPE="contains">
+                            <VALUE VALUE2="vmnet"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN/>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="2472053377967299448" NAME="4.X Dual Homed Multiple IPs (Windows only)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="180000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: 4.X Dual Homed Multiple IPs (Windows only)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="host_ips" LABEL="Number of IPv4 Addresses" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-935425000052248022">
+                            <RANGE FROM="2" TO="2147483647"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN/>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="7202294250997096214" NAME="4.X Windows OS" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5749633808920386537" NAME="Windows Server 2016" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Windows Server 2016-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="2163231596442933202" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2016"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="2984246232220795412">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_2016"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1086858709011041105" NAME="Windows Server 2012" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Windows Server 2012-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-467811832975975564" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2012"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-5803183088715495013">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_2012"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7035935353490341729" NAME="Windows Server 2008" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Windows Server 2008-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7050482874618780725" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2008 R2"/>
+                                        <PATH VALUE="Windows/Windows Server 2008"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="8643700544836261161">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_2008"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4537239515808084156" NAME="Windows Server 2003" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Windows Server 2003-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-1152948243153064938" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2003"/>
+                                        <PATH VALUE="Windows/Windows 2000"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-250758031967985608">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_2003"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3915937966633077465" NAME="Managed Windows 10 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Managed Windows 10 Clients-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-5568248524072853525" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows 10"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-1485161369282223521">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_10"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7229538352421729330" NAME="Managed Windows 8 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Managed Windows 8 Clients-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3140927636526593655" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows 8.1"/>
+                                        <PATH VALUE="Windows/Windows 8"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-3586299150958306077">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_8"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5749847678192921732" NAME="Managed Windows 7 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Managed Windows 7 Clients-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="2870234353733586841" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows 7"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-7451165962349048285">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_7"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5593041172375764285" NAME="Other Managed Windows Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Other Managed Windows Clients-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7979016808579713612" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows XP"/>
+                                        <PATH VALUE="Windows/Windows Vista"/>
+                                        <PATH VALUE="Windows/Windows 2000"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="8594079621007136610">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                            <OPT VALUE="windows_nt"/>
+                                            <OPT VALUE="windows_2000"/>
+                                            <OPT VALUE="windows_xp"/>
+                                            <OPT VALUE="windows_vista"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5248986488552274084" NAME="Unknown Windows OS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="8336010387462150040" NAME="4.x User Password Expire Notification &lt;edit PW age&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: 4.x User Password Expire Notification <edit PW age>-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user" LABEL="User" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="VPN" PLUGIN_UNIQUE_NAME="vpn3k" PLUGIN_VESRION="4.3.1" PLUGIN_VESRION_NUMBER="43010038" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="7277705716146062211" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_pwdlastset" LABEL="Password Last Set" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="User Directory" PLUGIN_UNIQUE_NAME="ad" PLUGIN_VESRION="6.5.1" PLUGIN_VESRION_NUMBER="65010015" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="8086123367927350006" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="5184000"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="true" NAME="http_notification">
+                    <PARAM NAME="hijack_disabled" VALUE="false"/>
+                    <PARAM NAME="open_browser" VALUE="true"/>
+                    <PARAM NAME="show_recheck_option" VALUE="false"/>
+                    <PARAM NAME="hcs" VALUE="false"/>
+                    <PARAM NAME="button_text" VALUE="I confirm reading the message"/>
+                    <PARAM NAME="message" VALUE="Dear {user}&#10;&#10;Your password will expire in 1 month. Please reset it at your earliest convenience. &#10;&#10;-IT"/>
+                    <PARAM NAME="confirm_id" VALUE="Notification confirmed"/>
+                    <PARAM NAME="ssl" VALUE="false"/>
+                    <PARAM NAME="onetime" VALUE="true"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                    <HTTPEXCEPTIONS WISPR="0">
+                        <RANGES/>
+                    </HTTPEXCEPTIONS>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                    <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                </SEGMENT>
+                <RULE_CHAIN/>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+    <POLICY_FOLDER ID="365829688494032342" NAME="4.1 Dashboard Policies">
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-8957607206779065963" NAME="4.1.10 Windows OS" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4110"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2943935445127878761" NAME="Windows Server 2016" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Windows Server 2016-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="2163231596442933202" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows Server 2016"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="2984246232220795412">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_2016"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2218781963208025286" NAME="Windows Server 2012" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Windows Server 2012-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-467811832975975564" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows Server 2012"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-5803183088715495013">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_2012"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5700713900704913222" NAME="Windows Server 2008" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Windows Server 2008-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-7050482874618780725" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows Server 2008 R2"/>
+                                            <PATH VALUE="Windows/Windows Server 2008"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="8643700544836261161">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_2008"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2962206672676236201" NAME="Windows Server 2003" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Windows Server 2003-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1152948243153064938" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows Server 2003"/>
+                                            <PATH VALUE="Windows/Windows 2000"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-250758031967985608">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_2003"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3722475049739097069" NAME="Managed Windows 10 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Managed Windows 10 Clients-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-5568248524072853525" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows 10"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-1485161369282223521">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_10"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5220231158338560780" NAME="Managed Windows 8 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Managed Windows 8 Clients-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="3140927636526593655" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows 8.1"/>
+                                            <PATH VALUE="Windows/Windows 8"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-3586299150958306077">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_8"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8604269629353976850" NAME="Managed Windows 7 Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Managed Windows 7 Clients-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="2870234353733586841" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows 7"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-7451165962349048285">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_7"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4597143618452577576" NAME="Other Managed Windows Clients" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Other Managed Windows Clients-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="7979016808579713612" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows/Windows XP"/>
+                                            <PATH VALUE="Windows/Windows Vista"/>
+                                            <PATH VALUE="Windows/Windows 2000"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="8594079621007136610">
+                                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="baeb7bfa2b5155c12cbfeeb99c21a445" SUB_FIELD_NAME="parent">
+                                                <OPT VALUE="windows_nt"/>
+                                                <OPT VALUE="windows_2000"/>
+                                                <OPT VALUE="windows_xp"/>
+                                                <OPT VALUE="windows_vista"/>
+                                            </SUB_FILTER>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6978302210131161588" NAME="Unknown Windows OS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-7595382517369265161" NAME="4.1.09 VMware Classification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4109"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7725102434605825159" NAME="VMware vCenter Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: VMware vCenter Server-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_server_product_line_id" LABEL="VMware Server Product ID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="VMware vSphere" PLUGIN_UNIQUE_NAME="vmware" PLUGIN_VESRION="2.5.1" PLUGIN_VESRION_NUMBER="25010020" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-62602907642983168" TYPE="equals">
+                                        <VALUE VALUE2="vpx"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:5077727568139300593;name:P-VMware vCenter Servers"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3255239205027808925" NAME="VMware Virtual Machine" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: VMware Virtual Machine-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_vm_name" LABEL="Virtual Machine Name" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="VMware vSphere" PLUGIN_UNIQUE_NAME="vmware" PLUGIN_VESRION="2.5.1" PLUGIN_VESRION_NUMBER="25010020" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-5936058680693747069" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="20.0.8" PLUGIN_VESRION_NUMBER="200080003" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="-7531947742883697214" OPTIONS_DIGEST="6c6d23c2b97ba67855e49e311f0949f6">
+                                            <OPT VALUE="vmware, inc."/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:286557951027906270;name:P-VMware Virtual Machines"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4399411869809216241" NAME="VMware ESXi Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: VMware ESXi Server-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_server_product_line_id" LABEL="VMware Server Product ID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="VMware vSphere" PLUGIN_UNIQUE_NAME="vmware" PLUGIN_VESRION="2.5.1" PLUGIN_VESRION_NUMBER="25010020" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4110704001003400135" LINKED="true">
+                                        <LINK ID="-8971622689323199220"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6506897396578551677;name:P-VMware ESXi Servers"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <PROPERTY_LISTS>
+                        <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="vmware_server_product_line_id" ID="-8971622689323199220" NAME="VMware ESXi Server Product Line IDs">
+                            <VALUES>
+                                <VALUE VALUE="embeddedEsx"/>
+                                <VALUE VALUE="esx"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                    </PROPERTY_LISTS>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-4998309954003630105" NAME="4.1.00 Trust Status" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="2299180655563719034" NAME="Trust Levels"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4100"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Full-Trust devices are classified using the one of the following methods, SSH, SNMP, WMI, URL login, query external management system. This provideds confidence that a device is corporately owned as the policies are authenticating using a piece of the customers configuration that has been deployed by the device owner. " ID="5091331169558337137" NAME="Fully Trusted devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Fully Trusted devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="5984363166415218898">
+                                        <GROUP ID="2774548870699766665" NAME="Fully Trusted"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Semi-Trust devices will be classified by one of the following methods, using device properties and profiles of known device types. When using these methods customers can be sure that the device is corporately owned, however there is an increased risk that the device could be rouge as the policy is relying on properties that can be spoofed e.g. Mac address, DHCP hostname and NetBios" ID="1990299693796709095" NAME="Semi Trusted devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Semi Trusted devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7369087495950145692">
+                                        <GROUP ID="945929838647911016" NAME="Semi Trusted"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="UnTrusted devices are devices that do not match any full-trust or semi-trust policy rules. These devices are typically rouges and will have an enforcement action applied to limit their network access." ID="587800899338643789" NAME="Untrusted devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Untrusted devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-5545893454960701797">
+                                        <GROUP ID="2338757084867998970" NAME="Untrusted"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-4659458999878418082" NAME="4.1.05 SNMP Traps" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4105"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="TREND"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3787202286508612744" NAME="Switch SNMP Traps Recived" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Switch SNMP Traps Recived-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="trap_received" LABEL="Trap Received" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.14.2" PLUGIN_VESRION_NUMBER="81402297" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-4637772841736312929" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="345600"/>
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-6052809955295357359" OPTIONS_DIGEST="1400a2169f8ce9a9e80526c8fa9d3b52">
+                                        <OPT VALUE="up"/>
+                                        <OPT VALUE="mac_learned"/>
+                                        <OPT VALUE="down"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5786752346145196491" NAME="Wireless SNMP Traps Recived" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Wireless SNMP Traps Recived-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="trap_received" LABEL="Trap Received" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.14.2" PLUGIN_VESRION_NUMBER="81402297" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8049728720471748276" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="345600"/>
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="2389086716244040570" OPTIONS_DIGEST="1400a2169f8ce9a9e80526c8fa9d3b52">
+                                        <OPT VALUE="wireless_address_removed"/>
+                                        <OPT VALUE="wireless_address_learned"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="237633480773266770" NAME="No SNMP Traps Recived" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-4075575482294167531" NAME="4.1.03 Managed Linux/Unix Devices" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="2692489232439923817" NAME="P-Linux/Unix"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4103"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4602232396631827543" NAME="Managed Linux/Unix Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Managed Linux/Unix Device-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3037187517292802070">
+                                        <GROUP ID="6589437035609537996" NAME="P-Managed Linux/Unix"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3184103972585113663" NAME="Offline Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Offline Devices-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1212570094083151475" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3030226294873723229" NAME="Unmanaged Linux/Unix Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-2823120298256522816" NAME="4.1.04 Managed Network Devices" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="2547118029129073737" NAME="P-Network Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4104"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7245448643634083507" NAME="Managed Network Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Managed Network Device-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="6110751575060725809">
+                                        <GROUP ID="5669324619412808167" NAME="P-Managed Network"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2222865953422512187" NAME="Offline Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Offline Devices-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1212570094083151475" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3173638177968020998" NAME="Unmanaged Network Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-277179462297489601" NAME="4.1.01 Managed Windows Devices" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="7596059925255282199" NAME="P-Windows"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4101"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1378738719057618277" NAME="Managed Windows Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Managed Windows Device-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="8722659288909647212">
+                                        <GROUP ID="2928292403623050337" NAME="P-Windows Domain Manageable"/>
+                                        <GROUP ID="5180710504282916609" NAME="P-Windows SecureConnector Manageable"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5874449904206651367" NAME="Offline Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Offline Devices-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1212570094083151475" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4291157922931807432" NAME="Unmanaged Windows Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="430337328857103934" NAME="4.1.07 Wireless Info" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4107"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="TREND"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2199556085042460075" NAME="Wireless Info Obtained" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Wireless Info Obtained-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ap_wlc" LABEL="WLAN Managing Controller" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Wireless" PLUGIN_UNIQUE_NAME="wireless" PLUGIN_VESRION="2.0.1" PLUGIN_VESRION_NUMBER="20010060" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1731538731315502858" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="6809629216199270414" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_ssid" LABEL="802.1x Endpoint SSID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="RADIUS" PLUGIN_UNIQUE_NAME="dot1x" PLUGIN_VESRION="4.5.1" PLUGIN_VESRION_NUMBER="45010015" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3701865230583149540" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8593327779121832133" NAME="Non Wireless Segment" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Non Wireless Segment-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" INNER_NOT="true" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.4.1" PLUGIN_VESRION_NUMBER="24010018" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-2923115198701280527" TYPE="contains">
+                                            <VALUE VALUE2="wifi"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-394683077317441834" NAME="No Wireless Info" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="4495852133244611161" NAME="4.1.02 Managed Apple Mac Devices" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="454964835164499465" NAME="P-macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4102"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3764021644024169670" NAME="Managed Apple Mac Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Managed Apple Mac Device-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7556926677518257076">
+                                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="9055680481608502536" NAME="Offline Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Offline Devices-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1212570094083151475" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2484847239754876963" NAME="Unmanaged Apple Mac Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="If there are corporate manageable Mobile devices on the network, a separate 1.2.3.2 Mobile Device Manageability policy should be created and properly rolled out using criteria from the corporate MDM." ENABLED="false" ID="5330619653522420478" NAME="4.1.08 Mobile Devices by OS" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="2275566937491766543" NAME="P-Mobile"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="604800000" USE_DEFAULT="false"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4108"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="DONUT"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8144450116836794871" NAME="iOS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: iOS-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="5022429469935815350" MATCH_SUBTREE="true">
+                                            <PATH VALUE="iOS"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="7849259109915618334" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Apple/Apple iDevice"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-504104145101455324" NAME="Kindle Fire" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Kindle Fire-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ebanner_http" LABEL="HTTP User Agent" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5829492399703571276" TYPE="regexp">
+                                        <VALUE VALUE2=".*(Android.*Kindle|Silk/).*"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1314343501529469567" NAME="Android" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Android-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="6490745168805772150" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Android"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2803711989545533331" NAME="Kindle" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Kindle-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8940023504131971269" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Amazon/Amazon Kindle"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3245671965150925105" NAME="Windows Mobile" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Windows Mobile-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1020559840977820341" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Mobile"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2836857202075163147" NAME="Blackberry" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Blackberry-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3188552794489650910" MATCH_SUBTREE="true">
+                                        <PATH VALUE="BlackBerry Limited"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6017648112513321044" NAME="Symbian" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Symbian-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7997043036445149726" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Symbian"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5616442521757931958" NAME="Palm" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Palm-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.1" PLUGIN_VESRION_NUMBER="14010252" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2438971760291960064" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Palm OS"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="604800" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1525851437573288912" NAME="Unknown Mobile Device Type" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="8467554508594692944" NAME="4.1.06 Switch Port Info" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                        <GROUP ID="5669324619412808167" NAME="P-Managed Network"/>
+                    </EXCEPTION>
+                    <FREE_ATTRIBUTES>
+                        <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="dashboardWidgetItem"/>
+                        <FREE_ATTRIBUTE NAME="widgetID" VALUE="6d321952-ac68-47f6-8a07-cf5c5a2f4106"/>
+                        <FREE_ATTRIBUTE NAME="widgetType" VALUE="TREND"/>
+                        <FREE_ATTRIBUTE NAME="dashboardName" VALUE="PS-Dashboard"/>
+                    </FREE_ATTRIBUTES>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6815050858650065513" NAME="Switchport Info Obtained" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Switchport Info Obtained-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="953954933491080265" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6398834220395539561" NAME="Wireless Hosts" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Wireless Hosts-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-5410853782427125989" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.4.1" PLUGIN_VESRION_NUMBER="24010018" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3429027949467132737" TYPE="contains">
+                                            <VALUE VALUE2="wifi"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7996824371313842234" NAME="No Switchport Info" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+</POLICY_FOLDER>
