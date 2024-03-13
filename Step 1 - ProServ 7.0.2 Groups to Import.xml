@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GROUP DESCRIPTION="Once imported, move all the super groups contained here out to directly under &quot;Group Tree&quot; and delete this group." ID="3073940393585523115" NAME="Pro Serve 7.0 Groups to Import">
+    <CHILDREN>
+        <GROUP DESCRIPTION="" ID="1465097267952100001" NAME="Dimensions">
+            <CHILDREN>
+                <GROUP DESCRIPTION="" ID="4221115341621297340" NAME="Connectivity">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="946654327684087802" NAME="Unkown Connectivity"/>
+                        <GROUP DESCRIPTION="" ID="8616070170739109895" NAME="VMWare Connected"/>
+                        <GROUP DESCRIPTION="" ID="5850896561651221841" NAME="VPN"/>
+                        <GROUP DESCRIPTION="" ID="3082912091267025538" NAME="Wired"/>
+                        <GROUP DESCRIPTION="" ID="4868444699658668455" NAME="Wireless"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="5261391105639641826" NAME="Managable devices">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="2873919586776289451" NAME="Managed Linux"/>
+                        <GROUP DESCRIPTION="" ID="8050598561753662130" NAME="Managed Macintosh"/>
+                        <GROUP DESCRIPTION="" ID="1859636262251065964" NAME="Managed Windows"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="5673524482577875698" NAME="Operating System">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="7672300948034028516" NAME="Android OS"/>
+                        <GROUP DESCRIPTION="" ID="5724843255173286815" NAME="iOS OS"/>
+                        <GROUP DESCRIPTION="" ID="8359847679822329184" NAME="Linux/Unix OS"/>
+                        <GROUP DESCRIPTION="" ID="8295367298477358529" NAME="MacOS OS"/>
+                        <GROUP DESCRIPTION="" ID="8884162400591687551" NAME="Uknown OS"/>
+                        <GROUP DESCRIPTION="" ID="5972140217256368318" NAME="Unkown Windows OS"/>
+                        <GROUP DESCRIPTION="" ID="6939478463104394451" NAME="Windows Server OS"/>
+                        <GROUP DESCRIPTION="" ID="7662314716187734443" NAME="Windows Workstation OS"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="171059963427520831" NAME="Purdue Level">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="1414212868590205812" NAME="Purdue 0"/>
+                        <GROUP DESCRIPTION="" ID="3452040218653606686" NAME="Purdue 1"/>
+                        <GROUP DESCRIPTION="" ID="3113639933601154789" NAME="Purdue 2"/>
+                        <GROUP DESCRIPTION="" ID="6619844114468787451" NAME="Purdue 3"/>
+                        <GROUP DESCRIPTION="" ID="4858452094884571748" NAME="Purdue 3.5"/>
+                        <GROUP DESCRIPTION="" ID="197978585685399509" NAME="Purdue 4"/>
+                        <GROUP DESCRIPTION="" ID="1322195382371762375" NAME="Purdue 5"/>
+                        <GROUP DESCRIPTION="" ID="8131844304544796817" NAME="Purdue 6"/>
+                        <GROUP DESCRIPTION="" ID="1694835855923177821" NAME="Purdue Undefined"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="9103375052615081438" NAME="Trust Levels">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="8525426803556419093" NAME="Fully Trusted"/>
+                        <GROUP DESCRIPTION="" ID="7812427093517911245" NAME="Semi Trusted"/>
+                        <GROUP DESCRIPTION="" ID="8175676547602626029" NAME="Untrusted"/>
+                    </CHILDREN>
+                </GROUP>
+            </CHILDREN>
+        </GROUP>
+        <GROUP DESCRIPTION="" ID="8621681611355480390" NAME="Policy">
+            <CHILDREN>
+                <GROUP DESCRIPTION="" ID="4384319492067519372" NAME="P-Core Discovery Groups">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="6776096040633147121" NAME="P-IoT"/>
+                        <GROUP DESCRIPTION="" ID="8267429053270219254" NAME="P-Linux/Unix"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="9123124643768282334" NAME="P-macOS"/>
+                        <GROUP DESCRIPTION="" ID="681668946629946904" NAME="P-Mobile"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="6921453030743737874" NAME="P-NAT Devices"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5459395241663278603" NAME="P-Network Devices"/>
+                        <GROUP DESCRIPTION="" ID="4236017609370899459" NAME="P-OT Devices"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5273216716471289762" NAME="P-Printers"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5658272534317310738" NAME="P-Unknown Misc. Devices"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="16532672508619466" NAME="P-VoIP Devices"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="1112807240927060841" NAME="P-Windows"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="8365821275084555343" NAME="P-IoT Discovery Groups">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="9046245479228083560" NAME="P-Building Automation"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="3964011196319413564" NAME="P-Energy and Power Management"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="2078567645998570686" NAME="P-Gaming"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5716925194218317487" NAME="P-Healthcare"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="9120046321614263316" NAME="P-Metal &amp; Allied"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="1581758158723196839" NAME="P-Multimedia and Entertainment"/>
+                        <GROUP DESCRIPTION="" ID="3895937710834366569" NAME="P-Office Devices"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="4296525504701221861" NAME="P-Physical Security"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="242531294989502648" NAME="P-Retail and Financial"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="9062823208786108862" NAME="P-Traffic and Parking Management"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="2301143653337958978" NAME="P-Unclarified IoT"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5481157537204001730" NAME="P-Wearables"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="3097983841547995400" NAME="P-Manageable Devices">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="7360671307787387613" NAME="P-Managed Linux/Unix"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="433124374752964106" NAME="P-Managed macOS"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="770224188976078775" NAME="P-Managed Network"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="Group created during policy folder import" ID="8718657655663504272" NAME="P-Managed Windows Devices">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="648978982885192072" NAME="P-Windows Domain Manageable"/>
+                        <GROUP DESCRIPTION="" ID="390569967147313589" NAME="P-Windows SecureConnector Manageable"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="4514554613209472179" NAME="P-Manual Discover Groups">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="1157956109888387796" NAME="P-IoT Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="5383507071807812503" NAME="P-Linux/Unix Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="3333113792705707745" NAME="P-macOS Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="9072723513708115769" NAME="P-Miscellaneous Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="3549232294857882712" NAME="P-Mobile Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="7475687698484048101" NAME="P-NAT Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="968622193708917155" NAME="P-Network Devices Manual Discover">
+                            <GROUP_ELEMENTS>
+                                <ELEMENT BY_POLICY="false" COMMENT="counteract device" CREATOR="sschecter" TIME="1543518107000" VALUE="000c296af9e7"/>
+                            </GROUP_ELEMENTS>
+                        </GROUP>
+                        <GROUP DESCRIPTION="" ID="8294794683016107160" NAME="P-OT Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="2681248979456753112" NAME="P-Printers Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="7038000820287975853" NAME="P-VoIP Devices Manual Discover"/>
+                        <GROUP DESCRIPTION="Manually identified devices for sorting in Discovery, does not exempt from policy actions" ID="4615461968667738734" NAME="P-Windows Manual Discover"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="Group to manually exempt devices from policy examination and actions" ID="8311047336723660083" NAME="P-Manual Exempt Groups">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="7066675711004990102" NAME="P-Exempt IoT Devices"/>
+                        <GROUP DESCRIPTION="" ID="1705770583062220156" NAME="P-Exempt Linux/Unix Devices"/>
+                        <GROUP DESCRIPTION="" ID="5625547865942157697" NAME="P-Exempt macOS Devices"/>
+                        <GROUP DESCRIPTION="" ID="1517849034958193552" NAME="P-Exempt Miscellaneous Devices"/>
+                        <GROUP DESCRIPTION="" ID="2269265279230035510" NAME="P-Exempt Mobile Devices"/>
+                        <GROUP DESCRIPTION="" ID="7029154128860016030" NAME="P-Exempt NAT Devices"/>
+                        <GROUP DESCRIPTION="" ID="5659505475747384226" NAME="P-Exempt Network Devices"/>
+                        <GROUP DESCRIPTION="" ID="3458256635260847414" NAME="P-Exempt Printers"/>
+                        <GROUP DESCRIPTION="" ID="5072219380237750920" NAME="P-Exempt VoIP Devices"/>
+                        <GROUP DESCRIPTION="" ID="6460609399919597840" NAME="P-Exempt Windows Devices"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="1438415295050795722" NAME="P-Non Compliant">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="8516236743412635569" NAME="P-Antivirus Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="8830700014668669398" NAME="P-Casper Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="857445257829996058" NAME="P-Cloud Storage Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="6215973204112177960" NAME="P-Disk Encryption Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="5813927414772055417" NAME="P-ePO Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="4114100850074150333" NAME="P-Firewall Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="4380766358279463664" NAME="P-IM Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="3952574610234557484" NAME="P-OS Patch Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="1359715509937667886" NAME="P-P2P Non Compliant"/>
+                        <GROUP DESCRIPTION="" ID="1517063143153313044" NAME="P-Running Processes Non Compliant"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="Group created during policy folder import" ID="697694855527232525" NAME="P-Non Corporate Hosts"/>
+                <GROUP DESCRIPTION="" ID="2234112437966735632" NAME="P-Operational Technology Groups">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="6572197827233655693" NAME="OT Assess Groups">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="380480015964558670" NAME="BACnetRouterOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="4738790420582017181" NAME="BMSOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="6521190255931977559" NAME="CriticalHostwithVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="4068898068254807465" NAME="CVSS-8andHigher"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="2985377036248922022" NAME="CVSS-High Matching Confidence"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8194222133762863645" NAME="CVSS-Low Matching Confidence"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="828802787511247188" NAME="CVSS-Medium Matching Confidence"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="5314254778009735459" NAME="CVSS1.0-4.9"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="2694332710237884246" NAME="CVSS5.0-7.9"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="4174656677094657827" NAME="HighHostwithVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="4184328743559827660" NAME="ICSOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="321293190720252929" NAME="IOOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="7852481773032268600" NAME="IPCameraOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="5120071935162159092" NAME="LightingOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3629431303195280089" NAME="NetworkVideoRecorderOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="6598172545337300233" NAME="PLCOffline"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="9074004933988215106" NAME="Purdue0HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="1349623071530445078" NAME="Purdue1HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="1470311230393905471" NAME="Purdue2HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3167148258992117371" NAME="Purdue3.5HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3851100295638663567" NAME="Purdue3HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8555138621207746104" NAME="Purdue4HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="7959104426880569309" NAME="Purdue5HostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="1443326392351737355" NAME="PurdueUndefinedHostVulnerability"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="1973492947555123159" NAME="RTUOffline"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="" ID="8603115336796207097" NAME="OT Classify Groups">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="1365548001269981996" NAME="HostCriticality0"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8126510998324678032" NAME="HostCriticality1"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3108651327589775952" NAME="HostCriticality2"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3980254362408140995" NAME="HostCriticality3"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="142222569561755924" NAME="HostCriticality4"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="7455734304358652942" NAME="HostCriticality5"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="6691021572192544152" NAME="Purdue0Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3941022391321753940" NAME="Purdue1Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8026822257838182414" NAME="Purdue2Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8284973665948712457" NAME="Purdue3.5Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="8454779491244310949" NAME="Purdue3Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="5265720402513173276" NAME="Purdue4Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="6196434386105918309" NAME="Purdue5Host"/>
+                                <GROUP DESCRIPTION="Group created during policy folder import" ID="3771194365530628343" NAME="PurdueUndefinedHost"/>
+                            </CHILDREN>
+                        </GROUP>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="6326631379331410194" NAME="P-VMWare">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="2826413572129262657" NAME="P-VMware ESXi Servers"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5915388765285577093" NAME="P-VMware vCenter Servers"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="8743541122424245757" NAME="P-VMware Virtual Machines"/>
+                    </CHILDREN>
+                </GROUP>
+            </CHILDREN>
+        </GROUP>
+        <GROUP DESCRIPTION="" ID="1449660617859471726" NAME="Taxonomy">
+            <CHILDREN>
+                <GROUP DESCRIPTION="" ID="165567939257288012" NAME="Applications">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="1885412229430934022" NAME="Active Directory"/>
+                        <GROUP DESCRIPTION="" ID="2473233418013503165" NAME="Mail Server"/>
+                        <GROUP DESCRIPTION="" ID="6068488793115051650" NAME="Radius"/>
+                        <GROUP DESCRIPTION="" ID="761807313532770313" NAME="Syslog Server"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="4168978036705094547" NAME="Common Devices">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="2913414006226621902" NAME="Apple Macintosh Devices"/>
+                        <GROUP DESCRIPTION="" ID="2709844115393234181" NAME="Linux/Unix Devices"/>
+                        <GROUP DESCRIPTION="" ID="8548452701647179842" NAME="Mobile Devices"/>
+                        <GROUP DESCRIPTION="" ID="1167635545011471792" NAME="Network Devices"/>
+                        <GROUP DESCRIPTION="" ID="3760524819132388664" NAME="Printers Devices"/>
+                        <GROUP DESCRIPTION="" ID="8733106557345620938" NAME="VoIP Devices"/>
+                        <GROUP DESCRIPTION="" ID="1561393220558905471" NAME="Windows Devices"/>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="1309818647354113618" NAME="IoT Devices">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="1438655697344468063" NAME="Building Automation">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="2586882365939694090" NAME="Conference Control Devices"/>
+                                <GROUP DESCRIPTION="" ID="4166520535226400035" NAME="Elevators and Escalators"/>
+                                <GROUP DESCRIPTION="" ID="1483457064411566726" NAME="Environmental Monitoring"/>
+                                <GROUP DESCRIPTION="" ID="4258615044057701863" NAME="Lighting"/>
+                                <GROUP DESCRIPTION="" ID="6914491908081316531" NAME="UPS"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="2756094014460875384" NAME="Energy and Power Management">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="5411763120682266119" NAME="Energy and Power - Industrial Control Systems"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="606554478769020996" NAME="Gaming"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="2198481932252136892" NAME="Healthcare">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="7185346109941054368" NAME="Electronic Healthcare Record"/>
+                                <GROUP DESCRIPTION="" ID="4583286830270726262" NAME="General Healthcare"/>
+                                <GROUP DESCRIPTION="" ID="4532139620368583427" NAME="Infusion Pumps"/>
+                                <GROUP DESCRIPTION="" ID="2026669975753538945" NAME="Patient Monitors"/>
+                                <GROUP DESCRIPTION="" ID="6898842760081975764" NAME="Ultrasound"/>
+                                <GROUP DESCRIPTION="" ID="2462158866908283546" NAME="X-Ray"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="987135301370752050" NAME="Metal &amp; Allied">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="4643763847164187401" NAME="Metal and Allied - Industrial Control Systems"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="700189491849171135" NAME="Multimedia and Entertainment">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="5874240880257020682" NAME="Smart TV"/>
+                                <GROUP DESCRIPTION="" ID="8079934948610835657" NAME="Streaming"/>
+                                <GROUP DESCRIPTION="" ID="3788167690886830812" NAME="Video Gaming"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="" ID="2944947224949113434" NAME="Office Devices">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="8651887257157989493" NAME="Network Clocks"/>
+                                <GROUP DESCRIPTION="" ID="7560576687851825683" NAME="Out of Band Controller"/>
+                                <GROUP DESCRIPTION="" ID="8634842617135110161" NAME="Projectors"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="6395686649137674654" NAME="Physical Security">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="4163856866254847167" NAME="Access Control System"/>
+                                <GROUP DESCRIPTION="" ID="441198330558274386" NAME="Intrusion Detection"/>
+                                <GROUP DESCRIPTION="" ID="2737937501180649824" NAME="License Plate Recognition"/>
+                                <GROUP DESCRIPTION="" ID="6544683098055263276" NAME="Surveilance"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="1235365544349948129" NAME="Retail and Financial">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="6284136203532952355" NAME="ATM"/>
+                                <GROUP DESCRIPTION="" ID="535359343502975325" NAME="Cash Drawers"/>
+                                <GROUP DESCRIPTION="" ID="9199515345767800010" NAME="POS"/>
+                                <GROUP DESCRIPTION="" ID="3430460618978760545" NAME="Vending"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="6197028197070284907" NAME="Traffic and Parking Management">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="7126943496691442252" NAME="Parking Managment"/>
+                                <GROUP DESCRIPTION="" ID="2547676217149904896" NAME="Traffic Management"/>
+                            </CHILDREN>
+                        </GROUP>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="7245768694649854924" NAME="Unclarified IoT"/>
+                        <GROUP DESCRIPTION="Group created during policy folder import" ID="5569861048785790156" NAME="Wearables">
+                            <CHILDREN>
+                                <GROUP DESCRIPTION="" ID="3304047625987620257" NAME="Activity Tracker"/>
+                                <GROUP DESCRIPTION="" ID="6673881156370473898" NAME="Headphone or Speaker"/>
+                                <GROUP DESCRIPTION="" ID="3259641652478399817" NAME="Smart Watch"/>
+                            </CHILDREN>
+                        </GROUP>
+                    </CHILDREN>
+                </GROUP>
+                <GROUP DESCRIPTION="" ID="1761615905101492778" NAME="Users">
+                    <CHILDREN>
+                        <GROUP DESCRIPTION="" ID="-9018128648326946408" NAME="Linux User Obtained"/>
+                        <GROUP DESCRIPTION="" ID="4700689515622303854" NAME="Macintosh User Obtained"/>
+                        <GROUP DESCRIPTION="" ID="-1692787777966830400" NAME="No User Information Obtained"/>
+                        <GROUP DESCRIPTION="" ID="3820697700219410775" NAME="Windows User Obtained"/>
+                    </CHILDREN>
+                </GROUP>
+            </CHILDREN>
+        </GROUP>
+    </CHILDREN>
+</GROUP>
