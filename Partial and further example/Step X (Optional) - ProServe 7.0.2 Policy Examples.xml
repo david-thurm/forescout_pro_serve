@@ -1,0 +1,2088 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="197250808987271463" NAME="ProServe Policy Examples">
+    <ENC VALUE="nyymxTURhgo=~qPQQWBvY8zwwdzUgpUAVwngWFNc="/>
+    <POLICIES/>
+    <POLICY_FOLDER ID="700421508781773909" NAME="Assessment Examples">
+        <ENC VALUE="fBl5i72oyoA=~7kjndTTsH0E6NULEvfG84aEl/vk="/>
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="564993996691307770" META_TYPE="COMPLY" NAME="X.X Local Guest Account Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2228196539581741016" NAME="Account Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Account Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.db2890868a75ca904ba6aeb7c69e6ad2" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:net user Guest | findstr /I /C:&quot;Account Active&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="script_result" NAME="script_result.db2890868a75ca904ba6aeb7c69e6ad2">
+                                        <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                        <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="net user Guest | findstr /I /C:&quot;Account Active&quot;"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4234009155576040631" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\QYes\E.*" VALUE2="Yes"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4175170077634790743" NAME="Account Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Account Disabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.db2890868a75ca904ba6aeb7c69e6ad2" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:net user Guest | findstr /I /C:&quot;Account Active&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="script_result" NAME="script_result.db2890868a75ca904ba6aeb7c69e6ad2">
+                                        <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                        <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="net user Guest | findstr /I /C:&quot;Account Active&quot;"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6316794811938148303" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\QNo\E.*" VALUE2="No"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6304460031136381125" NAME="Undetermined" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Audit FDE status on endpoints.&#10;&#10;Add a group &quot;Pointsec Non Compliant&quot; and place it as a child group under &quot;Non Compliant&quot;. Then create an Add to Group = Pointsec Non Compliant action for each non compliant sub-rule." ENABLED="false" ID="8758024720174317869" META_TYPE="COMPLY" NAME="X.X Checkpoint Full Disk Encryption (Pointsec) &lt;edit add group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="300000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Checkpoint Full Disk Encryption (Pointsec) <edit add group>-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-3898154712915396316">
+                                <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2721440131506197564" NAME="FDE Service Running Volumes Encrption Completed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Encrption Completed-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="9112669193891839180" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q3,\E.*" VALUE2="3,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.b6c5c0492136936c8d8c28fea07ef995" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.b6c5c0492136936c8d8c28fea07ef995">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2449722943404647936" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q3,\E.*" VALUE2="3,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1638739959172388363" NAME="FDE Service Running Volumes Unencrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Unencrypted-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="4361723269981772945" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q0,\E.*" VALUE2="0,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.40d1e2ca66cc3046c9c66b7e6b7ccb77" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\EncryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.40d1e2ca66cc3046c9c66b7e6b7ccb77">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\EncryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="337915786545796278" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q0,\E.*" VALUE2="0,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5618515769916957963" NAME="FDE Service Running Volumes Encrypting" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Encrypting-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7135297557240995517" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q1,\E.*" VALUE2="1,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.b6c5c0492136936c8d8c28fea07ef995" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.b6c5c0492136936c8d8c28fea07ef995">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3542205624664357782" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q1,\E.*" VALUE2="1,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8951971551647807402" NAME="FDE Service Running Volumes Decrypting" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Decrypting-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="8381272921362872887" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q2,\E.*" VALUE2="2,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.b6c5c0492136936c8d8c28fea07ef995" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.b6c5c0492136936c8d8c28fea07ef995">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-189101155325449414" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q2,\E.*" VALUE2="2,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-509005789841196088" NAME="FDE Service Running Volumes Reencrypting" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Reencrypting-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-4780747961205925772" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q4,\E.*" VALUE2="4,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.b6c5c0492136936c8d8c28fea07ef995" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.b6c5c0492136936c8d8c28fea07ef995">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-632560676858141178" REGEXP="true" TYPE="startswith">
+                                                    <VALUE VALUE="\Q4,\E.*" VALUE2="4,"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6291796507482359119" NAME="FDE Service Running Volumes Value Misc (error)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: FDE Service Running Volumes Value Misc (error)-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                    <EXPRESSION EXPR_TYPE="OR">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.957b55ccd505b6977e8ff248c1f2d164" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                <FIELD METANAME="registry" NAME="registry.957b55ccd505b6977e8ff248c1f2d164">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7736915985093408810" REGEXP="true" TYPE="any">
+                                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry.b6c5c0492136936c8d8c28fea07ef995" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FIELD METANAME="registry" NAME="registry.b6c5c0492136936c8d8c28fea07ef995">
+                                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\SOFTWARE\CheckPoint\EndPoint Security\Full Disk Encryption\Status\Current Boot\encryptionState"/>
+                                                </FIELD>
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-454598287181260134" REGEXP="true" TYPE="any">
+                                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2200328672073584669" NAME="FDE Service Running NO Registry Key detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FDE Service Running NO Registry Key detected-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="955824864446589662" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\QCheck Point Full Disk Encryption\E.*" VALUE2="Check Point Full Disk Encryption"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7594385581743266135" NAME="FDE NOT Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="43200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit compliant version of adobe reader found in first sub-rule.&#10;&#10;Add a group &quot;OSX Adobe Reader Non Compliant&quot; and place it as a child group under &quot;Non Compliant&quot;. Then create an Add to Group = OSX Adobe Reader Non Compliant action for each non compliant sub-rule." ENABLED="false" ID="2447561766211014543" META_TYPE="COMPLY" NAME="X.X Mac OS Adobe Reader Version &lt;edit reader version, add group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="4909540995242293875" NAME="Macintosh Managable"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8705876412712099298" NAME="Macintosh Adobe Reader Version 10.1.2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh Adobe Reader Version 10.1.2-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" LABEL="Macintosh Expected Script Result Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.0" PLUGIN_VESRION_NUMBER="21000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-5896285965852339849" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\Q10.1.2\E.*" VALUE2="10.1.2"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3243444004329829237" NAME="Macintosh Adobe Reader Other Version 10" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh Adobe Reader Other Version 10-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" LABEL="Macintosh Expected Script Result Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.0" PLUGIN_VESRION_NUMBER="21000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1602007229522926030" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\Q10\E.*" VALUE2="10"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-675295477755348592" NAME="Macintosh Adobe Reader Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Macintosh Adobe Reader Not Installed-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" INNER_NOT="true" LABEL="Macintosh Expected Script Result Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.0" PLUGIN_VESRION_NUMBER="21000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                            <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="8869435789240779120" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QAdobe Reader\E.*" VALUE2="Adobe Reader"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5634189578912015354" NAME="Macintosh Adobe Reader Not Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Add a group &quot;Win Firewall Non Compliant&quot; and place it as a child group under &quot;Non Compliant&quot;. Then create an Add to Group = Win Firewall Non Compliant action for each non compliant sub-rule." ENABLED="false" ID="3695222874364973757" META_TYPE="COMPLY" NAME="X.X Personal Firewall Compliance &lt;edit add group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="180000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Personal Firewall Compliance <edit add group>-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1552169004505847905">
+                                <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-989237774773586108" NAME="FW Active" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FW Active-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="fw_active" LABEL="Windows Personal Firewall" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Windows Applications" PLUGIN_UNIQUE_NAME="meta" PLUGIN_VESRION="18.0.2" PLUGIN_VESRION_NUMBER="180020002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="-8918021576091507237" OPTIONS_DIGEST="e3c86a8f121afe551f2625b8f9d4e5d0">
+                                        <OPT VALUE="windows_firewall_fw"/>
+                                        <OPT VALUE="zonealarm_fw"/>
+                                        <OPT VALUE="icf_fw"/>
+                                        <OPT VALUE="mcafee_fw"/>
+                                        <OPT VALUE="sygate_fw"/>
+                                        <OPT VALUE="sophos_fw"/>
+                                        <OPT VALUE="symantec_fw"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Firewall is not active." ID="9042149958922057331" NAME="FW Not Active" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: FW Not Active-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="fw_active" INNER_NOT="true" LABEL="Windows Personal Firewall" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Windows Applications" PLUGIN_UNIQUE_NAME="meta" PLUGIN_VESRION="18.0.2" PLUGIN_VESRION_NUMBER="180020002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER AUTO_UPDATE="true" FILTER_ID="1462106304476384286" OPTIONS_DIGEST="e3c86a8f121afe551f2625b8f9d4e5d0">
+                                            <OPT VALUE="windows_firewall_fw"/>
+                                            <OPT VALUE="zonealarm_fw"/>
+                                            <OPT VALUE="icf_fw"/>
+                                            <OPT VALUE="mcafee_fw"/>
+                                            <OPT VALUE="sygate_fw"/>
+                                            <OPT VALUE="sophos_fw"/>
+                                            <OPT VALUE="symantec_fw"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3014637000902578198" NAME="FW Irresolvable - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Add a group &quot;Win DLP Non Compliant&quot; and place it as a child group under &quot;Non Compliant&quot;. Then create an Add to Group = Win DLP Non Compliant action for each non compliant sub-rule.&#10;&#10;" ENABLED="false" ID="-43216944559368489" META_TYPE="COMPLY" NAME="X.X Websense Data Loss Prevention (DLP) &lt;edit add group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Websense Data Loss Prevention (DLP) <edit add group>-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="207702559148795572">
+                                <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7452565363898402930" NAME="All Websense Client Agent Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: All Websense Client Agent Running-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="6316784237430957777" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWebsense Client Agent\E" VALUE2="Websense Client Agent"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1606539911503504398" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWebsense SaaS Service\E" VALUE2="Websense SaaS Service"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="375514664618819828" NAME="Websense SaaS Agent Running but NOT Client" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Websense SaaS Agent Running but NOT Client-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1606539911503504398" REGEXP="true" TYPE="equals">
+                                        <VALUE VALUE="\QWebsense SaaS Service\E" VALUE2="Websense SaaS Service"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="753757223340526769" NAME="Websense Client Agent Running but NOT SaaS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Websense Client Agent Running but NOT SaaS-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6316784237430957777" REGEXP="true" TYPE="equals">
+                                        <VALUE VALUE="\QWebsense Client Agent\E" VALUE2="Websense Client Agent"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8993014401778484604" NAME="Websense Client Agent Installed AND NOT Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Websense Client Agent Installed AND NOT Running-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service_installed" LABEL="Windows Services Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1272969021326329408" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWebsense Client Agent\E" VALUE2="Websense Client Agent"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service_installed" LABEL="Windows Services Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="8920216859576784290" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWebsense SaaS Service\E" VALUE2="Websense SaaS Service"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3247869276814567979" NAME="Websense service NOT detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Add a group &quot;OSX Java Non Compliant&quot; and place it as a child group under &quot;Non Compliant&quot;. Then create an Add to Group = OSX Java Non Compliant action for each non compliant sub-rule." ENABLED="false" ID="-4936525129404164915" META_TYPE="COMPLY" NAME="X.X Mac OS Java Compliance &lt;edit add group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="4909540995242293875" NAME="Macintosh Managable"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1750394340839505887" NAME="Macintosh Java Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Macintosh Java Compliant-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" INNER_NOT="true" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.0" PLUGIN_VESRION_NUMBER="21000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="48317879127189467" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qjava\E.*" VALUE2="java"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="mac_update_software">
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="9117705640333211140" NAME="Macintosh Java Update Missing" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh Java Update Missing-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.0" PLUGIN_VESRION_NUMBER="21000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1279604749276287241" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\Qjava\E.*" VALUE2="java"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="mac_update_software">
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8244150197550225473" NAME="Macintosh Java Update NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+    <POLICY_FOLDER ID="6787967590258841815" NAME="Classify Examples">
+        <ENC VALUE="9fcSnUJkWjI=~x/yiUIfg5mGLlLlXkE57E3XbsYQ="/>
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="7089804466760160674" META_TYPE="GUEST" NAME="X.X VoIP Device Manageability &lt;Edit {IP} in URLs&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="5923396701587675336" NAME="VoIP Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1975146390758050571" NAME="Full-Trust             (Edit {IP} in URL CuRL for Registered Cisco Phones)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="129600" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="CORPORATE"/>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Full-Trust             (Edit {IP} in URL CuRL for Registered Cisco Phones)-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.7f5132b66fc19d07ac44121b1b19dbd9" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/CGI/Java/Serviceability?adapter=device.statistics.configuration, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.7f5132b66fc19d07ac44121b1b19dbd9">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="p5Lg+mStX28=~eceDfgdRx74="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/CGI/Java/Serviceability?adapter=device.statistics.configuration"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="-2048872541099130367" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qgetservicesmenu\E.*" VALUE2="getservicesmenu"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.4480b2b8b80fd603acb2b759680a3505" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/Network_Setup.html, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.4480b2b8b80fd603acb2b759680a3505">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="0DMCZd37KPU=~REaPzeOIUqM="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/Network_Setup.html"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-4000010837917919012" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qgetservicesmenu\E.*" VALUE2="getservicesmenu"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.88fa2e7c4d87bf817887107ba4fd4c01" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/localmenus.cgi?func=219, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.88fa2e7c4d87bf817887107ba4fd4c01">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="uZ9IrJgbnzE=~SRtuET7moFg="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/localmenus.cgi?func=219"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="643403703824616214" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qgetservicesmenu\E.*" VALUE2="getservicesmenu"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.2b8890113b66db99938491d8d61c2a95" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/NetworkConfiguration, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.2b8890113b66db99938491d8d61c2a95">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="8GqHj5zrlzk=~6crbU6ENPkQ="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/NetworkConfiguration"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-4142671763552308402" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qgetservicesmenu\E.*" VALUE2="getservicesmenu"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.413a72f201cb06e393a0c513bd00fee2" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/dynaform/sum_admin.htm, Extra curl options:--max-time 5 --negotiate --anyauth -L -k --data sym_Password=**#" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.413a72f201cb06e393a0c513bd00fee2">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="yQ7dp3+hCgY=~ei/RSD5QlkM="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/dynaform/sum_admin.htm"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k --data sym_Password=**#"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="9002623630306369117" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QActive\E.*" VALUE2="Active"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.4480b2b8b80fd603acb2b759680a3505" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:*UNUSED*, URL:http://{ip}/Network_Setup.html, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="goodies_curl" NAME="goodies_curl.4480b2b8b80fd603acb2b759680a3505">
+                                            <PARAM NAME="password" TYPE="encrypted" VALUE="ApO38KFy62E=~wntKWYQhaHo="/>
+                                            <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                            <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                            <PARAM NAME="user" TYPE="string" VALUE="*UNUSED*"/>
+                                            <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/Network_Setup.html"/>
+                                            <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                        </FIELD>
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="737304258344699830" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QActive\E.*" VALUE2="Active"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:634864663118377255;name:Corporate VoIP"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="724422167020623106" NAME="Exempt VoIP Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Exempt VoIP Devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-5506411735812795442">
+                                        <GROUP ID="4578036740110653448" NAME="Exempt VoIP Devices"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7062626191473767055" NAME="Un-Trusted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="UNAUTH_GUEST"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+    <POLICY_FOLDER ID="910166796453694509" NAME="Control Examples">
+        <ENC VALUE="u+j/+5ptwvk=~pBntMbDym2ODTKAacQvfNJaQyQE="/>
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="6938811154512527500" NAME="X.X Interactive Guest Registration Example &lt;edits&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Interactive Guest Registration Example <edits>-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="136852136291045178">
+                                <GROUP ID="8337543132813999307" NAME="Non Corporate Hosts"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-675586536748655944" NAME="Signed in as Corporate User" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Signed in as Corporate User-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="auth.login" LABEL="Authentication Login" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7276648387825122816" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400"/>
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="7442818307442497289" OPTIONS_DIGEST="3031b8788b31cdc611b352a55a9b1f02">
+                                        <OPT VALUE="http_login"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This subrule allows guests access for 1 day. If a different time period is required, edit the condition. Edit the blocking for signed in guests if required by the customer." ID="8987455022150787230" NAME="Signed in Guest &lt;edit time and partial block if necessary&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Signed in Guest <edit time and partial block if necessary>-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="auth.login" LABEL="Authentication Login" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="2706925826855541077" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400">
+                                        <CALENDAR>
+                                            <FROM HOUR="0" MINUTE="0" SECOND="0"/>
+                                            <TO HOUR="23" MINUTE="59" SECOND="59"/>
+                                            <DAYS SELECTED="0,1,2,3,4,5,6"/>
+                                        </CALENDAR>
+                                    </FILTER>
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="5711867110658845799" OPTIONS_DIGEST="3031b8788b31cdc611b352a55a9b1f02">
+                                        <OPT VALUE="guest_login"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="sw_quarantine">
+                                <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+                                <PARAM NAME="vlan" VALUE="1"/>
+                                <PARAM NAME="vlan_group" VALUE="vlan_name"/>
+                                <PARAM NAME="vlan_name" VALUE="Guest VLAN"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                                <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_1/TCP:"/>
+                                <PARAM NAME="exception_rule" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="sw_acl">
+                                <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_3389/TCP:"/>
+                                <PARAM NAME="acl_on_mac" VALUE="false"/>
+                                <PARAM NAME="use_basic_as_fallback" VALUE="false"/>
+                                <PARAM NAME="exception_rule" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Options are extensive, customize the HTTP login page per customer requirements." ID="-3688301925001838755" NAME="Not Signed in &lt;customize HTTP login&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <ACTION DISABLED="true" NAME="wifi_block">
+                                <PARAM NAME="block_connected_only" VALUE="false"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="http_login_3">
+                                <PARAM NAME="signin_sesssion_domain" VALUE="true"/>
+                                <PARAM NAME="concurrent_guest" VALUE="true"/>
+                                <PARAM NAME="specific_approve_enable" VALUE="false"/>
+                                <PARAM NAME="contact_approve" VALUE=""/>
+                                <PARAM NAME="form_phone" VALUE="show"/>
+                                <PARAM NAME="auto_approval" VALUE="none"/>
+                                <PARAM NAME="ssl" VALUE="true"/>
+                                <PARAM NAME="guest_msg" VALUE="&lt;b&gt;Dear Guest,&lt;/b&gt;&#10;&#10;To connect to the network,&#10;complete the fields and select &lt;i&gt;Request Access&lt;/i&gt; button."/>
+                                <PARAM NAME="guest_title" VALUE="Guest Registration"/>
+                                <PARAM NAME="verify_ident_opts" VALUE="email_mobile"/>
+                                <PARAM NAME="form_comment" VALUE="show"/>
+                                <PARAM NAME="reg_no_guest_pass" VALUE="false"/>
+                                <PARAM NAME="hijack_disabled" VALUE="false"/>
+                                <PARAM NAME="signin_sesssion_guest" VALUE="true"/>
+                                <PARAM NAME="auth_external" VALUE="true"/>
+                                <PARAM NAME="use_system_generated_password" VALUE="false"/>
+                                <PARAM NAME="auto_continue_url" VALUE=""/>
+                                <PARAM NAME="open_browser" VALUE="false"/>
+                                <PARAM NAME="reg_email_validation" VALUE="true"/>
+                                <PARAM NAME="form_contact_name" VALUE="show"/>
+                                <PARAM NAME="reg_landing_page" VALUE="false"/>
+                                <PARAM NAME="auth_internal" VALUE="true"/>
+                                <PARAM NAME="guest_expire_enabled" VALUE="false"/>
+                                <PARAM NAME="non_auto_approval" VALUE="none"/>
+                                <PARAM NAME="show_help" VALUE="true"/>
+                                <PARAM NAME="specific_approve" VALUE=""/>
+                                <PARAM NAME="approve_opts" VALUE="auto_approval"/>
+                                <PARAM NAME="auto_continue" VALUE="false"/>
+                                <PARAM NAME="servers">
+                                    <SELECTION ALL="true"/>
+                                </PARAM>
+                                <PARAM NAME="concurrent_domain" VALUE="true"/>
+                                <PARAM NAME="verify_ident" VALUE="true"/>
+                                <PARAM NAME="allowguest" VALUE="false"/>
+                                <PARAM NAME="contact_approve_enable" VALUE="false"/>
+                                <PARAM NAME="form_location" VALUE="show"/>
+                                <PARAM NAME="form_until" VALUE="show"/>
+                                <PARAM NAME="form_contact_email_retype" VALUE="show"/>
+                                <PARAM NAME="show_g_forgot_password" VALUE="true"/>
+                                <PARAM NAME="reg_with_pass" VALUE="false"/>
+                                <PARAM NAME="form_contact_email" VALUE="show"/>
+                                <PARAM NAME="message" VALUE="&lt;b&gt;Dear User,&lt;/b&gt;&#10;&#10;Enter your Credentials, and log in to the network."/>
+                                <PARAM NAME="reg_enabled" VALUE="true"/>
+                                <PARAM NAME="enforce_server_selection" VALUE="false"/>
+                                <PARAM NAME="form_title" VALUE="show"/>
+                                <PARAM NAME="form_full_name" VALUE="mandatory"/>
+                                <PARAM NAME="form_custom3" VALUE="hide"/>
+                                <PARAM NAME="form_custom2" VALUE="hide"/>
+                                <PARAM NAME="use_old_direct_link_approval" VALUE="false"/>
+                                <PARAM NAME="form_custom1" VALUE="hide"/>
+                                <PARAM NAME="show_g_edit_profile" VALUE="true"/>
+                                <PARAM NAME="form_custom5" VALUE="hide"/>
+                                <PARAM NAME="form_custom4" VALUE="hide"/>
+                                <PARAM NAME="guest_expire_period" VALUE="3600"/>
+                                <PARAM NAME="form_company" VALUE="show"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                                <HTTPEXCEPTIONS WISPR="0">
+                                    <RANGES/>
+                                </HTTPEXCEPTIONS>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="sw_quarantine">
+                                <PARAM NAME="dont_force_assign_2_vlan" VALUE="false"/>
+                                <PARAM NAME="vlan" VALUE="1"/>
+                                <PARAM NAME="vlan_group" VALUE="vlan_name"/>
+                                <PARAM NAME="vlan_name" VALUE="black hole vlan"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="sw_acl">
+                                <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                                <PARAM NAME="acl_on_mac" VALUE="false"/>
+                                <PARAM NAME="use_basic_as_fallback" VALUE="false"/>
+                                <PARAM NAME="exception_rule" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Actions are configured for complete blocks. If only a partial block is desired on non corporate hosts, edit these actions." ENABLED="false" ID="5386845055124888698" NAME="X.X Non Interactive Control Example" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Non Interactive Control Example-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="3213698910448520288">
+                                <GROUP ID="8337543132813999307" NAME="Non Corporate Hosts"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="31878212321651445" NAME="WLAN" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: WLAN-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Wireless" PLUGIN_UNIQUE_NAME="wireless" PLUGIN_VESRION="1.8.0" PLUGIN_VESRION_NUMBER="18000132" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="394842542272462451" REGEXP="true" TYPE="any">
+                                        <VALUE VALUE=".*" VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="wifi_block">
+                                <PARAM NAME="block_connected_only" VALUE="false"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="for ACL actions - which are more secure than VLANs." ID="-5034967531463208417" NAME="Cisco/Brocade/Juniper Managed Switch" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Cisco/Brocade/Juniper Managed Switch-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-3912453089445494957" REGEXP="true" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_vendor" LABEL="Switch Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="1568871048941454318" LINKED="true">
+                                            <LINK ID="-5989639393453458190"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="sw_acl">
+                                <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                                <PARAM NAME="acl_on_mac" VALUE="false"/>
+                                <PARAM NAME="use_basic_as_fallback" VALUE="false"/>
+                                <PARAM NAME="exception_rule" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Select either the VLAN change or the SWITCH BLOCK action. " ID="-6270083941303183075" NAME="Other Managed Switch" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Other Managed Switch-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2643936003235445710" REGEXP="true" TYPE="any">
+                                        <VALUE VALUE=".*" VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="sw_quarantine">
+                                <PARAM NAME="dont_force_assign_2_vlan" VALUE="false"/>
+                                <PARAM NAME="vlan" VALUE="1"/>
+                                <PARAM NAME="vlan_group" VALUE="vlan"/>
+                                <PARAM NAME="vlan_name" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="sw_block">
+                                <PARAM NAME="dont_force_sw_block" VALUE="false"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5025920147184716308" NAME="Unknown Device Location" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                                <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                                <PARAM NAME="exception_rule" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <PROPERTY_LISTS>
+                        <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_vendor" ID="-5989639393453458190" NAME="ACL Vendor Switches">
+                            <VALUES>
+                                <VALUE VALUE="Brocade"/>
+                                <VALUE VALUE="Cisco"/>
+                                <VALUE VALUE="Foundry"/>
+                                <VALUE VALUE="Juniper"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                    </PROPERTY_LISTS>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+    <POLICY_FOLDER ID="7064562292623516149" NAME="Informational Examples">
+        <ENC VALUE="4B6t0cPvtQM=~W8MY6o2KGDkc/3IjOHsAXdu773Q="/>
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="5575083647465646497" META_TYPE="COMPLY" NAME="X.X External Device Assessment - Communications" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="180000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X External Device Assessment - Communications-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="9119441592859409111">
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_id" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                    <OPT VALUE="eddrive"/>
+                                    <OPT VALUE="winceusbdevice"/>
+                                    <OPT VALUE="modemdevice"/>
+                                    <OPT VALUE="flashdevice"/>
+                                    <OPT VALUE="printdevice"/>
+                                    <OPT VALUE="wirelesscommdevice"/>
+                                    <OPT VALUE="irdadevice"/>
+                                    <OPT VALUE="imagedevice"/>
+                                    <OPT VALUE="btradios"/>
+                                    <OPT VALUE="other"/>
+                                    <OPT VALUE="wpd"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1018281456644658796" NAME="Bluetooth" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Bluetooth-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="8958677267798786997">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="btradios"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7982204319351251337" NAME="Modems" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Modems-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="3602114428277865525">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="modemdevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1304519039076046886" NAME="Infrared" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Infrared-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-1681759940366751010">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="irdadevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1628018825046037668" NAME="Wired Network Adapters" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Wired Network Adapters-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="3205540416475383886">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="netdevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1184162565927376186" NAME="Wireless Adapters" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Wireless Adapters-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-1590275476886698824">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="wirelesscommdevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3610165018281341296" NAME="Non- Communications External Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="7985741282472256973" NAME="X.X Track Device Move" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Track Device Move-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="2814119426884949900" REGEXP="true" TYPE="any">
+                                <VALUE VALUE=".*" VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7093192533442018437" NAME="No change detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: No change detected-->
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                            <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                                                <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                                <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="1924094911336465938" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                            <FILTER FILED_NAME="sw_port_desc" FILTER_ID="-3026093214152009968" POTENTIAL="false">
+                                                <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                                <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="-680566182400883376" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                            <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="-7024857235818533646" POTENTIAL="false">
+                                                <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                                <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-156779385166480211" NAME="Host moved between switches" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Host moved between switches-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                    <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                                        <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                        <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8625798349898340462" NAME="Host port VLAN changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Host port VLAN changed-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8157940199943127575" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                    <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="7542755132651895032" POTENTIAL="false">
+                                        <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                        <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1427744043427565321" NAME="Switch Port Changed (same switch)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Switch Port Changed (same switch)-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.0" PLUGIN_VESRION_NUMBER="81200236" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7154820778628039634" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                    <FILTER FILED_NAME="sw_port_desc" FILTER_ID="4875749823809082307" POTENTIAL="false">
+                                        <OLD_VALUE_FILTER ANY="true" NOT="false"/>
+                                        <NEW_VALUE_FILTER ANY="true" NOT="false"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4507705340378954458" NAME="Switch port irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="2986346110349996452" META_TYPE="COMPLY" NAME="X.X External Device Assessment - Mobile" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="180000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X External Device Assessment - Mobile-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="9119441592859409111">
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_id" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                    <OPT VALUE="eddrive"/>
+                                    <OPT VALUE="winceusbdevice"/>
+                                    <OPT VALUE="modemdevice"/>
+                                    <OPT VALUE="flashdevice"/>
+                                    <OPT VALUE="printdevice"/>
+                                    <OPT VALUE="wirelesscommdevice"/>
+                                    <OPT VALUE="irdadevice"/>
+                                    <OPT VALUE="imagedevice"/>
+                                    <OPT VALUE="btradios"/>
+                                    <OPT VALUE="other"/>
+                                    <OPT VALUE="wpd"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1485996663582604203" NAME="Apple Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Apple Devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="5990841017399109451">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="contains">
+                                            <VALUE VALUE=".*\Qapple\E.*" VALUE2="apple"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2324857709067832056" NAME="DROID Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: DROID Devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-5132748318973135817">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="contains">
+                                            <VALUE VALUE=".*\Qdroid\E.*" VALUE2="droid"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6036901196049944769" NAME="Blackberry" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Blackberry-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-3994973449099034580">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="contains">
+                                            <VALUE VALUE=".*\Qrim\E.*" VALUE2="rim"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8995389607052710928" NAME="Windows Based Portable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Windows Based Portable-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-1640221297924706700">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="winceusbdevice"/>
+                                            <OPT VALUE="wpd"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1582248061704745105" NAME="Non-Mobile External Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-3114271239422501933" NAME="X.X Potentially Hazardous Processes &lt;edit lists&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X Potentially Hazardous Processes <edit lists>-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1046200169286706263">
+                                <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8569083504572381210" NAME="Proxy / Browsing Security Controls Bypass Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Proxy / Browsing Security Controls Bypass Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8845138612666028978" LINKED="true">
+                                        <LINK ID="8127449334150259967"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3555415285728440329" NAME="Security / Hacking Tools Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Security / Hacking Tools Running-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="572105251951607652" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qnmap\E.*" VALUE2="nmap"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="582058256837240420" LINKED="true">
+                                            <LINK ID="-4707151360532925736"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="5200391865545388165" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Qparos\E.*" VALUE2="paros"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="4036838309147482637" REGEXP="true" TYPE="startswith">
+                                            <VALUE VALUE="\Qophcrack\E.*" VALUE2="ophcrack"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Confirm actual process names before deployment and add those of any other encryption tools to be found." ID="-6016374502214368503" NAME="Encryption Tools Running &lt;check process names&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Encryption Tools Running <check process names>-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7616443052018358323" LINKED="true">
+                                        <LINK ID="5442943399640010147"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6129697619966417813" NAME="No interesting Processes Found" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <PROPERTY_LISTS>
+                        <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="process_no_ext" ID="8127449334150259967" NAME="Proxy Browsing Bypass Tools">
+                            <VALUES>
+                                <VALUE VALUE="anonproxy"/>
+                                <VALUE VALUE="tor"/>
+                                <VALUE VALUE="vidalia"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                        <HOST_PROPERTY_LIST DESCRIPTION="Process names of potential hacking tools that should not be run by the average end user." FIELD="process_no_ext" ID="-4707151360532925736" NAME="Security / Hacking Tools">
+                            <VALUES>
+                                <VALUE VALUE="hajiv"/>
+                                <VALUE VALUE="JOhn"/>
+                                <VALUE VALUE="nc"/>
+                                <VALUE VALUE="nessusd"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                        <HOST_PROPERTY_LIST DESCRIPTION="Windows utilities for encrypting files and directories which are not allowed on the network. Exact process names should be confirmed and entered below." FIELD="process_no_ext" ID="5442943399640010147" NAME="File_Directory Encryption Utilities">
+                            <VALUES>
+                                <VALUE VALUE="bestcrypt"/>
+                                <VALUE VALUE="truecrypt"/>
+                                <VALUE VALUE="bitlocker"/>
+                                <VALUE VALUE="boxcryptor"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                    </PROPERTY_LISTS>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="4663051182169998966" META_TYPE="COMPLY" NAME="X.X External Device Assessment - Storage and Imaging" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="1129043353749870419" NAME="Managed Windows"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="180000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: X.X External Device Assessment - Storage and Imaging-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="5840195676790883743">
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_name" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_id" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-4118902039571131999" NAME="Edit Scope">
+                        <RANGE FROM="255.255.255.254" TO="255.255.255.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3520553701890745141" NAME="Flash Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Flash Devices-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="6189363004786855580">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="flashdevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-695982552173383763" NAME="External Disk Drives" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: External Disk Drives-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="7885208584793979772">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="device_bus_type" TYPE="any">
+                                            <VALUE VALUE=".*" VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="eddrive"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="376018437756963300" NAME="DVD/CD ROM" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: DVD/CD ROM-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="1247350309705413479">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="cdrdrive"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1535754603191227063" NAME="Printers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Printers-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-836499581213442328">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="printdevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4769825192031319211" NAME="Imaging" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Imaging-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="composite_external_device" LABEL="External Devices" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.0" PLUGIN_VESRION_NUMBER="108000797" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="composite_external_device" FILTER_ID="-573107681222250761">
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="4398a558800c31c6868041746c555942" SUB_FIELD_NAME="device_external_class">
+                                            <OPT VALUE="imagedevice"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.0.0-1235" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7289970769532112354" NAME="Other External Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+</POLICY_FOLDER>
