@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="7661720079702886017" NAME="2.0 Control">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Devices that have have been previously identified as &quot;Non Corporate Devices&quot; are restricted from network access by this policy." ENABLED="false" ID="-7012616452751523358" NAME="2.01 Non Corporate Device Control &lt;edit VLAN &amp; WLAN actions, List values&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: 2.01 Non Corporate Device Control <edit VLAN & WLAN actions, List values>-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="385033189286372726">
+                            <GROUP ID="3607652323098676054" NAME="P-Non Corporate Hosts"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="The two configured actions are vendor specific. Select the appropriate action. " ID="-3197293178044371727" NAME="Unathorized Wireless Devices &lt;edit action&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Unathorized Wireless Devices <edit action>-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5757420457413756811" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="wifi_assign">
+                            <PARAM NAME="assign_role" VALUE="Test"/>
+                            <PARAM NAME="assign_description" VALUE=""/>
+                            <PARAM NAME="bounce_after_assign" VALUE="true"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="wifi_block">
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="423631623130080559" NAME="Unauthorized Wired Cisco/Brocade - ACL" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Unauthorized Wired Cisco/Brocade - ACL-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-5567256176781910196" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_vendor" LABEL="Switch Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2163492506940175008" LINKED="true">
+                                        <LINK ID="-5989639393453458190"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sw_acl">
+                            <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="acl_on_mac" VALUE="false"/>
+                            <PARAM NAME="use_basic_as_fallback" VALUE="false"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5766572782966038902" NAME="Unauthorized Wired Other Switches - VLAN &lt;edit VLAN&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Unauthorized Wired Other Switches - VLAN <edit VLAN>-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3792818978877072254" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sw_quarantine">
+                            <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+                            <PARAM NAME="vlan" VALUE="1"/>
+                            <PARAM NAME="vlan_group" VALUE="vlan_name"/>
+                            <PARAM NAME="vlan_name" VALUE="BlackHole VLAN"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1725671704213515940" NAME="Unknown Device Location" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <PROPERTY_LISTS>
+                    <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_vendor" ID="-5989639393453458190" NAME="ACL Vendor Switches">
+                        <VALUES>
+                            <VALUE VALUE="Brocade"/>
+                            <VALUE VALUE="Cisco"/>
+                            <VALUE VALUE="Foundry"/>
+                            <VALUE VALUE="Juniper"/>
+                        </VALUES>
+                    </HOST_PROPERTY_LIST>
+                </PROPERTY_LISTS>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Devices that have have been previously identified as &quot;Non Compliant Devices&quot; have limited network access for remediation. Virtual Firewall is a fallback restrict action for any subrule, depending on vendor interoperability.&#10;" ENABLED="false" ID="3574423274181848115" NAME="2.02 Non Compliant Device Control &lt;edit: exceptions, VLANs, List values&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: 2.02 Non Compliant Device Control <edit: exceptions, VLANs, List values>-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-3895276251649698479">
+                            <GROUP ID="1011883613501342007" NAME="P-Non Compliant"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Action is vendor specific. Select the appropriate action." ID="7273277094407414148" NAME="Non Compliant Wireless Devices (block or role change by vendor)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Non Compliant Wireless Devices (block or role change by vendor)-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5757420457413756811" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="wifi_assign">
+                            <PARAM NAME="assign_role" VALUE="Non Compliant"/>
+                            <PARAM NAME="assign_description" VALUE=""/>
+                            <PARAM NAME="bounce_after_assign" VALUE="true"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Blocking all access other than remediation servers using ACL exceptions to grant access. ACL exceptions must be editied for specific environments." ID="-6629474838014584793" NAME="Non Compliant  Wired Cisco/Brocade - ACL &lt;edit Exceptions&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Non Compliant  Wired Cisco/Brocade - ACL <edit Exceptions>-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-5567256176781910196" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_vendor" LABEL="Switch Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2163492506940175008" LINKED="true">
+                                        <LINK ID="-5989639393453458190"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sw_acl">
+                            <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="acl_on_mac" VALUE="false"/>
+                            <PARAM NAME="use_basic_as_fallback" VALUE="false"/>
+                            <PARAM NAME="exception_rule" VALUE="TO_-1548524325910511786#32#10.10.10.10@:ALLOW:PORT_Any:"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Select a VLAN, by number or name, which will provide access to Remediation servers only." ID="-3325956014072074866" NAME="Non Compliant  Wired Other Switches - VLAN &lt;edit VLAN&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Non Compliant  Wired Other Switches - VLAN <edit VLAN>-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Network Controller" PLUGIN_UNIQUE_NAME="nc" PLUGIN_VESRION="1.0.1" PLUGIN_VESRION_NUMBER="10010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3792818978877072254" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sw_quarantine">
+                            <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+                            <PARAM NAME="vlan" VALUE="1"/>
+                            <PARAM NAME="vlan_group" VALUE="vlan_name"/>
+                            <PARAM NAME="vlan_name" VALUE="Remdiation VLAN"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit vFW exceptions to allow access to the remediation servers." ID="-6801255322600035968" NAME="Unknown Device Location &lt;edit Exceptions&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE="TO_-1548524325910511786#No Name Assigned#10.10.10.10@:ALLOW:PORT_Any:"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <PROPERTY_LISTS>
+                    <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_vendor" ID="-5989639393453458190" NAME="ACL Vendor Switches">
+                        <VALUES>
+                            <VALUE VALUE="Brocade"/>
+                            <VALUE VALUE="Cisco"/>
+                            <VALUE VALUE="Foundry"/>
+                            <VALUE VALUE="Juniper"/>
+                        </VALUES>
+                    </HOST_PROPERTY_LIST>
+                </PROPERTY_LISTS>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>
