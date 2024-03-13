@@ -1,0 +1,1936 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="8725753457198409791" NAME="1.3 Assess">
+    <POLICIES/>
+    <POLICY_FOLDER ID="1245135467926160904" NAME="1.3.1 Windows">
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit the Cloud Storage Compliant if any are allowed." ENABLED="false" ID="-693018401736175921" META_TYPE="COMPLY" NAME="1.3.1.03 Rogue Cloud Storage Applications Assessment &lt;edit if any are allowed&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5566907721978846911" NAME="Cloud Storage Compliant  &lt;edit if any allowed&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Cloud Storage Compliant  <edit if any allowed>-->
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cloud_application_running" LABEL="Windows Cloud Storage Running" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="-92677134185510290" OPTIONS_DIGEST="4c1b605529cc3b7864fe543315aefa0e">
+                                                <OPT VALUE="dropbox"/>
+                                                <OPT VALUE="sugarsync"/>
+                                                <OPT VALUE="icloud"/>
+                                                <OPT VALUE="box_sync"/>
+                                                <OPT VALUE="one_drive"/>
+                                                <OPT VALUE="amazon"/>
+                                                <OPT VALUE="cubby"/>
+                                                <OPT VALUE="google_drive"/>
+                                                <OPT VALUE="bitcasa"/>
+                                                <OPT VALUE="my_flare"/>
+                                                <OPT VALUE="cx"/>
+                                                <OPT VALUE="mozy_sync"/>
+                                                <OPT VALUE="copy"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cloud_application_installed" LABEL="Windows Cloud Storage Installed" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="-1151283708577098969" OPTIONS_DIGEST="4c1b605529cc3b7864fe543315aefa0e">
+                                                <OPT VALUE="dropbox"/>
+                                                <OPT VALUE="sugarsync"/>
+                                                <OPT VALUE="icloud"/>
+                                                <OPT VALUE="box_sync"/>
+                                                <OPT VALUE="one_drive"/>
+                                                <OPT VALUE="amazon"/>
+                                                <OPT VALUE="cubby"/>
+                                                <OPT VALUE="google_drive"/>
+                                                <OPT VALUE="bitcasa"/>
+                                                <OPT VALUE="my_flare"/>
+                                                <OPT VALUE="cx"/>
+                                                <OPT VALUE="mozy_sync"/>
+                                                <OPT VALUE="copy"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2018317754643860632" NAME="Cloud Storage Applications Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Cloud Storage Applications Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cloud_application_running" LABEL="Windows Cloud Storage Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="292652778988616401" OPTIONS_DIGEST="4c1b605529cc3b7864fe543315aefa0e">
+                                        <OPT VALUE="dropbox"/>
+                                        <OPT VALUE="sugarsync"/>
+                                        <OPT VALUE="icloud"/>
+                                        <OPT VALUE="box_sync"/>
+                                        <OPT VALUE="one_drive"/>
+                                        <OPT VALUE="amazon"/>
+                                        <OPT VALUE="cubby"/>
+                                        <OPT VALUE="google_drive"/>
+                                        <OPT VALUE="bitcasa"/>
+                                        <OPT VALUE="my_flare"/>
+                                        <OPT VALUE="cx"/>
+                                        <OPT VALUE="mozy_sync"/>
+                                        <OPT VALUE="copy"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3426854512451569616;name:P-Cloud Storage Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6866395525012936103" NAME="Cloud Applications Installed Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Cloud Applications Installed Not Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cloud_application_installed" LABEL="Windows Cloud Storage Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="8599028018972691991" OPTIONS_DIGEST="4c1b605529cc3b7864fe543315aefa0e">
+                                        <OPT VALUE="dropbox"/>
+                                        <OPT VALUE="sugarsync"/>
+                                        <OPT VALUE="icloud"/>
+                                        <OPT VALUE="box_sync"/>
+                                        <OPT VALUE="one_drive"/>
+                                        <OPT VALUE="amazon"/>
+                                        <OPT VALUE="cubby"/>
+                                        <OPT VALUE="google_drive"/>
+                                        <OPT VALUE="bitcasa"/>
+                                        <OPT VALUE="my_flare"/>
+                                        <OPT VALUE="cx"/>
+                                        <OPT VALUE="mozy_sync"/>
+                                        <OPT VALUE="copy"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3426854512451569616;name:P-Cloud Storage Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6893438906173910926" NAME="Rogue Cloud Applications Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3426854512451569616;name:P-Cloud Storage Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="The list &quot;Blacklisted Applications&quot; which is tied to the property &quot;Windows Processes Running&quot; is used in this policy. Additional applications which should not be run in the environment should be added to this list." ENABLED="false" ID="2056297576945353395" META_TYPE="COMPLY" NAME="1.3.1.06 Blacklisted Applications Assessment &lt;edit List values&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7035305184339122074" NAME="No Rogue Applications" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: No Rogue Applications-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-4689753863437062490" LINKED="true">
+                                            <LINK ID="-1101693300051217750"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6736898068833696553" NAME="Rogue Applications" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Rogue Applications-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="process_no_ext" LABEL="Windows Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5632129847178186453" LINKED="true">
+                                        <LINK ID="-1101693300051217750"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:2662010295431693344;name:P-Running Processes Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6009268622720779431" NAME="Blacklisted  Applications Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:2662010295431693344;name:P-Running Processes Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <PROPERTY_LISTS>
+                        <HOST_PROPERTY_LIST DESCRIPTION="This is a list of blacklisted applications" FIELD="process_no_ext" ID="-1101693300051217750" NAME="Blacklisted Applications">
+                            <VALUES>
+                                <VALUE VALUE="flashget"/>
+                                <VALUE VALUE="air89"/>
+                                <VALUE VALUE="485E"/>
+                                <VALUE VALUE="VistaDrive"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                    </PROPERTY_LISTS>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit first subrule if any IM is allowed." ENABLED="false" ID="2148415786335368653" META_TYPE="COMPLY" NAME="1.3.1.05 Instant Messaging Applications Assessment &lt;edit if any allowed&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6235444956932069396" NAME="Windows IM Compliant &lt;edit if any allowed&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Windows IM Compliant <edit if any allowed>-->
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="IM_running" LABEL="Windows Instant Messaging Running" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="-3834022872474690995" OPTIONS_DIGEST="e094d355ea018d5d6e7179433d5c3e6f">
+                                                <OPT VALUE="msn"/>
+                                                <OPT VALUE="Camfrog"/>
+                                                <OPT VALUE="Trillian"/>
+                                                <OPT VALUE="QQ"/>
+                                                <OPT VALUE="facebook_messenger"/>
+                                                <OPT VALUE="aim"/>
+                                                <OPT VALUE="jabber"/>
+                                                <OPT VALUE="icq"/>
+                                                <OPT VALUE="google"/>
+                                                <OPT VALUE="PaltalkScene"/>
+                                                <OPT VALUE="yahoo"/>
+                                                <OPT VALUE="nateon"/>
+                                                <OPT VALUE="skype"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="IM" LABEL="Windows Instant Messaging Installed" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="-6141501941449895733" OPTIONS_DIGEST="e094d355ea018d5d6e7179433d5c3e6f">
+                                                <OPT VALUE="msn"/>
+                                                <OPT VALUE="Camfrog"/>
+                                                <OPT VALUE="Trillian"/>
+                                                <OPT VALUE="QQ"/>
+                                                <OPT VALUE="facebook_messenger"/>
+                                                <OPT VALUE="aim"/>
+                                                <OPT VALUE="jabber"/>
+                                                <OPT VALUE="icq"/>
+                                                <OPT VALUE="google"/>
+                                                <OPT VALUE="PaltalkScene"/>
+                                                <OPT VALUE="yahoo"/>
+                                                <OPT VALUE="nateon"/>
+                                                <OPT VALUE="skype"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Instant Messaging applications are running." ID="-226751357662200031" NAME="IM Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: IM Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="IM_running" LABEL="Windows Instant Messaging Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="8378450846854469133" OPTIONS_DIGEST="e094d355ea018d5d6e7179433d5c3e6f">
+                                        <OPT VALUE="msn"/>
+                                        <OPT VALUE="Camfrog"/>
+                                        <OPT VALUE="Trillian"/>
+                                        <OPT VALUE="QQ"/>
+                                        <OPT VALUE="facebook_messenger"/>
+                                        <OPT VALUE="aim"/>
+                                        <OPT VALUE="jabber"/>
+                                        <OPT VALUE="icq"/>
+                                        <OPT VALUE="google"/>
+                                        <OPT VALUE="PaltalkScene"/>
+                                        <OPT VALUE="yahoo"/>
+                                        <OPT VALUE="nateon"/>
+                                        <OPT VALUE="skype"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3230615064680879281;name:P-IM Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="im_kill">
+                                <PARAM ALL="true" NAME="programs"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Instant Messaging applications installed." ID="-1089851968762597806" NAME="IM Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: IM Installed-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="IM" LABEL="Windows Instant Messaging Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="7360744850191146247" OPTIONS_DIGEST="e094d355ea018d5d6e7179433d5c3e6f">
+                                        <OPT VALUE="msn"/>
+                                        <OPT VALUE="Camfrog"/>
+                                        <OPT VALUE="Trillian"/>
+                                        <OPT VALUE="QQ"/>
+                                        <OPT VALUE="facebook_messenger"/>
+                                        <OPT VALUE="aim"/>
+                                        <OPT VALUE="jabber"/>
+                                        <OPT VALUE="icq"/>
+                                        <OPT VALUE="google"/>
+                                        <OPT VALUE="PaltalkScene"/>
+                                        <OPT VALUE="yahoo"/>
+                                        <OPT VALUE="nateon"/>
+                                        <OPT VALUE="skype"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3230615064680879281;name:P-IM Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2293417010067897621" NAME="Instant Mesaging Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3230615064680879281;name:P-IM Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="2779865017898664903" META_TYPE="COMPLY" NAME="1.3.1.04 Peer-to-Peer Applications Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6870585447822239628" NAME="P2P Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: P2P Compliant-->
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="p2p_running" LABEL="Windows Peer-to-peer Running" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="9104957531239012438" OPTIONS_DIGEST="cc780f3fa04a5229ad42acced4c80ce7">
+                                                <OPT VALUE="kazaa"/>
+                                                <OPT VALUE="deluge"/>
+                                                <OPT VALUE="shareaza"/>
+                                                <OPT VALUE="Jubster"/>
+                                                <OPT VALUE="foxy"/>
+                                                <OPT VALUE="bittorrent"/>
+                                                <OPT VALUE="bitTyrant"/>
+                                                <OPT VALUE="tixati"/>
+                                                <OPT VALUE="spotify"/>
+                                                <OPT VALUE="miro"/>
+                                                <OPT VALUE="Frostwire"/>
+                                                <OPT VALUE="bitspirit"/>
+                                                <OPT VALUE="oneSwarm"/>
+                                                <OPT VALUE="Folder Share"/>
+                                                <OPT VALUE="Morpheus"/>
+                                                <OPT VALUE="Kaza - Lite"/>
+                                                <OPT VALUE="thunder"/>
+                                                <OPT VALUE="free_download_manager"/>
+                                                <OPT VALUE="Twister"/>
+                                                <OPT VALUE="Bearshare"/>
+                                                <OPT VALUE="bitlord"/>
+                                                <OPT VALUE="vuze"/>
+                                                <OPT VALUE="bitcomet"/>
+                                                <OPT VALUE="ez_peer"/>
+                                                <OPT VALUE="TrustyFiles"/>
+                                                <OPT VALUE="utorrent"/>
+                                                <OPT VALUE="transmission"/>
+                                                <OPT VALUE="Warez"/>
+                                                <OPT VALUE="limewire"/>
+                                                <OPT VALUE="Soulseek"/>
+                                                <OPT VALUE="emule"/>
+                                                <OPT VALUE="ares"/>
+                                                <OPT VALUE="imesh"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="p2p" LABEL="Windows Peer-to-peer Installed" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="true" FILTER_ID="2165799275836458296" OPTIONS_DIGEST="921fc5b5b34789a9dc617e5a224c0ca5">
+                                                <OPT VALUE="kazaa"/>
+                                                <OPT VALUE="deluge"/>
+                                                <OPT VALUE="shareaza"/>
+                                                <OPT VALUE="Jubster"/>
+                                                <OPT VALUE="foxy"/>
+                                                <OPT VALUE="bittorrent"/>
+                                                <OPT VALUE="bitTyrant"/>
+                                                <OPT VALUE="tixati"/>
+                                                <OPT VALUE="spotify"/>
+                                                <OPT VALUE="miro"/>
+                                                <OPT VALUE="Frostwire"/>
+                                                <OPT VALUE="bitspirit"/>
+                                                <OPT VALUE="oneSwarm"/>
+                                                <OPT VALUE="Folder Share"/>
+                                                <OPT VALUE="Morpheus"/>
+                                                <OPT VALUE="Kaza - Lite"/>
+                                                <OPT VALUE="thunder"/>
+                                                <OPT VALUE="free_download_manager"/>
+                                                <OPT VALUE="Twister"/>
+                                                <OPT VALUE="Bearshare"/>
+                                                <OPT VALUE="bitlord"/>
+                                                <OPT VALUE="vuze"/>
+                                                <OPT VALUE="Mp3Rocket"/>
+                                                <OPT VALUE="bitcomet"/>
+                                                <OPT VALUE="ez_peer"/>
+                                                <OPT VALUE="TrustyFiles"/>
+                                                <OPT VALUE="utorrent"/>
+                                                <OPT VALUE="transmission"/>
+                                                <OPT VALUE="Warez"/>
+                                                <OPT VALUE="limewire"/>
+                                                <OPT VALUE="Soulseek"/>
+                                                <OPT VALUE="emule"/>
+                                                <OPT VALUE="ares"/>
+                                                <OPT VALUE="imesh"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Peer-to-peer applications are running." ID="7558535215962598574" NAME="P2P Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: P2P Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="p2p_running" LABEL="Windows Peer-to-peer Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="-1236850910258536487" OPTIONS_DIGEST="125debaf347ae4f1ff20acab0374936e">
+                                        <OPT VALUE="kazaa"/>
+                                        <OPT VALUE="deluge"/>
+                                        <OPT VALUE="shareaza"/>
+                                        <OPT VALUE="Jubster"/>
+                                        <OPT VALUE="foxy"/>
+                                        <OPT VALUE="bittorrent"/>
+                                        <OPT VALUE="bitTyrant"/>
+                                        <OPT VALUE="tixati"/>
+                                        <OPT VALUE="spotify"/>
+                                        <OPT VALUE="miro"/>
+                                        <OPT VALUE="Frostwire"/>
+                                        <OPT VALUE="oneSwarm"/>
+                                        <OPT VALUE="bitspirit"/>
+                                        <OPT VALUE="Folder Share"/>
+                                        <OPT VALUE="Morpheus"/>
+                                        <OPT VALUE="Kaza - Lite"/>
+                                        <OPT VALUE="thunder"/>
+                                        <OPT VALUE="free_download_manager"/>
+                                        <OPT VALUE="Twister"/>
+                                        <OPT VALUE="Bearshare"/>
+                                        <OPT VALUE="bitlord"/>
+                                        <OPT VALUE="vuze"/>
+                                        <OPT VALUE="bitcomet"/>
+                                        <OPT VALUE="ez_peer"/>
+                                        <OPT VALUE="TrustyFiles"/>
+                                        <OPT VALUE="utorrent"/>
+                                        <OPT VALUE="transmission"/>
+                                        <OPT VALUE="Warez"/>
+                                        <OPT VALUE="limewire"/>
+                                        <OPT VALUE="Soulseek"/>
+                                        <OPT VALUE="emule"/>
+                                        <OPT VALUE="ares"/>
+                                        <OPT VALUE="imesh"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6660295131314570069;name:P-P2P Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="p2p_kill">
+                                <PARAM ALL="true" NAME="programs"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Peer-to-peer applications are installed." ID="5238889709029063394" NAME="P2P Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: P2P Installed-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="p2p" LABEL="Windows Peer-to-peer Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="3681580014433380577" OPTIONS_DIGEST="31964a5b8f560cfc2ffedddb55a04ecd">
+                                        <OPT VALUE="kazaa"/>
+                                        <OPT VALUE="deluge"/>
+                                        <OPT VALUE="shareaza"/>
+                                        <OPT VALUE="Jubster"/>
+                                        <OPT VALUE="foxy"/>
+                                        <OPT VALUE="bittorrent"/>
+                                        <OPT VALUE="bitTyrant"/>
+                                        <OPT VALUE="tixati"/>
+                                        <OPT VALUE="spotify"/>
+                                        <OPT VALUE="miro"/>
+                                        <OPT VALUE="Frostwire"/>
+                                        <OPT VALUE="oneSwarm"/>
+                                        <OPT VALUE="bitspirit"/>
+                                        <OPT VALUE="Folder Share"/>
+                                        <OPT VALUE="Morpheus"/>
+                                        <OPT VALUE="Kaza - Lite"/>
+                                        <OPT VALUE="thunder"/>
+                                        <OPT VALUE="free_download_manager"/>
+                                        <OPT VALUE="Twister"/>
+                                        <OPT VALUE="Bearshare"/>
+                                        <OPT VALUE="bitlord"/>
+                                        <OPT VALUE="vuze"/>
+                                        <OPT VALUE="Mp3Rocket"/>
+                                        <OPT VALUE="bitcomet"/>
+                                        <OPT VALUE="ez_peer"/>
+                                        <OPT VALUE="TrustyFiles"/>
+                                        <OPT VALUE="utorrent"/>
+                                        <OPT VALUE="transmission"/>
+                                        <OPT VALUE="Warez"/>
+                                        <OPT VALUE="limewire"/>
+                                        <OPT VALUE="Soulseek"/>
+                                        <OPT VALUE="emule"/>
+                                        <OPT VALUE="ares"/>
+                                        <OPT VALUE="imesh"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6660295131314570069;name:P-P2P Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3223889432541716377" NAME="P2P Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="true" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6660295131314570069;name:P-P2P Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="3973737579929100553" META_TYPE="COMPLY" NAME="1.3.1.02 Disk Encryption Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1777992709671252328" NAME="Disk Encryption Installed and Fully Encrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Disk Encryption Installed and Fully Encrypted-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hd_comp_state" LABEL="Windows Hard Drive Encryption State" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="hd_comp_state" FILTER_ID="2872492455457199484">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="hd_drive_name" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="2f864430ee413f6442f4c03d098844a4" SUB_FIELD_NAME="hd_drive_state">
+                                            <OPT VALUE="1"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7669134468715365627" NAME="Disk Encryption Installed and Not Encrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Disk Encryption Installed and Not Encrypted-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hd_comp_state" LABEL="Windows Hard Drive Encryption State" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="hd_comp_state" FILTER_ID="8586044171691003760">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="hd_drive_name" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="2f864430ee413f6442f4c03d098844a4" SUB_FIELD_NAME="hd_drive_state">
+                                            <OPT VALUE="0"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5604025682222480673" NAME="Disk Encryption Not installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Disk Encryption Not installed-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hd_installed_new" INNER_NOT="true" LABEL="Windows Hard Drive Encryption Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER AUTO_UPDATE="true" FILTER_ID="8417115289304475118" OPTIONS_DIGEST="47f1209afc455762bd23ca59a9f48b07">
+                                            <OPT VALUE="checkpoint"/>
+                                            <OPT VALUE="symantec_hd"/>
+                                            <OPT VALUE="bitlocker"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7408886391428456639" NAME="Disk Encryption Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit AV vendor in sub-rules 1 and 2. Also enable add to group action in sub-rule 2 if customer considers &quot;AV not up to date&quot; to be non compliant." ENABLED="false" ID="5535107667267953046" META_TYPE="COMPLY" NAME="1.3.1.01 Antivirus Assessment &lt;edit action&amp; vendor&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8258395702100514518" NAME="P-Managed Windows Devices"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Any Supported AV Running - 2 Weeks Update Date" ID="6023114643444449723" NAME="Antivirus Running &amp; Up to Date &lt;edit vendor&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Antivirus Running & Up to Date <edit vendor>-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="av_active_new" LABEL="Windows Antivirus Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER AUTO_UPDATE="true" FILTER_ID="-44941015878680190" OPTIONS_DIGEST="1ee53252c2d8f3d5b48a7192b6467cf6">
+                                            <OPT VALUE="360safe"/>
+                                            <OPT VALUE="AVS"/>
+                                            <OPT VALUE="landesk"/>
+                                            <OPT VALUE="CAeTrust"/>
+                                            <OPT VALUE="TrendMicro"/>
+                                            <OPT VALUE="vipre"/>
+                                            <OPT VALUE="clamav"/>
+                                            <OPT VALUE="Mcafee"/>
+                                            <OPT VALUE="AVG"/>
+                                            <OPT VALUE="Sophos"/>
+                                            <OPT VALUE="gdata"/>
+                                            <OPT VALUE="AhnLab"/>
+                                            <OPT VALUE="BitDefender"/>
+                                            <OPT VALUE="pcziggy"/>
+                                            <OPT VALUE="windows_defender"/>
+                                            <OPT VALUE="hauri"/>
+                                            <OPT VALUE="escan"/>
+                                            <OPT VALUE="ntw"/>
+                                            <OPT VALUE="lightspeed"/>
+                                            <OPT VALUE="Symantec"/>
+                                            <OPT VALUE="k7"/>
+                                            <OPT VALUE="comodo"/>
+                                            <OPT VALUE="Kaspersky"/>
+                                            <OPT VALUE="est_soft"/>
+                                            <OPT VALUE="ForeFront"/>
+                                            <OPT VALUE="Rising"/>
+                                            <OPT VALUE="avira"/>
+                                            <OPT VALUE="NOD32"/>
+                                            <OPT VALUE="Panda"/>
+                                            <OPT VALUE="f_secure"/>
+                                            <OPT VALUE="avast"/>
+                                            <OPT VALUE="mse"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="av_update_date.9305853c5d3a17c5834e561cc9cabb66" INNER_NOT="true" LABEL="Windows Antivirus Update Date :Value : All items" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="av_update_date" NAME="av_update_date.9305853c5d3a17c5834e561cc9cabb66">
+                                                <PARAM ALL="true" NAME="antivirus"/>
+                                            </FIELD>
+                                            <FILTER FILTER_ID="-7050812199088819926" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Any Supported AV Running but 2 or more weeks out of date. An action does exist to initiate a Antivirus Update. Use at customer discretion." ID="2147112926097133347" NAME="Antivirus Running &amp; Not Up To Date &lt;edit action &amp; vendor&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Antivirus Running & Not Up To Date <edit action & vendor>-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="av_active_new" LABEL="Windows Antivirus Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="-4933297633459120841" OPTIONS_DIGEST="1ee53252c2d8f3d5b48a7192b6467cf6">
+                                        <OPT VALUE="360safe"/>
+                                        <OPT VALUE="AVS"/>
+                                        <OPT VALUE="landesk"/>
+                                        <OPT VALUE="CAeTrust"/>
+                                        <OPT VALUE="TrendMicro"/>
+                                        <OPT VALUE="vipre"/>
+                                        <OPT VALUE="clamav"/>
+                                        <OPT VALUE="Mcafee"/>
+                                        <OPT VALUE="AVG"/>
+                                        <OPT VALUE="Sophos"/>
+                                        <OPT VALUE="gdata"/>
+                                        <OPT VALUE="AhnLab"/>
+                                        <OPT VALUE="BitDefender"/>
+                                        <OPT VALUE="pcziggy"/>
+                                        <OPT VALUE="windows_defender"/>
+                                        <OPT VALUE="hauri"/>
+                                        <OPT VALUE="escan"/>
+                                        <OPT VALUE="ntw"/>
+                                        <OPT VALUE="lightspeed"/>
+                                        <OPT VALUE="Symantec"/>
+                                        <OPT VALUE="k7"/>
+                                        <OPT VALUE="comodo"/>
+                                        <OPT VALUE="Kaspersky"/>
+                                        <OPT VALUE="est_soft"/>
+                                        <OPT VALUE="ForeFront"/>
+                                        <OPT VALUE="Rising"/>
+                                        <OPT VALUE="avira"/>
+                                        <OPT VALUE="NOD32"/>
+                                        <OPT VALUE="Panda"/>
+                                        <OPT VALUE="f_secure"/>
+                                        <OPT VALUE="avast"/>
+                                        <OPT VALUE="mse"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Any Supported AV Installed - Not Running" ID="6257335659862484352" NAME="Antivirus Installed &amp; Not Running  &lt;edit vendor&gt;" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Antivirus Installed & Not Running  <edit vendor>-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="av_install" LABEL="Windows Antivirus Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="true" FILTER_ID="3698929704061049016" OPTIONS_DIGEST="1ee53252c2d8f3d5b48a7192b6467cf6">
+                                        <OPT VALUE="360safe"/>
+                                        <OPT VALUE="AVS"/>
+                                        <OPT VALUE="landesk"/>
+                                        <OPT VALUE="CAeTrust"/>
+                                        <OPT VALUE="TrendMicro"/>
+                                        <OPT VALUE="vipre"/>
+                                        <OPT VALUE="clamav"/>
+                                        <OPT VALUE="Mcafee"/>
+                                        <OPT VALUE="AVG"/>
+                                        <OPT VALUE="Sophos"/>
+                                        <OPT VALUE="gdata"/>
+                                        <OPT VALUE="AhnLab"/>
+                                        <OPT VALUE="BitDefender"/>
+                                        <OPT VALUE="pcziggy"/>
+                                        <OPT VALUE="windows_defender"/>
+                                        <OPT VALUE="hauri"/>
+                                        <OPT VALUE="escan"/>
+                                        <OPT VALUE="ntw"/>
+                                        <OPT VALUE="lightspeed"/>
+                                        <OPT VALUE="Symantec"/>
+                                        <OPT VALUE="k7"/>
+                                        <OPT VALUE="comodo"/>
+                                        <OPT VALUE="Kaspersky"/>
+                                        <OPT VALUE="est_soft"/>
+                                        <OPT VALUE="ForeFront"/>
+                                        <OPT VALUE="Rising"/>
+                                        <OPT VALUE="avira"/>
+                                        <OPT VALUE="NOD32"/>
+                                        <OPT VALUE="Panda"/>
+                                        <OPT VALUE="f_secure"/>
+                                        <OPT VALUE="avast"/>
+                                        <OPT VALUE="mse"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="av_start">
+                                <PARAM ALL="true" NAME="av_type"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Any Supported AV is not installed" ID="8407768751271296449" NAME="Antivirus Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Antivirus Not Installed-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="av_install" INNER_NOT="true" LABEL="Windows Antivirus Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER AUTO_UPDATE="true" FILTER_ID="5546333100074625315" OPTIONS_DIGEST="1ee53252c2d8f3d5b48a7192b6467cf6">
+                                            <OPT VALUE="360safe"/>
+                                            <OPT VALUE="AVS"/>
+                                            <OPT VALUE="landesk"/>
+                                            <OPT VALUE="CAeTrust"/>
+                                            <OPT VALUE="TrendMicro"/>
+                                            <OPT VALUE="vipre"/>
+                                            <OPT VALUE="clamav"/>
+                                            <OPT VALUE="Mcafee"/>
+                                            <OPT VALUE="AVG"/>
+                                            <OPT VALUE="Sophos"/>
+                                            <OPT VALUE="gdata"/>
+                                            <OPT VALUE="AhnLab"/>
+                                            <OPT VALUE="BitDefender"/>
+                                            <OPT VALUE="pcziggy"/>
+                                            <OPT VALUE="windows_defender"/>
+                                            <OPT VALUE="hauri"/>
+                                            <OPT VALUE="escan"/>
+                                            <OPT VALUE="ntw"/>
+                                            <OPT VALUE="lightspeed"/>
+                                            <OPT VALUE="Symantec"/>
+                                            <OPT VALUE="k7"/>
+                                            <OPT VALUE="comodo"/>
+                                            <OPT VALUE="Kaspersky"/>
+                                            <OPT VALUE="est_soft"/>
+                                            <OPT VALUE="ForeFront"/>
+                                            <OPT VALUE="Rising"/>
+                                            <OPT VALUE="avira"/>
+                                            <OPT VALUE="NOD32"/>
+                                            <OPT VALUE="Panda"/>
+                                            <OPT VALUE="f_secure"/>
+                                            <OPT VALUE="avast"/>
+                                            <OPT VALUE="mse"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Minimal devices should be present" ID="-5514747902320310210" NAME="Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+    <POLICY_FOLDER ID="883282044797833376" NAME="1.3.2 macOS">
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-3148292392126162202" META_TYPE="COMPLY" NAME="1.3.2.02 macOS McAfee Antivirus Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1591770802402399837" NAME="Macintosh McAfee Antivirus Running and Updated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Macintosh McAfee Antivirus Running and Updated-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-2891546277003447070" TYPE="contains">
+                                            <VALUE VALUE2="vshieldservice"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19" INNER_NOT="true" LABEL="Macintosh File Date File Name (full path):/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="mac_file_date" NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19">
+                                                <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db"/>
+                                            </FIELD>
+                                            <FILTER FILTER_ID="3664669835300954803" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8341997389619939405" NAME="Macintosh McAfee Antivirus Running but Not Updated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Macintosh McAfee Antivirus Running but Not Updated-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-2891546277003447070" TYPE="contains">
+                                            <VALUE VALUE2="vshieldservice"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19" LABEL="Macintosh File Date File Name (full path):/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="mac_file_date" NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19">
+                                            <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db"/>
+                                        </FIELD>
+                                        <FILTER FILTER_ID="1724469158685380601" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3959491246361393690" NAME="Macintosh McAfee Antivirus Installed but Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh McAfee Antivirus Installed but Not Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.d855173bac5d079d8cbd85bad5a73dee" LABEL="Macintosh File Exists File Name (full path):/usr/local/McAfee/AntiMalware/VShieldService" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.d855173bac5d079d8cbd85bad5a73dee">
+                                        <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/VShieldService"/>
+                                    </FIELD>
+                                    <FILTER FILTER_ID="-5179403530622414467" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1565280932333801091" NAME="Macintosh McAfee Antivirus NOT Detected - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit the subrules to configure the Add to Group &quot;Antivirus Non Compliant&quot; for every subrule where this is the case for the deployment." ENABLED="false" ID="614520937589709656" META_TYPE="COMPLY" NAME="1.3.2.01 macOS Antivirus Assessment &lt;add to group&gt;" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4191250258477493349" NAME="Macintosh With ClamAV Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <!--Rule expression. Rule name is: Macintosh With ClamAV Running-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-4161429827848692134" TYPE="equals">
+                                            <VALUE VALUE2="clamd"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-4569866389462314256" TYPE="contains">
+                                            <VALUE VALUE2="clamxav"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3012585253476766825" NAME="Macintosh With Symantec Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh With Symantec Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1758537491211971046" TYPE="contains">
+                                        <VALUE VALUE2="sym"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2733586154986229080" NAME="Macintosh With Kaspersky Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh With Kaspersky Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6284095663819421568" TYPE="equals">
+                                        <VALUE VALUE2="kav"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6577172478008174455" NAME="Macintosh With AVG Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh With AVG Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="363086897087816784" TYPE="equals">
+                                        <VALUE VALUE2="avgscand"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6149178446136590967" NAME="No AV Process Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:1788999667522082207;name:P-Antivirus Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="1839849066950314030" META_TYPE="COMPLY" NAME="1.3.2.07 macOS Casper Integration" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8432876514030465544" NAME="Macintosh Casper Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh Casper Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-9085614556083257495" TYPE="contains">
+                                        <VALUE VALUE2="jamfagent"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5434677185529719840" NAME="Macintosh Casper Installed but Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh Casper Installed but Not Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d" LABEL="Macintosh File Exists File Name (full path):/Library/Application Support/JAMF/JAMF.Keychain" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d">
+                                        <PARAM NAME="mac_file_name" TYPE="string" VALUE="/Library/Application Support/JAMF/JAMF.Keychain"/>
+                                    </FIELD>
+                                    <FILTER FILTER_ID="-1011149577679747851" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6716856315596237347;name:P-Casper Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6967516347606158519" NAME="Macintosh Casper Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Macintosh Casper Not Installed-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d" INNER_NOT="true" LABEL="Macintosh File Exists File Name (full path):/Library/Application Support/JAMF/JAMF.Keychain" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d">
+                                            <PARAM NAME="mac_file_name" TYPE="string" VALUE="/Library/Application Support/JAMF/JAMF.Keychain"/>
+                                        </FIELD>
+                                        <FILTER FILTER_ID="2926201863928940612" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6716856315596237347;name:P-Casper Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7757958492281540292" NAME="Macintosh Casper NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:6716856315596237347;name:P-Casper Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="4565419757776286069" META_TYPE="COMPLY" NAME="1.3.2.05 macOS FileVault Disk Encryption Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2277143435906093137" NAME="FileVault Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FileVault Disabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-8524318746105363828" TYPE="contains">
+                                        <VALUE VALUE2="FileVault is Off"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1313855864870168502" NAME="FileVault Enabled and Encrypted (APFS)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NA"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FileVault Enabled and Encrypted (APFS)-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6aef28f967f7446553488b50281ee21f" LABEL="Macintosh Expected Script Result Command or Script File:diskutil apfs list" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.6aef28f967f7446553488b50281ee21f">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="diskutil apfs list"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8890936224017534748" TYPE="regexp">
+                                        <VALUE VALUE2="\s*(FileVault\:\s*Yes\s\(Unlocked\))\s*"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3304024616283509117" NAME="FileVault Enabled and Encrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FileVault Enabled and Encrypted-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.e85d2a9191bbc0069f445d4ca5af7ef8" LABEL="Macintosh Expected Script Result Command or Script File:diskutil cs list" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.e85d2a9191bbc0069f445d4ca5af7ef8">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="diskutil cs list"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="3739857337939151747" TYPE="contains">
+                                        <VALUE VALUE2="Encryption Status:       locked"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2388881481085174280" NAME="FileVault On" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: FileVault On-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.e5321abae8c93afbe8992a4a93ab93d4" LABEL="Macintosh Expected Script Result Command or Script File:fdesetup -status" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.e5321abae8c93afbe8992a4a93ab93d4">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup -status"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7820242188767749423" TYPE="contains">
+                                        <VALUE VALUE2="FileVault is On"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1548694291638887952" NAME="Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:7591863943728320959;name:P-Disk Encryption Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="4918871154111766483" META_TYPE="COMPLY" NAME="1.3.2.03 macOS McAfee ePO Version Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="844380323313399787" NAME="Macintosh McAfee ePO Version 4.6.0.3188" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true"/>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh McAfee ePO Version 4.6.0.3188-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.a267a8d7128d20255a3684e6ba011a32" LABEL="Macintosh Expected Script Result Command or Script File:sudo grep Version /etc/cma.d/EPOAGENT3700MACX/config.xml" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.a267a8d7128d20255a3684e6ba011a32">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="sudo grep Version /etc/cma.d/EPOAGENT3700MACX/config.xml"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6845206909737648247" TYPE="contains">
+                                        <VALUE VALUE2="4.6.0.3188"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4148219476367315499" NAME="Macintosh McAfee ePO Version Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true"/>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Macintosh McAfee ePO Version Other-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.a267a8d7128d20255a3684e6ba011a32" LABEL="Macintosh Expected Script Result Command or Script File:sudo grep Version /etc/cma.d/EPOAGENT3700MACX/config.xml" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.a267a8d7128d20255a3684e6ba011a32">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="sudo grep Version /etc/cma.d/EPOAGENT3700MACX/config.xml"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7951549291041464595" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:5452413047438041037;name:P-ePO Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6579632754905050248" NAME="Macintosh McAfee ePO Config File  NOT Present" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Macintosh McAfee ePO Config File  NOT Present-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.670fe6ef655c4363c2e23ae1199e7779" INNER_NOT="true" LABEL="Macintosh File Exists File Name (full path):/etc/cma.d/EPOAGENT3700MACX/config.xml" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.670fe6ef655c4363c2e23ae1199e7779">
+                                            <PARAM NAME="mac_file_name" TYPE="string" VALUE="/etc/cma.d/EPOAGENT3700MACX/config.xml"/>
+                                        </FIELD>
+                                        <FILTER FILTER_ID="-8667432941047601575" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:5452413047438041037;name:P-ePO Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4904239604527590836" NAME="Macintosh McAfee ePO NOT Detected - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:5452413047438041037;name:P-ePO Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Checks the status of the macOS host-based firewall." ENABLED="false" ID="7063117495751378948" META_TYPE="COMPLY" NAME="1.3.2.06 macOS Firewall Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2193924793590908675" NAME="Firewall Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Firewall Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.ad302e0566720b0006e25ecce3991f08" LABEL="Macintosh Expected Script Result Command or Script File:/usr/libexec/ApplicationFirewall/socketfilterfw                             --getglobalstate" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.ad302e0566720b0006e25ecce3991f08">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="/usr/libexec/ApplicationFirewall/socketfilterfw                             --getglobalstate"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2833762763720533879" TYPE="contains">
+                                        <VALUE VALUE2="Firewall                             is enabled. (State = 1)"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5225608397214082281" NAME="Firewall Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Firewall Disabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.ad302e0566720b0006e25ecce3991f08" LABEL="Macintosh Expected Script Result Command or Script File:/usr/libexec/ApplicationFirewall/socketfilterfw                             --getglobalstate" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.ad302e0566720b0006e25ecce3991f08">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="/usr/libexec/ApplicationFirewall/socketfilterfw                             --getglobalstate"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="855561032476460705" TYPE="contains">
+                                        <VALUE VALUE2="Firewall                             is disabled. (State = 0)"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3911731350309790205;name:P-Firewall Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2251518229281514951" NAME="Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:3911731350309790205;name:P-Firewall Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="7719023768931799682" META_TYPE="COMPLY" NAME="1.3.2.04 macOS Update Assessment" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER>
+                        <GROUP ID="8478145831826919765" NAME="P-Managed macOS"/>
+                    </GROUP_IN_FILTER>
+                    <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME=""/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope">
+                        <RANGE FROM="172.20.0.0" TO="172.20.0.255"/>
+                        <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4106076738308952431" NAME="macOS is Up to Date" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: macOS is Up to Date-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="8014790137669661035" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5287806841132876617" NAME="macOS is NOT Up to Date" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: macOS is NOT Up to Date-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.3.1" PLUGIN_VESRION_NUMBER="23010082" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8014790137669661035" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:842047264379746178;name:P-OS Patch Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.2.1.1-58" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5988214033896475563" NAME="macOS Updates NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                            <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="group-name" VALUE="id:842047264379746178;name:P-OS Patch Non Compliant"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                            <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+</POLICY_FOLDER>
