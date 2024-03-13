@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GROUP DESCRIPTION="Put customer segments under this one, then rename as company name or Internal Network. ProServ 7.0" NAME="PS_Template_Scope" SEGMENT_ID="-3109178619152565739" UPGRADE_PERFORMED="true">
+    <GROUP DESCRIPTION="" NAME="Passive_Learning" SEGMENT_ID="8559652661041884514" UPGRADE_PERFORMED="true"/>
+</GROUP>
