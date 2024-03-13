@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="490493153826896675" NAME="1.1 Discover">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy takes as input the IoT devices from the Enterprise Discovery policy. " ENABLED="false" ID="-7204157585688634234" NAME="1.1.02 IoT Discover" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="3545534790929561504" NAME="P-IoT"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5821970867912147445" NAME="Building Automation" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Building Automation-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3114444433163336242" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Building Automation"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-6920918801926446980" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Building Automation"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="6449912057154310034" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Crestron"/>
+                                        <PATH VALUE="American Power Conversion"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5705626855543017833;name:P-Building Automation"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8295009195409846090" NAME="Multimedia and Entertainment" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Multimedia and Entertainment-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8601129925242680442" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Multimedia &amp; Entertainment"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="5167491406220624572" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Multimedia &amp; Entertainment"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="565408987206764138" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Apple/Apple TV"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class_v2" LABEL="DHCP Vendor Class" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.3.0" PLUGIN_VESRION_NUMBER="23000013" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-9184339131679782186" TYPE="equals">
+                                        <VALUE VALUE2="PS Vita TV"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4113042367134516338;name:P-Multimedia and Entertainment"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3568043554609247864" NAME="Office Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Office Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-4631810525880718935" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Accessory"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-1819799779626673722" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Facilities/Clock"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3617377475255449456" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Digiboard"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3314401522298797869" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Zebra"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3880247113145794130;name:P-Office Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4274306407257008076" NAME="Physical Security" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Physical Security-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3726576366019389025" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="4022043249098571075" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.14.1" PLUGIN_VESRION_NUMBER="81401073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7618935988929342527" TYPE="startswith">
+                                        <VALUE VALUE2="PhySec"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="4106405653881402486" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Sony"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.4.0" PLUGIN_VESRION_NUMBER="24000041" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2328570175769014" TYPE="contains">
+                                                <VALUE VALUE2="Cameras"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4647266328124060557;name:P-Physical Security"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-861121877751739961" NAME="Retail and Financial" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Retail and Financial-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="7869008982429039760" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Operational Technology/Retail &amp; Financial"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:1547699970364978391;name:P-Retail and Financial"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-9163487571314514872" NAME="Wearables" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Wearables-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-3826263047869359178" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Information Technology/Wearable"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:1208964246398854304;name:P-Wearables"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3376717187399263248" NAME="Healthcare/Lab" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Healthcare/Lab-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-4827107752213663006" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Operational Technology/Healthcare"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7309581186145464932;name:P-Healthcare"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1329345387289378617" NAME="Gaming" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Gaming-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-2005381041133756696" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Operational Technology/Gaming"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7669430397967775569;name:P-Gaming"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8702021478106132633" NAME="Traffic and Parking Management" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Traffic and Parking Management-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-5161465104660060087" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Operational Technology/Traffic &amp; Parking Management"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:1260934836264480061;name:P-Traffic and Parking Management"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-502837220047595040" NAME="Energy and Power" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Energy and Power-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="8092997837471616934" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Energy &amp; Power"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3244919256700069324" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Energy &amp; Power"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5935680905966208506;name:P-Energy and Power Management"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5949800962885768753" NAME="Metal and Allied" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Metal and Allied-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2486960919008230284" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Metal &amp; Allied"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2732257528065051113" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Operational Technology/Metal &amp; Allied"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:28218442751637967;name:P-Metal &amp; Allied"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7897299158973726463" NAME="{Untrusted} Other IoT Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5221710216651430564;name:P-Non Corporate Hosts"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7502158708364409897;name:Untrusted"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="6381904680891577328" META_TYPE="CLASSIFY" NAME="1.1.01 Enterprise Discover" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="PS_Template_Scope"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Normally additional processing is not done on detected NAT devices, as they are usually against the AUP., hence the add to group action is disabled.  &#10;&#10;This sub-rule quickly identifies any NAT devices on the network so that IT staff can remove them from the network." ID="5126665344951426890" NAME="NAT Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: NAT Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nat" LABEL="Device is NAT" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="13264007276276559" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                                    <FILTER FILTER_ID="-6066350178723936370" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7305607719728611688" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Networking/NAT"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="2520053274393327684">
+                                        <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2173862208705470729;name:P-NAT Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7074930997196279086" NAME="OT Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: OT Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="6628972828224065691" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Computer/ICS Supervisory"/>
+                                        <PATH VALUE="Operational Technology/Mining"/>
+                                        <PATH VALUE="Operational Technology/Metal &amp; Allied"/>
+                                        <PATH VALUE="Operational Technology/Pneumatic Tube System"/>
+                                        <PATH VALUE="Operational Technology/Energy &amp; Power"/>
+                                        <PATH VALUE="Operational Technology/Industrial Control Systems"/>
+                                        <PATH VALUE="Operational Technology/Manufacturing"/>
+                                        <PATH VALUE="Operational Technology/Process Instrumentation and Metrology"/>
+                                        <PATH VALUE="Operational Technology/Real Time Location System"/>
+                                        <PATH VALUE="Operational Technology/Remote Monitoring &amp; Control"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="149209272438067799">
+                                        <GROUP ID="8813409801704912550" NAME="P-OT Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5671829875170993300;name:P-OT Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="9012412760626687371" NAME="IoT Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: IoT Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2775260197248933036" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Computer/ICS Supervisory"/>
+                                        <PATH VALUE="Information Technology/Computer/Thin Client"/>
+                                        <PATH VALUE="Information Technology/Multimedia &amp; Entertainment"/>
+                                        <PATH VALUE="Information Technology/Accessory/Smart Whiteboard"/>
+                                        <PATH VALUE="Information Technology/Computer/Thick Client"/>
+                                        <PATH VALUE="Information Technology/Accessory/Postage Meter"/>
+                                        <PATH VALUE="Operational Technology"/>
+                                        <PATH VALUE="Information Technology/Wearable"/>
+                                        <PATH VALUE="Information Technology/Appliance"/>
+                                        <PATH VALUE="Information Technology/Storage"/>
+                                        <PATH VALUE="Information Technology/Accessory/Presentation System"/>
+                                        <PATH VALUE="Information Technology/Computer/Specific Purpose Workstation"/>
+                                        <PATH VALUE="Information Technology/Healthcare Platform"/>
+                                        <PATH VALUE="Information Technology/Accessory/Out Of Band Controller"/>
+                                        <PATH VALUE="Information Technology/Accessory/Two-Way Radio"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3867141960292838690" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Amazon/Amazon Echo"/>
+                                        <PATH VALUE="Crestron"/>
+                                        <PATH VALUE="Apple/Apple Watch"/>
+                                        <PATH VALUE="Nintendo"/>
+                                        <PATH VALUE="Apple/Apple HomePod"/>
+                                        <PATH VALUE="Apple/Apple TV"/>
+                                        <PATH VALUE="Digiboard"/>
+                                        <PATH VALUE="Amazon/Amazon Echo Show"/>
+                                        <PATH VALUE="Amazon/Amazon Fire TV"/>
+                                        <PATH VALUE="Amazon/Amazon Kindle"/>
+                                        <PATH VALUE="Amazon/Amazon Echo Plus"/>
+                                        <PATH VALUE="American Power Conversion"/>
+                                        <PATH VALUE="Nest"/>
+                                        <PATH VALUE="Amazon/Amazon Echo Dot"/>
+                                        <PATH VALUE="Amazon/Amazon Tap"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="785880108919719024">
+                                        <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3545534790929561504;name:P-IoT"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="ProServ 7.0" ID="-3690505597638383404" NAME="Windows" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Windows-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-5393297963593324620" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_class_v2" LABEL="DHCP Device Class" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.3.0" PLUGIN_VESRION_NUMBER="23000013" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-3633383389951949821" TYPE="contains">
+                                        <VALUE VALUE2="Windows"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-210345569764338141">
+                                        <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4172830935703872239;name:P-Windows"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5135363315233057453;name:Windows Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7781023692065450973" NAME="VoIP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: VoIP-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="9159491037576611370" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Information Technology/Accessory/VoIP"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                    <FILTER FILTER_ID="-4971988815965126392" MATCH_SUBTREE="true">
+                                                        <PATH VALUE="Information Technology/Accessory/VoIP"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="NOT">
+                                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" INNER_NOT="true" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="2">
+                                                        <FILTER FILTER_ID="-6989914091972810115" MATCH_SUBTREE="true">
+                                                            <PATH VALUE="Multiple"/>
+                                                        </FILTER>
+                                                    </CONDITION>
+                                                </EXPRESSION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5565788353976446152" TYPE="contains">
+                                                <VALUE VALUE2="ip phone"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" INNER_NOT="true" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5395067803009992821" TYPE="contains">
+                                                    <VALUE VALUE2=" or "/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1754214442120076789">
+                                        <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5680139429983585140;name:P-VoIP Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2761855428527223770;name:VoIP Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5125402757996115983" NAME="Network Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Network Devices-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="3807177457093697423" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Networking"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="863497330359535418" MATCH_SUBTREE="true">
+                                        <PATH VALUE="FortiOS"/>
+                                        <PATH VALUE="Cisco IOS"/>
+                                        <PATH VALUE="ArubaOS"/>
+                                        <PATH VALUE="PAN-OS"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ctdevtype" LABEL="CounterACT Device Type" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-7525839113885204336" OPTIONS_DIGEST="22309a527275d123ed47781c18bf2266">
+                                        <OPT VALUE="appliance"/>
+                                        <OPT VALUE="em"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="19.0.12" PLUGIN_VESRION_NUMBER="190120009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="8507651337205572958" OPTIONS_DIGEST="1dd00450bf20814e6948d17aca2c2432">
+                                        <OPT VALUE="zyxel communications corporation"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7728018404611944255" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Google/Google WiFi Router"/>
+                                        <PATH VALUE="Sonicwall"/>
+                                        <PATH VALUE="Juniper"/>
+                                        <PATH VALUE="Aerohive"/>
+                                        <PATH VALUE="Bluecoat/Bluecoat Proxy Server"/>
+                                        <PATH VALUE="Aruba"/>
+                                        <PATH VALUE="DLink/DLink DAP"/>
+                                        <PATH VALUE="HP/HP 3Com Switch"/>
+                                        <PATH VALUE="Brocade"/>
+                                        <PATH VALUE="Nortel/Nortel Switch"/>
+                                        <PATH VALUE="Ubiquiti Networks"/>
+                                        <PATH VALUE="Linksys"/>
+                                        <PATH VALUE="3Com"/>
+                                        <PATH VALUE="Enterasys"/>
+                                        <PATH VALUE="Cisco"/>
+                                        <PATH VALUE="F5 Networks"/>
+                                        <PATH VALUE="ForeScout"/>
+                                        <PATH VALUE="Riverbed"/>
+                                        <PATH VALUE="Check Point Software Technologies"/>
+                                        <PATH VALUE="Extreme Networks"/>
+                                        <PATH VALUE="Fortinet"/>
+                                        <PATH VALUE="2Wire"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-1478034322472502237">
+                                        <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2686183072302357178;name:P-Network Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7392616263310845759;name:Network Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1944127527894341760" NAME="Printers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Printers-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="-2037025697972737281" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Information Technology/Accessory/Printer"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="8269152514579079484" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Epson/Epson Printer"/>
+                                                <PATH VALUE="Ricoh"/>
+                                                <PATH VALUE="Canon/Canon Printer"/>
+                                                <PATH VALUE="Lexmark/Lexmark Printer"/>
+                                                <PATH VALUE="HP/HP Printer"/>
+                                                <PATH VALUE="Fuji Xerox"/>
+                                                <PATH VALUE="Brother"/>
+                                                <PATH VALUE="Konica"/>
+                                                <PATH VALUE="Xerox/Xerox Printer"/>
+                                                <PATH VALUE="Kyocera"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="suggested_prim_classification" LABEL="Suggested Function" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                    <FILTER FILTER_ID="5286211976791518809" MATCH_SUBTREE="true">
+                                                        <PATH VALUE="Information Technology/Accessory/Printer"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="NOT">
+                                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" INNER_NOT="true" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="2">
+                                                        <FILTER FILTER_ID="-2356035980650423135" MATCH_SUBTREE="true">
+                                                            <PATH VALUE="Multiple"/>
+                                                        </FILTER>
+                                                    </CONDITION>
+                                                </EXPRESSION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="19.0.12" PLUGIN_VESRION_NUMBER="190120009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-2762258942320689108" OPTIONS_DIGEST="1dd00450bf20814e6948d17aca2c2432">
+                                        <OPT VALUE="tektronix inc."/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="1338798147016513725">
+                                                <VALUE FROM="9100/TCP" TO="9100/TCP"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" INNER_NOT="true" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                <FILTER FILTER_ID="-8405211478213421966">
+                                                    <VALUE FROM="111/TCP" TO="111/TCP"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-6042982608109747803">
+                                        <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:8074035462019284433;name:P-Printers"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3573975313092448695;name:Printers Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7974598616843644977" NAME="Mobile" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Mobile-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="8664258539283903409" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Blackberry"/>
+                                        <PATH VALUE="Symbian"/>
+                                        <PATH VALUE="Chrome OS"/>
+                                        <PATH VALUE="iOS"/>
+                                        <PATH VALUE="Palm OS"/>
+                                        <PATH VALUE="Android"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="19.0.12" PLUGIN_VESRION_NUMBER="190120009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="8772590729241317743" OPTIONS_DIGEST="1dd00450bf20814e6948d17aca2c2432">
+                                        <OPT VALUE="rim"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="6772311352451029420">
+                                        <VALUE FROM="62078/TCP" TO="62078/TCP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_os_v2" LABEL="DHCP Device OS" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.3.0" PLUGIN_VESRION_NUMBER="23000013" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1223430539422431208" TYPE="contains">
+                                        <VALUE VALUE2="Android"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1488796791554060654" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Information Technology/Mobile"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2593969324700359272">
+                                        <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2302946326763952461;name:P-Mobile"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3457845367583968379;name:Mobile Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2052054367622089530" NAME="macOS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: macOS-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8178930772346078735" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Macintosh"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-4251039853024532023">
+                                        <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:528821214765635656;name:P-macOS"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2030386073586959359;name:Apple Macintosh Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6776417453393716512" NAME="Linux/Unix" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Linux/Unix-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="8491206497998038171" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Unix"/>
+                                        <PATH VALUE="Linux"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-9115142023236209292">
+                                        <GROUP ID="4350498178534441549" NAME="P-Linux/Unix Manual Discover"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7333322942884034415;name:P-Linux/Unix"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:8872785873236749947;name:Linux/Unix Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                            <GROUP ID="7031068356698390054" NAME="P-Windows Manual Discover"/>
+                            <GROUP ID="3730044990804168193" NAME="P-macOS Manual Discover"/>
+                            <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                            <GROUP ID="7738483890198960013" NAME="P-NAT Devices Manual Discover"/>
+                            <GROUP ID="6420994459195635926" NAME="P-IoT Devices Manual Discover"/>
+                            <GROUP ID="7014596945801325398" NAME="P-VoIP Devices Manual Discover"/>
+                            <GROUP ID="6203950854385498478" NAME="P-Network Devices Manual Discover"/>
+                            <GROUP ID="6594620387241147193" NAME="P-Printers Manual Discover"/>
+                            <GROUP ID="2443986065575126553" NAME="P-Mobile Devices Manual Discover"/>
+                        </EXCEPTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8062209617504611466" NAME="Known Miscellaneous Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Known Miscellaneous Devices-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-5040633550250221675">
+                                    <GROUP ID="1374293769801955427" NAME="P-Miscellaneous Devices Manual Discover"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3737808942595957407" NAME="{Untrusted} Unknown Miscellaneous Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CLASSIFIER"/>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5221710216651430564;name:P-Non Corporate Hosts"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:7502158708364409897;name:Untrusted"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Looks for host in the Passive_Learning segment and automatically adds them to the Passive Learning group - this disables all active scans for those hosts. Admission resolve delay is 1 second in order to catch devices as soon as they are admitted to the network." ENABLED="false" ID="7554722793341596992" NAME="1.1.00 Discover Method" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="604195200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="1000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4179995491793758320" NAME="Devices in Active Scanning Mode" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Devices in Active Scanning Mode-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" INNER_NOT="true" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7219265360720113722"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5629636732782546641" NAME="Devices in Passive Learning Mode" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Devices in Passive Learning Mode-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="3506931643485287434"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2;name:Properties - Passive Learning"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>
