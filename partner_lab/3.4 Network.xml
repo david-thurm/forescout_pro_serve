@@ -1,0 +1,2008 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="3430331716531275815" NAME="3.4 Network">
+    <ENC VALUE="DydOmZosRSY=~PWg3Ky+rW14nGnd1eZuFfJ2/FOc="/>
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-8562729077693519118" NAME="Troubleshoot Rejected Authentications" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Troubleshoot Rejected Authentications-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="classifier_db_type" LABEL="Classifier DB Type" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-4658798426596942231" TYPE="contains">
+                                <VALUE VALUE2="_dot1x"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="classifier_db_type" LABEL="Classifier DB Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5343662722167293909" TYPE="contains">
+                                <VALUE VALUE2="pc_win_corp_comp_wireless"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH">
+                    <SEGMENT ID="-6661175092132730577" NAME="Data Center &amp; Other Areas">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <SEGMENT ID="4444383420033693889" NAME="Lab-Kit">
+                        <RANGE FROM="10.0.1.1" TO="10.0.1.214"/>
+                        <RANGE FROM="10.0.2.2" TO="10.0.2.253"/>
+                        <RANGE FROM="10.0.3.2" TO="10.0.3.253"/>
+                        <RANGE FROM="10.0.4.2" TO="10.0.4.253"/>
+                        <RANGE FROM="10.0.5.2" TO="10.0.5.253"/>
+                    </SEGMENT>
+                </EXCEPTION>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the RADIUS server.&#10;CAUSE: Either computer-supplied or user-supplied credentials did not match the credentials in the Active Directory of the domain.&#10;" ID="-6774146237601739388" NAME="Invalid Credentials Supplied" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Invalid Credentials Supplied-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1589352145073754439" TYPE="contains">
+                                    <VALUE VALUE2="Logon failure"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the external RADIUS server.&#10;When CounterACT acts as a proxy to an external RADIUS server, the cause of rejected authentications cannot be determined.&#10;" ID="-3788333791343459231" NAME="Rejected by External RADIUS Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Rejected by External RADIUS Server-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_default_domain" LABEL="802.1x Default Domain" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="169202696424963604" TYPE="contains">
+                                    <VALUE VALUE2="proxy"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule attempted MAC address bypass (MAB) and were rejected by the CounterACT RADIUS server.&#10; CAUSE:The endpoint MAC address was not listed in the MAC Address Repository (MAR) of the 802.1X Plugin. The MAR is the plugin's repository of endpoints that authenticate using MAB.&#10;" ID="2992135079098115146" NAME="MAC Bypass Rejected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: MAC Bypass Rejected-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_login_type" LABEL="802.1x Authenticated Entity" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-3024428892321677881" OPTIONS_DIGEST="9bbc30deb95541fe68ad3d321ca8ef68">
+                                    <OPT VALUE="dot1x_mac_login"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The domain controller did not provide an adequate response to the RADIUS server.&#10;" ID="3161653407333067611" NAME="Domain Controller Detected Error" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Domain Controller Detected Error-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="4567912186395066057" TYPE="contains">
+                                    <VALUE VALUE2="Invalid output from ntlm_auth: expecting NT_KEY"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="191715603060451887" NAME="Certificate Revoked by CRL Verification" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Certificate Revoked by CRL Verification-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5900177626741821656" TYPE="contains">
+                                    <VALUE VALUE2="fatal certificate_revoked"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4771547261380276568" NAME="Certificate Revoked by OCSP Verification" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Certificate Revoked by OCSP Verification-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7617008063201867416" TYPE="contains">
+                                        <VALUE VALUE2="[ocsp] --&gt; Certificate has been expired/revoked!"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7543590209512250444" TYPE="contains">
+                                        <VALUE VALUE2="[ocsp] --&gt; Unable to check certificate; failing!"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The endpoint supplicant did not trust the certificate authority that issued the RADIUS server's server certificate.&#10;" ID="8459875613326840415" NAME="Server Certificate Issuer Not Trusted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Server Certificate Issuer Not Trusted-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1650140451844482118" TYPE="contains">
+                                    <VALUE VALUE2="TLS Alert read:fatal:unknown CA"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The RADIUS server did not trust the certificate authority that issued the endpoint supplicant's client certificate.&#10;" ID="-6027881174232131246" NAME="Client Certificate Issuer Not Trusted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Client Certificate Issuer Not Trusted-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1333475610522688807" TYPE="contains">
+                                    <VALUE VALUE2="TLS Alert read:fatal:unknown CA"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The endpoint supplicant stopped the TLS handshake with the RADIUS server. This might indicate that the server certificate is invalid.&#10;" ID="3069619076521530794" NAME="Client Issued TLS Alert" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Client Issued TLS Alert-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="2323160166998473476" TYPE="contains">
+                                    <VALUE VALUE2="TLS Alert write:fatal"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The RADIUS server stopped the TLS handshake with the endpoint supplicant. This might indicate that the client certificate is invalid.&#10;" ID="-8441550830477245934" NAME="Server Issued TLS Alert" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Server Issued TLS Alert-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="6248963830368872746" TYPE="contains">
+                                    <VALUE VALUE2="TLS Alert write:fatal"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The EAP negotiation between the RADIUS server and the endpoint supplicant stopped for a reason not covered by any of the preceding sub-rules. For example, the two parties did not agree on the EAP method.&#10;" ID="7052398783507845512" NAME="EAP Negotiation Failure" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: EAP Negotiation Failure-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_radius_log" LABEL="802.1x RADIUS Log Details" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5074986563269369873" TYPE="contains">
+                                    <VALUE VALUE2="EAP-NAK"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication accepted by the RADIUS server, however, endpoint access was then denied by the defined authorization imposed on them by the RADIUS server.&#10;                           &#10;    A denial of access has any one of the following CounterACT sources:                           &#10;    • Policy action authorization                           &#10;    • MAR authorization                           &#10;    • Pre-Admission authorization rule            " ID="-7954412275749470421" NAME="Denied By Authorization" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Denied By Authorization-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dot1x_auth_source" LABEL="802.1x Authorization Source" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2475477993676978770" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Endpoints matching this sub-rule had their authentication rejected by the CounterACT RADIUS server.&#10;CAUSE: The authentication stopped for a reason not matched by any of the preceding sub-rules.&#10;" ID="9011976842556661775" NAME="Other Rejections" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-7333717086273771607" NAME="DNS Server Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5020707135963086530" NAME="Trusted DNS Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Trusted DNS Server-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dnsniff_event" LABEL="DNS Event" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8210970165905215276" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="3600"/>
+                                <FILTER COMP_FIELD_NAME="dnsniff_event" FILTER_ID="8965971584622692138">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" LINKED="true" MEETS="true" SUB_FIELD_NAME="server">
+                                        <LINK ID="-3443957065700754709"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2858691665634177481" NAME="Non-Trusted DNS Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Non-Trusted DNS Server-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dnsniff_event" LABEL="DNS Event" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="6833412332665918913" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="3600"/>
+                                <FILTER COMP_FIELD_NAME="dnsniff_event" FILTER_ID="7680931332911768837">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="server" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8418940253333381001" NAME="No DNS Observed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <PROPERTY_LISTS>
+                    <HOST_PROPERTY_LIST DESCRIPTION="This is a list of trusted DNS Servers" FIELD="dnsniff_event/server" ID="-3443957065700754709" NAME="Trusted DNS Servers">
+                        <VALUES>
+                            <VALUE VALUE="208.67.222.222"/>
+                        </VALUES>
+                    </HOST_PROPERTY_LIST>
+                </PROPERTY_LISTS>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-4972005334674509207" NAME="MAC Spoofing Tracking" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="8904008596343859645" NAME="AWS AWSConfig"/>
+                    <GROUP ID="2901322632549808256" NAME="AWS IAM Roles"/>
+                    <GROUP ID="162017714217074966" NAME="Azure Vnet"/>
+                    <GROUP ID="2251643174438511300" NAME="Azure Instance"/>
+                    <GROUP ID="8219706029993151041" NAME="AWS VPCs"/>
+                    <GROUP ID="6810736941160776337" NAME="AWS EC2 Instances"/>
+                    <GROUP ID="5968400662146833102" NAME="AWS Internet Gateways"/>
+                    <GROUP ID="795661725277098202" NAME="Azure Local Network Gateway"/>
+                    <GROUP ID="5671492315162468672" NAME="Azure Subscription"/>
+                    <GROUP ID="8399428092874123540" NAME="AWS IAM Users"/>
+                </EXCEPTION>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RESERVED>
+                    <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                </RESERVED>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3331889312745344026" NAME="Detected Spoofing Attacker" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Detected Spoofing Attacker-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="rogued_host_is_rogue" LABEL="MAC Spoofing Suspected" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="4619927632981315210" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="4838400"/>
+                                <FILTER COMP_FIELD_NAME="rogued_host_is_rogue" FILTER_ID="2334678208419958905">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="6af306825509d429823da2ff58577c74" SUB_FIELD_NAME="mac_spoofed_detection_method">
+                                        <OPT VALUE="location_change"/>
+                                        <OPT VALUE="property_change"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="7fff53195407bbd7828f3d5b595f261d" SUB_FIELD_NAME="identity">
+                                        <OPT VALUE="attacker"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="rogued_block">
+                            <PARAM NAME="block_voip" VALUE="true"/>
+                            <PARAM NAME="dont_force_sw_block" VALUE="true"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="send_syslog">
+                            <PARAM NAME="server" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="protocol" VALUE="default"/>
+                            <PARAM NAME="port" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="ident" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="tls" VALUE="false"/>
+                            <PARAM NAME="message" VALUE="ForeScout has identified the endpoint with MAC address {mac} as the attacker in a suspected MAC spoofing event that occurred in your network. MAC Spoofing Suspected {rogued_host_is_rogue}."/>
+                            <PARAM NAME="priority" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="facility" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="OCSPSoftFail" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {mac} {ip}"/>
+                            <PARAM NAME="to" VALUE="jreilly@forescout.com"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected  event. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;MAC Spoofing:&#9;&#9;{rogued_host_is_rogue}&#10;&#10;"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4604963298464023636" NAME="Detected Spoofing Victim" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Detected Spoofing Victim-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="rogued_host_is_rogue" LABEL="MAC Spoofing Suspected" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="6711310426145516474" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="4838400"/>
+                                <FILTER COMP_FIELD_NAME="rogued_host_is_rogue" FILTER_ID="-4640314303512792456">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="property_change_values" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="6af306825509d429823da2ff58577c74" SUB_FIELD_NAME="mac_spoofed_detection_method">
+                                        <OPT VALUE="location_change"/>
+                                        <OPT VALUE="property_change"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="7fff53195407bbd7828f3d5b595f261d" SUB_FIELD_NAME="identity">
+                                        <OPT VALUE="victim"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="send_syslog">
+                            <PARAM NAME="server" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="protocol" VALUE="default"/>
+                            <PARAM NAME="port" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="ident" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="tls" VALUE="false"/>
+                            <PARAM NAME="message" VALUE="ForeScout has identified the endpoint with MAC address {mac} as the victim in a suspected MAC spoofing event that occurred in your network. MAC Spoofing Suspected: {rogued_host_is_rogue}."/>
+                            <PARAM NAME="priority" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="facility" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="OCSPSoftFail" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {mac} {ip}"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected  event. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;MAC Spoofing:&#9;&#9;{rogued_host_is_rogue}&#10;&#10;"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="http_notification">
+                            <PARAM NAME="hijack_disabled" VALUE="false"/>
+                            <PARAM NAME="open_browser" VALUE="true"/>
+                            <PARAM NAME="show_recheck_option" VALUE="false"/>
+                            <PARAM NAME="hcs" VALUE="false"/>
+                            <PARAM NAME="button_text" VALUE="I confirm reading the message"/>
+                            <PARAM NAME="message" VALUE="&lt;&lt;&lt; ROGUE DEVICE DETECTED &gt;&gt;&gt;&#10;Your MAC Address has been compromised&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;MAC Spoofing:&#9;&#9;{rogued_host_is_rogue}"/>
+                            <PARAM NAME="confirm_id" VALUE="Notification confirmed"/>
+                            <PARAM NAME="onetime" VALUE="true"/>
+                            <PARAM NAME="ssl" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                            <HTTPEXCEPTIONS WISPR="0">
+                                <RANGES/>
+                            </HTTPEXCEPTIONS>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5272165361923477781" NAME="Ever Detected as Spoofing Victim" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Ever Detected as Spoofing Victim-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="rogued_host_is_rogue" LABEL="MAC Spoofing Suspected" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="866074532251570756" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1540279508"/>
+                                <FILTER COMP_FIELD_NAME="rogued_host_is_rogue" FILTER_ID="-7492326376780270091">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="property_change_values" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="6af306825509d429823da2ff58577c74" SUB_FIELD_NAME="mac_spoofed_detection_method">
+                                        <OPT VALUE="location_change"/>
+                                        <OPT VALUE="property_change"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="7fff53195407bbd7828f3d5b595f261d" SUB_FIELD_NAME="identity">
+                                        <OPT VALUE="victim"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="victim_port" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="attacker_source" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="send_syslog">
+                            <PARAM NAME="server" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="protocol" VALUE="default"/>
+                            <PARAM NAME="port" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="ident" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="tls" VALUE="false"/>
+                            <PARAM NAME="message" VALUE="ForeScout has identified the endpoint with MAC address {mac} as the victim in a suspected MAC spoofing event that occurred in your network. MAC Spoofing Suspected: {rogued_host_is_rogue}."/>
+                            <PARAM NAME="priority" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="facility" VALUE="Click here to replace default value"/>
+                            <PARAM NAME="OCSPSoftFail" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {mac} {ip}"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;ForeScout has identified the endpoint with MAC address {mac} as the attacker in a suspected MAC spoofing event that occurred in your network. &#10;&#10;Endpoint Details:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;MAC Spoofing:&#9;&#9;{rogued_host_is_rogue}&#10;"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2681200714821038258" NAME="Cisco Switch Port Readiness" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Cisco Switch Port Readiness-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_vendor" LABEL="Switch Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3654218652130822537" TYPE="equals">
+                                <VALUE VALUE2="Cisco"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3386203135414993427" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true for the switch port:&#10;   • 'dot1x pae authenticator' is not configured&#10;When this condition is true, the switch port is considered:&#10;   • Not ready for 802.1X authentication&#10;" ID="-8925563203728372361" NAME="PAE Authenticator Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: PAE Authenticator Not Configured-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-6698897869766887049" TYPE="contains">
+                                        <VALUE VALUE2="pae authenticator"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true for the switch port:&#10;    • 'authentication port-control auto' is not configured&#10;When this condition is true, the switch port is considered:&#10;    • Not ready for 802.1X authentication&#10;" ID="5498203806334887373" NAME="802.1x Authentication on the Port Not Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: 802.1x Authentication on the Port Not Enabled-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7648742795371641998" TYPE="contains">
+                                        <VALUE VALUE2="port-control auto"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true for the switch port:&#10;    • 'mab' is not configured&#10;When this condition is true, the switch port is considered:&#10;    • Not ready for 802.1X authentication&#10;" ID="-4031622310128679821" NAME="MAB Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: MAB Not Configured-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7451381743034755808" TYPE="contains">
+                                        <VALUE VALUE2="mab"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="When the inspected endpoints connected to the switch port do not match any of the preceding policy sub-rules, the switch port is considered:&#10;    • Ready for 802.1X authentication.&#10;" ID="-2142419396912890344" NAME="Switch Port Configuration Ready" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2666737608584167727" NAME="Multiple Hosts On Switch Port Audit" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Multiple Hosts On Switch Port Audit-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip" LABEL="Switch IP/FQDN" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="6924629449000374787" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-801178756823134938">
+                                <RANGE FROM="2" TO="200"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4724878891633657143" NAME="Two hosts - voice - data" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Two hosts - voice - data-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7474335517715584740">
+                                        <RANGE FROM="2" TO="2"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_voice_device" LABEL="Switch Port Voice Device" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="-1676060067856418619" VALUE="true"/>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER FILTER_ID="6878065542195142668" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Information Technology/Accessory/VoIP/IP Phone"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="endpoints on vlan with 'wireless' in the vlan name" ID="5167652643349902261" NAME="Wireless VM endpoints" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Wireless VM endpoints-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="739581258939034908">
+                                        <RANGE FROM="2" TO="200"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1976091337991747139" TYPE="contains">
+                                        <VALUE VALUE2="wireless"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="7785920183695975961" OPTIONS_DIGEST="25b0fedd551a1e0cae876bf23d6b2f0a">
+                                        <OPT VALUE="vmware, inc."/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="endpoints on vlan with 'wireless' in the vlan name" ID="-6623587308239159931" NAME="Wireless endpoints" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Wireless endpoints-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="739581258939034908">
+                                        <RANGE FROM="2" TO="200"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1976091337991747139" TYPE="contains">
+                                        <VALUE VALUE2="wireless"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2393080880953126364" NAME="Multiple hosts on port" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Multiple hosts on port-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-1300194375710397286">
+                                    <RANGE FROM="2" TO="200"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-636797569842588109" NAME="Track Device Move" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Track Device Move-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="2814119426884949900" TYPE="any">
+                            <VALUE VALUE2="Any"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6980590128915274008" NAME="No change detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: No change detected-->
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                        <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="1924094911336465938" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                        <FILTER FILED_NAME="sw_port_desc" FILTER_ID="-3026093214152009968" POTENTIAL="false">
+                                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-680566182400883376" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                        <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="-7024857235818533646" POTENTIAL="false">
+                                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7790552271527366151" NAME="Host moved between switches" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Host moved between switches-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4587378451598559765" NAME="Host port VLAN changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Host port VLAN changed-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-8157940199943127575" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="7542755132651895032" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-725577644276456523" NAME="Switch Port Changed (same switch)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Switch Port Changed (same switch)-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="7154820778628039634" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_port_desc" FILTER_ID="4875749823809082307" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="2292093303758736744" NAME="Operating System Changes Network Function" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2697737552605841418" NAME="No MAC Address Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: No MAC Address Detected-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac" INNER_NOT="true" LABEL="MAC Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2387431292324116437" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1226549810153246617" NAME="Network Function Changed from Windows to non-Windows" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Network Function Changed from Windows to non-Windows-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-6813890681317248875" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="va_netfunc" FILTER_ID="-5909672259046613775" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="-664812012141843029" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="windows"/>
+                                        </FILTER>
+                                    </OLD_VALUE_FILTER>
+                                    <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="2687796174631807481" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="windows"/>
+                                        </FILTER>
+                                    </NEW_VALUE_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5130033174154922905" NAME="Network Function Changed from Printer to non-Printer" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Network Function Changed from Printer to non-Printer-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-1723529938613065206" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1367338238"/>
+                                <FILTER FILED_NAME="va_netfunc" FILTER_ID="5738693768658960406" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="838261114515937550" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="printer"/>
+                                        </FILTER>
+                                    </OLD_VALUE_FILTER>
+                                    <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="-7368519749364848197" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="printer"/>
+                                        </FILTER>
+                                    </NEW_VALUE_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3341130800156639478" NAME="Network Function Changed from Network to non-Network" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Network Function Changed from Network to non-Network-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8680469661278285267" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1367338294"/>
+                                <FILTER FILED_NAME="va_netfunc" FILTER_ID="3945985225442161523" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="-3762901608286454803" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="netdevice"/>
+                                        </FILTER>
+                                    </OLD_VALUE_FILTER>
+                                    <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                        <FILTER AUTO_UPDATE="false" FILTER_ID="6585728202230899334" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                            <OPT VALUE="netdevice"/>
+                                        </FILTER>
+                                    </NEW_VALUE_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="201950267685373363" NAME="Windows Version Changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Windows Version Changed-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_change" LABEL="Windows Version Change" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="2631927577398830615" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                    <FILTER FILED_NAME="va_os" FILTER_ID="-3393737694934397963" POTENTIAL="false">
+                                        <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                        <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-414762845514871908">
+                                        <GROUP ID="1361820504861611965" NAME="Domain Managed Windows Devices"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5891539382972084941" NAME="No Changes Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="3443178817780113693" NAME="MAC Notification Traps Audit" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: MAC Notification Traps Audit-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ipport_desc" LABEL="Switch IP/FQDN and Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-5317661518831897092" TYPE="any">
+                            <VALUE VALUE2="Any"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8253921643534601220" NAME="Traps Properly Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Traps Properly Configured-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1036180030425572525" TYPE="contains">
+                                        <VALUE VALUE2="snmp trap mac-notification change added"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-8230497323949574915" TYPE="contains">
+                                        <VALUE VALUE2="snmp trap mac-notification change removed"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7629361425511446119" NAME="Traps not completly configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Traps not completly configured-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-144047147054795155" TYPE="contains">
+                                        <VALUE VALUE2="snmp trap mac-notification change added"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="4644363018875563312" TYPE="contains">
+                                        <VALUE VALUE2="snmp trap mac-notification change removed"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4386528097203385997" NAME="No Traps Configure on Port" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: No Traps Configure on Port-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_configurations" INNER_NOT="true" LABEL="Switch Port Configurations" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1099949918000013607" TYPE="contains">
+                                        <VALUE VALUE2="snmp trap mac-notification"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy runs on the &quot;Network Devices&quot; group that is maintained by the 1.1 OS Classification\Network sub-policy.  All detected Network devices are evaluated for manageability at this stage.&#10;&#10;The sub-policies check for manageability using the SNMP strings that are also used by the Switch Plugin.&#10;&#10;Intended usage is to baseline network devices and managed vs unmanaged switches outside of the switch plugin for comparison and tuning.&#10;" ENABLED="true" ID="3647201253400480969" META_TYPE="GUEST" NAME="(Network Devices Manageability)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: (Network Devices Manageability)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="1727390676194429283">
+                            <GROUP ID="2291595872093298372" NAME="Network devices"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4200845623941920567" NAME="CounterAct Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: CounterAct Devices-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc" LABEL="Network Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="5992923769317952862" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="counteract"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6605979752433395266" NAME="Managed by Classification Method" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Managed by Classification Method-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cl_type" LABEL="Network Function Resolution Method" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-987303494915333630" OPTIONS_DIGEST="a20d5d235050e4b74e9593d025de74a5">
+                                    <OPT VALUE="managed"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5273604211160220978" NAME="Managed Switch Device (SSH)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Managed Switch Device (SSH)-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_ssh.ffaac8a33a00df2eccb580f90fa381d8" LABEL="SSH Command Output SSH Password                                                 :*******, Pipe session through AWK filter (optional):*UNUSED*, When command/session fails, evaluate condition:false, SSH Username                     :tsteele, SSH Connection flags (optional):-2 -oStrictHostKeyChecking=no, Command:show banner motd" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="goodies_ssh" NAME="goodies_ssh.ffaac8a33a00df2eccb580f90fa381d8">
+                                    <PARAM NAME="password" TYPE="encrypted" VALUE="PRimL2GTIdw=~Hlrev/dCRQygnj3DUfsZjA=="/>
+                                    <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="user" TYPE="string" VALUE="tsteele"/>
+                                    <PARAM NAME="extra_param" TYPE="string" VALUE="-2 -oStrictHostKeyChecking=no"/>
+                                    <PARAM NAME="command" TYPE="string" VALUE="show banner motd"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8807432282381793445" TYPE="contains">
+                                    <VALUE VALUE2="*****Steele Labs Users ONLY*****"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2268725436807268413;name:Managed Switch"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3424605496399613683" NAME="Managed Switch Device (SNMP RW)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Managed Switch Device (SNMP RW)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-217101126989309864" TYPE="contains">
+                                                <VALUE VALUE2="Cisco router"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3705536256154214453" TYPE="contains">
+                                                <VALUE VALUE2="cisco switch"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-210773675045773437" TYPE="contains">
+                                                <VALUE VALUE2="network device"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa" LABEL="SNMP-MIB-II sysDescription Privacy Protocol Password (V3 only):*******, Authentication Protocol (V3 only):none, Authentication Protocol Password (V3 only):*******, SNMP Version:2, Community (V1 or V2 only):*******, Additional SNMP Parameters:*EMPTY*, Username (V3 only):*EMPTY*, Privacy Authentication Protocol (V3 only):none" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="sysDescr2" NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa">
+                                        <PARAM NAME="privacypassword" TYPE="encrypted" VALUE="GkbDC8cPrwY=~3JVtkbcrTCQ="/>
+                                        <PARAM NAME="authproto" TYPE="string" VALUE="none"/>
+                                        <PARAM NAME="password" TYPE="encrypted" VALUE="yQA/pVtNP28=~OoR1lV9aC9M="/>
+                                        <PARAM NAME="snmpver" TYPE="string" VALUE="2"/>
+                                        <PARAM NAME="community" TYPE="encrypted" VALUE="UI1WOVKi9Gs=~TOOjrs0h7l4="/>
+                                        <PARAM NAME="snmpparams" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="username" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="privacyproto" TYPE="string" VALUE="none"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1974809876779712919" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2268725436807268413;name:Managed Switch"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5350381716849669995" NAME="Managed Switch Device (SNMP RO)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Managed Switch Device (SNMP RO)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-217101126989309864" TYPE="contains">
+                                                <VALUE VALUE2="Cisco router"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3705536256154214453" TYPE="contains">
+                                                <VALUE VALUE2="cisco switch"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-210773675045773437" TYPE="contains">
+                                                <VALUE VALUE2="network device"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sysDescr2.3845d3ed38e8d1672d8340e904664daf" LABEL="SNMP-MIB-II sysDescription Privacy Protocol Password (V3 only):*******, Authentication Protocol (V3 only):none, Authentication Protocol Password (V3 only):*******, SNMP Version:2, Community (V1 or V2 only):*******, Additional SNMP Parameters:*EMPTY*, Username (V3 only):*EMPTY*, Privacy Authentication Protocol (V3 only):none" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="sysDescr2" NAME="sysDescr2.3845d3ed38e8d1672d8340e904664daf">
+                                        <PARAM NAME="privacypassword" TYPE="encrypted" VALUE="3NA24BCNjDg=~23c/604x034="/>
+                                        <PARAM NAME="authproto" TYPE="string" VALUE="none"/>
+                                        <PARAM NAME="password" TYPE="encrypted" VALUE="ZdRacfzv4sw=~7Vpo0l4OhTU="/>
+                                        <PARAM NAME="snmpver" TYPE="string" VALUE="2"/>
+                                        <PARAM NAME="community" TYPE="encrypted" VALUE="boPD6hIYBqk=~uxeLgLa9nek="/>
+                                        <PARAM NAME="snmpparams" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="username" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="privacyproto" TYPE="string" VALUE="none"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2169623391357291231" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2268725436807268413;name:Managed Switch"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8104359831868190411" NAME="Managed Cisco WLC (SNMP)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Managed Cisco WLC (SNMP)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="7227932464606492565" TYPE="contains">
+                                                <VALUE VALUE2="Cisco Controller"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.36884f5efddf8f8aff5384d65ea36514" LABEL="Service Banner Service (example: 80/TCP):80/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.36884f5efddf8f8aff5384d65ea36514">
+                                                <PARAM NAME="port" TYPE="port" VALUE="80/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3028447573605191708" TYPE="contains">
+                                                <VALUE VALUE2="cisco controller"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.36884f5efddf8f8aff5384d65ea36514" LABEL="Service Banner Service (example: 80/TCP):80/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.36884f5efddf8f8aff5384d65ea36514">
+                                                <PARAM NAME="port" TYPE="port" VALUE="80/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="8660208208335199920" TYPE="contains">
+                                                <VALUE VALUE2="Cisco Wireless LAN Controller"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.1e14df3ed752e55bb0b4d8950460214d" LABEL="Service Banner Service (example: 80/TCP):22/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.1e14df3ed752e55bb0b4d8950460214d">
+                                                <PARAM NAME="port" TYPE="port" VALUE="22/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="8932925814478246389" TYPE="contains">
+                                                <VALUE VALUE2="Cisco WLC"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="5371863272213451026" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Cisco/Cisco WLC"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3109216793263415748" TYPE="contains">
+                                                <VALUE VALUE2="Cisco Controller"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa" LABEL="SNMP-MIB-II sysDescription Privacy Protocol Password (V3 only):*******, Authentication Protocol (V3 only):none, Authentication Protocol Password (V3 only):*******, SNMP Version:2, Community (V1 or V2 only):*******, Additional SNMP Parameters:*EMPTY*, Username (V3 only):*EMPTY*, Privacy Authentication Protocol (V3 only):none" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="sysDescr2" NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa">
+                                        <PARAM NAME="privacypassword" TYPE="encrypted" VALUE="4h1sX6euv3Q=~gWVkzSg5wYE="/>
+                                        <PARAM NAME="authproto" TYPE="string" VALUE="none"/>
+                                        <PARAM NAME="password" TYPE="encrypted" VALUE="24fqYI0gX+Y=~xUZIUz9ywDI="/>
+                                        <PARAM NAME="snmpver" TYPE="string" VALUE="2"/>
+                                        <PARAM NAME="community" TYPE="encrypted" VALUE="WREoG5YNoqM=~obJ25KcQTbg="/>
+                                        <PARAM NAME="snmpparams" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="username" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="privacyproto" TYPE="string" VALUE="none"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1246615401758401548" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3036161187296762975;name:Managed Cisco WLC"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7290219249436898736" NAME="Managed AP Device (Wireless Plugin)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Managed AP Device (Wireless Plugin)-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ap_wlc" LABEL="WLAN Managing Controller" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3209581761669831120" TYPE="contains">
+                                    <VALUE VALUE2="10.1.110.254"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4009542232806532672;name:Managed Cisco AP (Lightweight)"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="sw_access_port_acl">
+                            <PARAM NAME="acl_name" VALUE="Permit-IP"/>
+                            <PARAM NAME="acl_rules" VALUE="permit ip any any"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3358285275848308211" NAME="Managed Autonomous WAP Device (SNMP RW)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Managed Autonomous WAP Device (SNMP RW)-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa" LABEL="SNMP-MIB-II sysDescription Privacy Protocol Password (V3 only):*******, Authentication Protocol (V3 only):none, Authentication Protocol Password (V3 only):*******, SNMP Version:2, Community (V1 or V2 only):*******, Additional SNMP Parameters:*EMPTY*, Username (V3 only):*EMPTY*, Privacy Authentication Protocol (V3 only):none" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="sysDescr2" NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa">
+                                        <PARAM NAME="privacypassword" TYPE="encrypted" VALUE="q3YS6wwxtgQ=~YgLreoo9pGo="/>
+                                        <PARAM NAME="authproto" TYPE="string" VALUE="none"/>
+                                        <PARAM NAME="password" TYPE="encrypted" VALUE="0e6IqsWONsA=~vJ13MoEYJE4="/>
+                                        <PARAM NAME="snmpver" TYPE="string" VALUE="2"/>
+                                        <PARAM NAME="community" TYPE="encrypted" VALUE="KCfGqgZZQ1M=~F/eshGz36ec="/>
+                                        <PARAM NAME="snmpparams" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="username" TYPE="string" VALUE="*EMPTY*"/>
+                                        <PARAM NAME="privacyproto" TYPE="string" VALUE="none"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4828678597844877812" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="7833720821630005350" OPTIONS_DIGEST="b0967a1b80344061fae988fd63fc9c5f">
+                                        <OPT VALUE="hewlett packard enterprise"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" LABEL="DHCP Vendor Class (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="3232435164779129931" TYPE="contains">
+                                        <VALUE VALUE2="ArubaInstantAP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6490143065135998909" NAME="Managed Firewall Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Managed Firewall Device-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER AUTO_UPDATE="false" FILTER_ID="2564504091233781283" OPTIONS_DIGEST="b0967a1b80344061fae988fd63fc9c5f">
+                                                <OPT VALUE="cisco systems, inc"/>
+                                                <OPT VALUE="cisco systems inc"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-4069881202679713218" TYPE="contains">
+                                                <VALUE VALUE2="Cisco SSH"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa" LABEL="SNMP-MIB-II sysDescription Privacy Protocol Password (V3 only):*******, Authentication Protocol (V3 only):none, Authentication Protocol Password (V3 only):*******, SNMP Version:2, Community (V1 or V2 only):*******, Additional SNMP Parameters:*EMPTY*, Username (V3 only):*EMPTY*, Privacy Authentication Protocol (V3 only):none" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FIELD METANAME="sysDescr2" NAME="sysDescr2.e36cb04b0dd2937fb70008467d54bcaa">
+                                                <PARAM NAME="privacypassword" TYPE="encrypted" VALUE="zQx2dVTN+3w=~ZVHDJl4zc8A="/>
+                                                <PARAM NAME="authproto" TYPE="string" VALUE="none"/>
+                                                <PARAM NAME="password" TYPE="encrypted" VALUE="ViCzJHDL1Bs=~ZRmQesN2KBo="/>
+                                                <PARAM NAME="snmpver" TYPE="string" VALUE="2"/>
+                                                <PARAM NAME="community" TYPE="encrypted" VALUE="8LvvMBoELuY=~Us3zL8EMBz8="/>
+                                                <PARAM NAME="snmpparams" TYPE="string" VALUE="*EMPTY*"/>
+                                                <PARAM NAME="username" TYPE="string" VALUE="*EMPTY*"/>
+                                                <PARAM NAME="privacyproto" TYPE="string" VALUE="none"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="9079204380398353784" TYPE="contains">
+                                                <VALUE VALUE2="Cisco Adaptive Security"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="4276125293754588246" TYPE="contains">
+                                                <VALUE VALUE2="Cisco SSH"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="OR">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_ssh.d023289cce5b36818dcb6a6a81c8e020" LABEL="SSH Command Output SSH Password                                                 :*******, Pipe session through AWK filter (optional):*UNUSED*, When command/session fails, evaluate condition:false, SSH Username                     :tsteele, SSH Connection flags (optional):-o StrictHostKeyChecking=no, Command:show version" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FIELD METANAME="goodies_ssh" NAME="goodies_ssh.d023289cce5b36818dcb6a6a81c8e020">
+                                                        <PARAM NAME="password" TYPE="encrypted" VALUE="zS/QezXCAlI=~RQvYc2NKRo83FbEeZY8u9w=="/>
+                                                        <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                                        <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                        <PARAM NAME="user" TYPE="string" VALUE="tsteele"/>
+                                                        <PARAM NAME="extra_param" TYPE="string" VALUE="-o StrictHostKeyChecking=no"/>
+                                                        <PARAM NAME="command" TYPE="string" VALUE="show version"/>
+                                                    </FIELD>
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6519033891977329744" TYPE="any">
+                                                        <VALUE VALUE2="Any"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_sshi.f457c483f710adbc678c0df646233a88" LABEL="SSH Command Output (Interactive) SSH Password                                                :*******, Pipe session through AWK filter (optional):*UNUSED*, When command/session fails, evaluate condition:false, Interactive Session Script:show version, Login  timeout (seconds):5, SSH Username                     :tsteele, SSH Connection Flags(optional):-oStrictHostKeyChecking=no , Response  timeout (seconds):30" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                    <FIELD METANAME="goodies_sshi" NAME="goodies_sshi.f457c483f710adbc678c0df646233a88">
+                                                        <PARAM NAME="password" TYPE="encrypted" VALUE="I8NpVWgyAJI=~s3m8Lwe4MFVcJczvsnx9ow=="/>
+                                                        <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                                        <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                        <PARAM NAME="arguments" TYPE="string" VALUE="show version"/>
+                                                        <PARAM NAME="login_timeout" TYPE="integer" VALUE="5"/>
+                                                        <PARAM NAME="user" TYPE="string" VALUE="tsteele"/>
+                                                        <PARAM NAME="extra_param" TYPE="string" VALUE="-oStrictHostKeyChecking=no "/>
+                                                        <PARAM NAME="timeout" TYPE="integer" VALUE="30"/>
+                                                    </FIELD>
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="3332840131246786347" TYPE="contains">
+                                                        <VALUE VALUE2="ASA"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="OR">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.429b7a46e1b0031f4dde0affd8742cc4" LABEL="Service Banner Service (example: 80/TCP):443/TCP" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FIELD METANAME="banner" NAME="banner.429b7a46e1b0031f4dde0affd8742cc4">
+                                                        <PARAM NAME="port" TYPE="port" VALUE="443/TCP"/>
+                                                    </FIELD>
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1145517427136392964" TYPE="contains">
+                                                        <VALUE VALUE2="Cisco ASA"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.429b7a46e1b0031f4dde0affd8742cc4" LABEL="Service Banner Service (example: 80/TCP):443/TCP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                    <FIELD METANAME="banner" NAME="banner.429b7a46e1b0031f4dde0affd8742cc4">
+                                                        <PARAM NAME="port" TYPE="port" VALUE="443/TCP"/>
+                                                    </FIELD>
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-9136251987430289063" TYPE="contains">
+                                                        <VALUE VALUE2="Cisco Adaptive Security Appliance"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.1e14df3ed752e55bb0b4d8950460214d" LABEL="Service Banner Service (example: 80/TCP):22/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FIELD METANAME="banner" NAME="banner.1e14df3ed752e55bb0b4d8950460214d">
+                                                <PARAM NAME="port" TYPE="port" VALUE="22/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1141277537903722683" TYPE="contains">
+                                                <VALUE VALUE2="Cisco SSH"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="AND">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="7043085360731506182" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Palo Alto Networks"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_ssh.564497867e1a3ac710f4c6888db6bcc0" LABEL="SSH Command Output SSH Password                                                 :*******, Pipe session through AWK filter (optional):*UNUSED*, When command/session fails, evaluate condition:false, SSH Username                     :tsteele, SSH Connection flags (optional):-2 -oStrictHostKeyChecking=no, Command:show system info" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FIELD METANAME="goodies_ssh" NAME="goodies_ssh.564497867e1a3ac710f4c6888db6bcc0">
+                                                <PARAM NAME="password" TYPE="encrypted" VALUE="oIOK7Itum28=~6Wr8RnRQYJ/qFIEPmC8rfA=="/>
+                                                <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                <PARAM NAME="user" TYPE="string" VALUE="tsteele"/>
+                                                <PARAM NAME="extra_param" TYPE="string" VALUE="-2 -oStrictHostKeyChecking=no"/>
+                                                <PARAM NAME="command" TYPE="string" VALUE="show system info"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3564418966775788073" TYPE="any">
+                                                <VALUE VALUE2="Any"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:2755780270935663410;name:Managed Firewalls"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7346740193231303158" NAME="Switch Port NAME (Switch Device)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Switch Port NAME (Switch Device)-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2260743224452621867" TYPE="equals">
+                                    <VALUE VALUE2="Switch Device"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2854803378243464081" NAME="Unmanaged Network Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="UNAUTH_GUEST"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Unmanaged Network Device-->
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="2649755383532342728">
+                                            <RANGE FROM="10.1.201.10" TO="10.1.201.10"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-337352129640395006">
+                                            <RANGE FROM="10.1.251.10" TO="10.1.251.10"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5349297982040216196;name:Rogue Network Device"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6126221265803982160" NAME="Cisco Switch Readiness" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="2291595872093298372" NAME="Network devices"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Cisco Switch Readiness-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-5474787044782234062" MATCH_SUBTREE="true">
+                                <PATH VALUE="Cisco-OS"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2603085183385813608" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if any one of the following is true on the switch:&#10;   • 'aaa new-model' is not configured&#10;   •  'no aaa new-model' is configured&#10;When one of these conditions is true, the switch is considered:&#10;   •  Not ready for 802.1X authentication&#10;" ID="-6057395052897042926" NAME="AAA Not Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: AAA Not Enabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2780789578085867604" TYPE="contains">
+                                    <VALUE VALUE2="no aaa new-model"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;    • 'aaa authentication dot1x...' is not configured&#10;When this condition is true, the switch is considered:&#10;    • Not ready for 802.1X authentication&#10;" ID="-3248644588429965736" NAME="802.1X Authentication Method List Not Created" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: 802.1X Authentication Method List Not Created-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5131486875997595115" TYPE="contains">
+                                    <VALUE VALUE2="authentication dot1x"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;   • 'dot1x system-auth-control' is not configured&#10;When this condition is true, the switch is considered:&#10;   • Not ready for 802.1X authentication&#10;&#10;" ID="8641352441029282567" NAME="Dot1X Not Globally Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Dot1X Not Globally Enabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1213372229585084713" TYPE="contains">
+                                    <VALUE VALUE2="system-auth-control"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;    • 'radius-server host &lt;IP address&gt;' is not configured&#10;When this condition is true, the switch is considered:&#10;    • Not ready for 802.1X authentication&#10;.&#10;" ID="-7334986828900475188" NAME="RADIUS Server Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: RADIUS Server Not Configured-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="7460898122869058890" TYPE="contains">
+                                    <VALUE VALUE2="radius-server host"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;     • 'radius-server...key &lt;string&gt;' is not configured&#10;When this condition is true, the switch is considered:&#10;     • Not ready for 802.1X authentication&#10;" ID="5539059072318659055" NAME="Key Between Switch and RADIUS Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Key Between Switch and RADIUS Not Configured-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="2488579220912599667" TYPE="contains">
+                                    <VALUE VALUE2="key"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;    • 'radius-server vsa send' is not configured&#10;When this condition is true, the switch is considered:&#10;    • Ready for 802.1X authentication&#10;   • Switch is unable to use VSAs for authorization, for example, ACLs.&#10;" ID="1208869342989309072" NAME="Using VSA Not Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Using VSA Not Enabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1000130248727181070" TYPE="contains">
+                                    <VALUE VALUE2="radius-server vsa send"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Verifies if the following is true on the switch:&#10;    • 'aaa server radius dynamic-author' is not configured&#10;When this condition is true, the switch is considered:&#10;    • Ready for 802.1X authentication&#10;   • Switch is unable to respond to re-authentication (CoA) requests initiated by the plugin. &#10;" ID="-4483601079962646159" NAME="RADIUS Re-Authentication Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: RADIUS Re-Authentication Not Configured-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_show_running_config_output" LABEL="Running Config" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-6176659191504255020" TYPE="contains">
+                                    <VALUE VALUE2="server radius dynamic-author"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="When the inspected switch does not match any of the preceding policy sub-rules, the switch is considered:&#10;     • Ready for 802.1X authentication.&#10;" ID="-979088300788442693" NAME="Switch Configuration Ready" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

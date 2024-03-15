@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="1565931999839030570" NAME="3.2 Mac OS">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-6497058347290571787" META_TYPE="COMPLY" NAME="-- Mac OS AV Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS AV Compliance-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-4598922286202800704">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-2653016027657923425">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1978810650860897974" NAME="Macintosh With ClamAV Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Macintosh With ClamAV Running-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4161429827848692134" TYPE="equals">
+                                        <VALUE VALUE2="clamd"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4569866389462314256" TYPE="contains">
+                                        <VALUE VALUE2="clamxav"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6973231036778655038" NAME="Macintosh With Symantec Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh With Symantec Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1758537491211971046" TYPE="contains">
+                                    <VALUE VALUE2="sym"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8244113725451872772" NAME="Macintosh With Kaspersky Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh With Kaspersky Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="6284095663819421568" TYPE="equals">
+                                    <VALUE VALUE2="kav"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1674072787747960598" NAME="Macintosh With AVG Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh With AVG Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="363086897087816784" TYPE="equals">
+                                    <VALUE VALUE2="avgscand"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6612457067986276746" NAME="Macintosh With ESet Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh With ESet Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1769107846916318854" TYPE="equals">
+                                    <VALUE VALUE2="esets_"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4105693476327148564" NAME="No AV Process Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        <FREE_ATTRIBUTES>
+                            <FREE_ATTRIBUTE NAME="customItemIDs" VALUE="APPLICATION-ISSUE"/>
+                        </FREE_ATTRIBUTES>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-6492719824844505530" NAME="-- Mac OS Update Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS Update Compliance-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-6177493361666645425">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-1105081447441883314">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7277596725247639002" NAME="Macintosh OS is Up to Date" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Macintosh OS is Up to Date-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8014790137669661035" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2300683977051733868" NAME="Macintosh OS is NOT Up to Date" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh OS is NOT Up to Date-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="8014790137669661035" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7101920407021542874" NAME="Macintosh Updates NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2558958721454102112" NAME="-- Mac OS Casper Integration" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS Casper Integration-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1833029680477262219">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-1375837298546522569">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1910356450597459522" NAME="Macintosh Casper Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Casper Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-9085614556083257495" TYPE="contains">
+                                    <VALUE VALUE2="jamfagent"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8937582065297945244" NAME="Macintosh Casper Installed but Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Casper Installed but Not Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d" LABEL="Macintosh File Exists File Name (full path):/Library/Application Support/JAMF/JAMF.Keychain" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d">
+                                    <PARAM NAME="mac_file_name" TYPE="string" VALUE="/Library/Application Support/JAMF/JAMF.Keychain"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-1011149577679747851" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7376736145985123466" NAME="Macintosh Casper Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Macintosh Casper Not Installed-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d" INNER_NOT="true" LABEL="Macintosh File Exists File Name (full path):/Library/Application Support/JAMF/JAMF.Keychain" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.8f9d96042519bb0bb9c6a8cafbf9f35d">
+                                        <PARAM NAME="mac_file_name" TYPE="string" VALUE="/Library/Application Support/JAMF/JAMF.Keychain"/>
+                                    </FIELD>
+                                    <FILTER FILTER_ID="2926201863928940612" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="http_notification">
+                            <PARAM NAME="open_browser" VALUE="true"/>
+                            <PARAM NAME="show_recheck_option" VALUE="false"/>
+                            <PARAM NAME="hcs" VALUE="true"/>
+                            <PARAM NAME="button_text" VALUE="I confirm reading the message"/>
+                            <PARAM NAME="message" VALUE="Dear {ad_displayname}&#10;&#10;The Casper agent has not been detected as running your system, which is needed for access to the CorpWifi system. Please contact the help desk to remediate this issue.&#10;"/>
+                            <PARAM NAME="confirm_id" VALUE="Notification confirmed"/>
+                            <PARAM NAME="ssl" VALUE="false"/>
+                            <PARAM NAME="onetime" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8621332699063672971" NAME="Macintosh Casper NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="true" NAME="http_notification">
+                            <PARAM NAME="open_browser" VALUE="true"/>
+                            <PARAM NAME="show_recheck_option" VALUE="false"/>
+                            <PARAM NAME="hcs" VALUE="false"/>
+                            <PARAM NAME="button_text" VALUE="I confirm reading the message"/>
+                            <PARAM NAME="message" VALUE="Dear {ad_displayname}&#10;&#10;We have not been able to determine your Casper agent status. Please contact the help desk to remediate this issue.&#10;"/>
+                            <PARAM NAME="confirm_id" VALUE="Notification confirmed"/>
+                            <PARAM NAME="ssl" VALUE="false"/>
+                            <PARAM NAME="onetime" VALUE="true"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-270074991209241304" NAME="-- Mac OS McAfee AntiVirus" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS McAfee AntiVirus-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-1327070401142832419">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1480884507486578036">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3336669830603219711" NAME="Macintosh McAfee AntiVirus Running and Updated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Macintosh McAfee AntiVirus Running and Updated-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-2891546277003447070" TYPE="contains">
+                                        <VALUE VALUE2="vshieldservice"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19" INNER_NOT="true" LABEL="Macintosh File Date File Name (full path):/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FIELD METANAME="mac_file_date" NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19">
+                                            <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db"/>
+                                        </FIELD>
+                                        <FILTER FILTER_ID="3664669835300954803" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1039765774022675824" NAME="Macintosh McAfee AntiVirus Running but not Updated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Macintosh McAfee AntiVirus Running but not Updated-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-2891546277003447070" TYPE="contains">
+                                        <VALUE VALUE2="vshieldservice"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19" LABEL="Macintosh File Date File Name (full path):/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_file_date" NAME="mac_file_date.4b77a8b840f9d87b8a76095a6b8ebf19">
+                                        <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/var/VSMacdatabase.db"/>
+                                    </FIELD>
+                                    <FILTER FILTER_ID="1724469158685380601" NEWER="false" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-801972778271312675" NAME="Macintosh McAfee AntiVirus Installed but Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh McAfee AntiVirus Installed but Not Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_file_exists.d855173bac5d079d8cbd85bad5a73dee" LABEL="Macintosh File Exists File Name (full path):/usr/local/McAfee/AntiMalware/VShieldService" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_file_exists" NAME="mac_file_exists.d855173bac5d079d8cbd85bad5a73dee">
+                                    <PARAM NAME="mac_file_name" TYPE="string" VALUE="/usr/local/McAfee/AntiMalware/VShieldService"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-5179403530622414467" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8069474557603443889" NAME="Macintosh McAfee AntiVirus NOT Detected - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-165472218192942010" META_TYPE="COMPLY" NAME="-- Mac OS Java Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS Java Compliance-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-5136329945557091770">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-4803834237006122262">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1017607252525141575" NAME="Macintosh Java Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Macintosh Java Compliant-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" INNER_NOT="true" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="48317879127189467" TYPE="contains">
+                                        <VALUE VALUE2="java"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="mac_update_software">
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8149674102894694285" NAME="Macintosh Java Update Missing" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Java Update Missing-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_software_updates" LABEL="Macintosh Software Updates Missing" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1279604749276287241" TYPE="contains">
+                                    <VALUE VALUE2="java"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="mac_update_software">
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3992996245610581695" NAME="Macintosh Java Update NOT Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy runs on the &quot;Macintosh&quot; group that is maintained by the 1.1 OS Classification\Macintosh sub-policy.  All detected Macintosh devices are evaluated for manageability at this stage.&#10;&#10;If Macintosh devices are not manageable by CounterACT via either SSH key or SecureConnector, or manually approved via an Exemption, the policy will separate them into hosts with port 22 available, but not manageable and hosts with no management port open.&#10;&#10;Managed machines are passed to compliance policies via the &quot;ManagedMacintosh Devices&quot; group.&#10;&#10;Unmanaged machines can be restricted/forced to Guest Registration control policies by inserting the appropriate add to group action once control policies are in place and have been fully vetted.&#10;" ENABLED="true" ID="1630816704071268123" META_TYPE="GUEST" NAME="(Mac OS OS Manageability)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: (Mac OS OS Manageability)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="5782561710976425548">
+                            <GROUP ID="-142386611508376985" NAME="Macs"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2642158456584509157" NAME="SSH Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SSH Managed-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ssh_mac_manage" LABEL="Macintosh Manageable (SSH Direct Access)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-4553570539625779729" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:7065395519975679020;name:SSH Managed Macs"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-9157270538289683547" NAME="Secure Connector Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Secure Connector Managed-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_manage" LABEL="Macintosh Manageable (SecureConnector)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8358776234739583575" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:1795224862661667018;name:Secure Connector Managed Macs"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6826065573241129120" NAME="Manually Approved Macintosh Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Manually Approved Macintosh Devices-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-1529506033010691402">
+                                    <GROUP ID="3449848981509555629" NAME="Exempt-Approved Mac"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8636330141391251674" NAME="Port 22 Available but NOT Managed via SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="UNAUTH_GUEST"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Port 22 Available but NOT Managed via SSH-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8999576013476274743">
+                                    <VALUE FROM="22/TCP" TO="22/TCP"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:1767945222576188692;name:Unmanaged Mac Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8996515488247546288" NAME="Unknown Macintosh Systems" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="UNAUTH_GUEST"/>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:1767945222576188692;name:Unmanaged Mac Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="2369565270993469593" NAME="-- Mac OS running Fusion" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="86400000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS running Fusion-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="3849417649006085118">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-4409223900714877628">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME=""/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4943966794214878633" NAME="Fusion Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Fusion Running-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_process_running" LABEL="Macintosh Processes Running" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1102856766185964028" TYPE="contains">
+                                    <VALUE VALUE2="vmnet"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2668240774698412379" NAME="Fusion Not Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Determine if Filevault encryption is on and if disk is partially or fully encrypted. " ENABLED="true" ID="2482711974277961327" META_TYPE="COMPLY" NAME="-- Mac OS FileVault Status" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - - Mac OS FileVault Status-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-8970022517623959642">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="89831423022186041">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4121075314039677805" NAME="FileVault Enabled Disk Partially Encrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="3600" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: FileVault Enabled Disk Partially Encrypted-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4186141443551956954" TYPE="contains">
+                                        <VALUE VALUE2="on"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="4075532922959439270" TYPE="contains">
+                                        <VALUE VALUE2="percent completed"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-157161469620297357" NAME="FileVault Enabled Disk Decryption in Progress" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="3600" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: FileVault Enabled Disk Decryption in Progress-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1086135749036620973" TYPE="contains">
+                                    <VALUE VALUE2="decryption in progress"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4373115904081372805" NAME="FileVault Enabled Disk Fully  Encrypted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: FileVault Enabled Disk Fully  Encrypted-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-4186141443551956954" TYPE="contains">
+                                    <VALUE VALUE2="on"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4889471016298075138" NAME="FileVault Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: FileVault Disabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.6ff845052aecc032392056335edb5e08" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:fdesetup status" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.6ff845052aecc032392056335edb5e08">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="fdesetup status"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-6478503050719296182" TYPE="contains">
+                                    <VALUE VALUE2="off"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8014353598214429603" NAME="Unknown" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7775518548334733874" NAME="- Mac OS Adobe Reader Version" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: - Mac OS Adobe Reader Version-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="2832802647020690870">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-2745298886313079067">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1448611427114933994" NAME="Macintosh Adobe Reader Version 10.1.2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Adobe Reader Version 10.1.2-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5896285965852339849" TYPE="contains">
+                                    <VALUE VALUE2="10.1.2"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3792598730403596445" NAME="Macintosh Adobe Reader Other Version 10" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Adobe Reader Other Version 10-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1602007229522926030" TYPE="contains">
+                                    <VALUE VALUE2="10"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1628465325802205118" NAME="Macintosh Adobe Reader Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Macintosh Adobe Reader Not Installed-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78" INNER_NOT="true" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.bea5b6e3509d42012c3b2100b4ea7a78">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="system_profiler SPApplicationsDataType | grep &quot;Adobe Reader&quot;"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8869435789240779120" TYPE="contains">
+                                        <VALUE VALUE2="Adobe Reader"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-190971495506235884" NAME="Macintosh Adobe Reader Not Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="8300303885928817368" NAME="(Mac OS Domain Membership)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: (Mac OS Domain Membership)-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-5515273819055500786">
+                                <GROUP ID="7065395519975679020" NAME="SSH Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-8572139858258478552">
+                                <GROUP ID="1795224862661667018" NAME="Secure Connector Managed Macs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6579557422701598899" NAME="Macintosh Domain Member" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Domain Member-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:dsconfigad -show" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="dsconfigad -show"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="2216833743055911183" TYPE="contains">
+                                    <VALUE VALUE2="CHANGEME.com"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3615569478925571033" NAME="Macintosh Non-Corporate Domain Member" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Macintosh Non-Corporate Domain Member-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:dsconfigad -show" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="mac_script_result" NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444">
+                                    <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="dsconfigad -show"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7852634544502977888" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4296266426245765184" NAME="Macintosh Not A Member of ANY Domain" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Macintosh Not A Member of ANY Domain-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444" INNER_NOT="true" LABEL="Macintosh Expected Script Result (DEPRECIATED) Command or Script File:dsconfigad -show" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FIELD METANAME="mac_script_result" NAME="mac_script_result.96059a5f62469196dbd2b3a59a3d4444">
+                                        <PARAM NAME="mac_script_howtorun_prop" TYPE="string" VALUE="dsconfigad -show"/>
+                                    </FIELD>
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="4932172685825145610" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8824488014281258671" NAME="Macintosh Domain Not Validated - Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="6834908387882432816" NAME="3.3 Linux/Unix">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy runs on the &quot;Linux/Unix&quot; group that is maintained by the 1.1 OS Classification\Linux sub-policy.  All detected Linux/Unix devices are evaluated for manageability at this stage.&#10;&#10;If Linux\Unix devices are not manageable by CounterACT via either SSH key or SecureConnector, or manually approved via an Exemption, the policy will separate them into hosts with port 22 available, but not manageable and hosts with no management port open.&#10;&#10;Managed machines are passed to compliance policies via the &quot;Managed Nix Devices&quot; group.&#10;&#10;Unmanaged machines can be restricted/forced to Guest Registration control policies by inserting the appropriate add to group action once control policies are in place and have been fully vetted.&#10;" ENABLED="true" ID="6103099381156547437" META_TYPE="GUEST" NAME="(Linux\Unix OS Manageability)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: (Linux\Unix OS Manageability)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="1081699990018811934">
+                            <GROUP ID="4682874706732955417" NAME="Linux/Unix"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3989865738541243855" NAME="SSH Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SSH Managed-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ssh_linux_manage" LABEL="Linux Manageable (SSH Direct Access)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-7257272926461840472" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:2592808940486992417;name:SSH Managed Linux/Unix"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3158644154424674382" NAME="Secure Connector Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Secure Connector Managed-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="linux_manage" LABEL="Linux Manageable (SecureConnector)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="6107055051710991780" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6065661168724374566;name:Secure Connector Managed Linux/Unix"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-944375530731262809" NAME="Manually Approved Linux\Unix Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="CORPORATE"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Manually Approved Linux\Unix Devices-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="1915479807410986950">
+                                    <GROUP ID="5669575035240259851" NAME="Exempt-Approved Linux/Unix"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5834222495980564" NAME="Port 22 Available but NOT Managed via SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="UNAUTH_GUEST"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Port 22 Available but NOT Managed via SSH-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8999576013476274743">
+                                    <VALUE FROM="22/TCP" TO="22/TCP"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6582796668622315180;name:Unmanaged Linux/Unix Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6803141057927166821" NAME="Unknown Linux\Unix Systems" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="UNAUTH_GUEST"/>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6582796668622315180;name:Unmanaged Linux/Unix Devices"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

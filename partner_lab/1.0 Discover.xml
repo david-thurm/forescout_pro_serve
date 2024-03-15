@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="8284218270274226350" NAME="1.0 Discover">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-7215331751342986715" NAME="IP / MAC Tracking" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RESERVED>
+                    <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                </RESERVED>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6415454602845222784" NAME="Only MAC Address Discovered" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Only MAC Address Discovered-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac" LABEL="MAC Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2832644642396239249" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="access_ip" INNER_NOT="true" LABEL="Access IP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-5390713677218947859" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8137811732620442485" NAME="Only IP Address Discovered" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Only IP Address Discovered-->
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac" INNER_NOT="true" LABEL="MAC Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="6226120358263200589" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="access_ip" LABEL="Access IP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-931379176292744926" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="102727728223957545" NAME="MAC and IP Discovered" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-5147601391447735584" NAME="SNMP Link Trap" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6599324203868824437" NAME="SNMP Link Trap Received" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SNMP Link Trap Received-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="trap_received" LABEL="Trap Received" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="4257176917137063140" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-3701132526750840144" OPTIONS_DIGEST="1400a2169f8ce9a9e80526c8fa9d3b52">
+                                    <OPT VALUE="up"/>
+                                    <OPT VALUE="down"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4170252832515298765" NAME="No SNMP Link Trap" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-2492649157093088701" NAME="DNS Seen" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3930770751833273465" NAME="DNS Seen" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: DNS Seen-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dnsniff_event" LABEL="DNS Event" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-7224053166519055500" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400"/>
+                                <FILTER COMP_FIELD_NAME="dnsniff_event" FILTER_ID="-5682597405452530355">
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="qr" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="server" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="address" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="plain" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="name" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="tag" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                    <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="type" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </SUB_FILTER>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1591600974164952656" NAME="No DNS Seen" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-1692239231661002581" NAME="Traffic Visibility Audit" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3930190296670049204" NAME="Raw Traffic Data Seen" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Raw Traffic Data Seen-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3232365728376576100" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1501618686"/>
+                                    <FILTER FILTER_ID="5948076755607253105">
+                                        <SESSION FIELD_NAME="client_session" PORTS_ALL="true" PORTS_RANGE="">
+                                            <IP_RANGES>
+                                                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                            </IP_RANGES>
+                                        </SESSION>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="server_session" LABEL="Sessions as Server" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-1350347089786354345" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1501618776"/>
+                                    <FILTER FILTER_ID="-3492969634937486523">
+                                        <SESSION FIELD_NAME="server_session" PORTS_ALL="true" PORTS_RANGE="">
+                                            <IP_RANGES>
+                                                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                            </IP_RANGES>
+                                        </SESSION>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6055734025684289200" NAME="NETFLOW Traffic Data Seen" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: NETFLOW Traffic Data Seen-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="netflow_client_session" LABEL="NetFlow Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2294783989185901939" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1501618838"/>
+                                    <FILTER FILTER_ID="5402050990620657373">
+                                        <SESSION FIELD_NAME="netflow_client_session" PORTS_ALL="true" PORTS_RANGE="">
+                                            <IP_RANGES>
+                                                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                            </IP_RANGES>
+                                        </SESSION>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="netflow_server_session" LABEL="NetFlow Sessions as Server" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-403534676509095940" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1501618867"/>
+                                    <FILTER FILTER_ID="-5083315245197645549">
+                                        <SESSION FIELD_NAME="netflow_server_session" PORTS_ALL="true" PORTS_RANGE="">
+                                            <IP_RANGES>
+                                                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                            </IP_RANGES>
+                                        </SESSION>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4009208695518402132" NAME="No Traffic Data" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-1668617386318616607" NAME="(Active Interogation Enabled)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="60000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RESERVED>
+                    <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                </RESERVED>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8952989755202327254" NAME="Active OK" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Active OK-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="312099617733576861" TYPE="contains">
+                                        <VALUE VALUE2="Lab-Kit"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="classifier_db_type" LABEL="Classifier DB Type" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-2018594513814350535" TYPE="contains">
+                                        <VALUE VALUE2="medical"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="classifier_db_type" LABEL="Classifier DB Type" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7013491835737552750" TYPE="contains">
+                                        <VALUE VALUE2="camera"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="classifier_db_type" LABEL="Classifier DB Type" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1177138107669459441" TYPE="contains">
+                                        <VALUE VALUE2="wannac"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="4201571591743932747">
+                                        <SEGMENT ID="4464120777281783731" NAME="AWS - Oregon">
+                                            <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                                        </SEGMENT>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7468460174368389540" TYPE="contains">
+                                        <VALUE VALUE2="66-DC"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:2239937719587381431;name:0.0 Active Probing - OK"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7388923609323420136" NAME="Stay Passive" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6287819698748190272" NAME="(New Devices On Network)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="3600000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: (New Devices On Network)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="adm" LABEL="Admission" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-8607520753532642531" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="14400"/>
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="4390612369264962040" OPTIONS_DIGEST="a81b7c044ffb0ad351e30366314d66c1">
+                            <OPT VALUE="new"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4609043277816966327" NAME="Virtual" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Virtual-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_id" LABEL="EC2 Instance ID" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6708012425942834531" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_subscription_id" LABEL="Azure Subscription ID" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-6064361072342086301" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_guest_os" LABEL="Virtual Machine Guest OS" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="8762006826967037308" OPTIONS_DIGEST="b6caec176f3bf4e4d4be2fe58e10299f">
+                                        <OPT VALUE="darwin11_64Guest"/>
+                                        <OPT VALUE="solaris10Guest"/>
+                                        <OPT VALUE="mandriva64Guest"/>
+                                        <OPT VALUE="vmwarePhoton64Guest"/>
+                                        <OPT VALUE="windows9Server64Guest"/>
+                                        <OPT VALUE="vmkernel6Guest"/>
+                                        <OPT VALUE="asianux5_64Guest"/>
+                                        <OPT VALUE="darwin14_64Guest"/>
+                                        <OPT VALUE="win31Guest"/>
+                                        <OPT VALUE="winMeGuest"/>
+                                        <OPT VALUE="windowsHyperVGuest"/>
+                                        <OPT VALUE="suseGuest"/>
+                                        <OPT VALUE="debian4Guest"/>
+                                        <OPT VALUE="opensuseGuest"/>
+                                        <OPT VALUE="other24xLinuxGuest"/>
+                                        <OPT VALUE="asianux4Guest"/>
+                                        <OPT VALUE="rhel2Guest"/>
+                                        <OPT VALUE="other24xLinux64Guest"/>
+                                        <OPT VALUE="other26xLinuxGuest"/>
+                                        <OPT VALUE="debian9_64Guest"/>
+                                        <OPT VALUE="debian6_64Guest"/>
+                                        <OPT VALUE="ubuntuGuest"/>
+                                        <OPT VALUE="darwinGuest"/>
+                                        <OPT VALUE="rhel4Guest"/>
+                                        <OPT VALUE="windows7_64Guest"/>
+                                        <OPT VALUE="win2000ProGuest"/>
+                                        <OPT VALUE="debian6Guest"/>
+                                        <OPT VALUE="eComStation2Guest"/>
+                                        <OPT VALUE="rhel6Guest"/>
+                                        <OPT VALUE="centosGuest"/>
+                                        <OPT VALUE="otherGuest"/>
+                                        <OPT VALUE="unixWare7Guest"/>
+                                        <OPT VALUE="redhatGuest"/>
+                                        <OPT VALUE="debian8Guest"/>
+                                        <OPT VALUE="fedora64Guest"/>
+                                        <OPT VALUE="windows8Guest"/>
+                                        <OPT VALUE="debian4_64Guest"/>
+                                        <OPT VALUE="fedoraGuest"/>
+                                        <OPT VALUE="winLonghornGuest"/>
+                                        <OPT VALUE="debian7_64Guest"/>
+                                        <OPT VALUE="ubuntu64Guest"/>
+                                        <OPT VALUE="turboLinuxGuest"/>
+                                        <OPT VALUE="otherLinuxGuest"/>
+                                        <OPT VALUE="genericLinuxGuest"/>
+                                        <OPT VALUE="debian10Guest"/>
+                                        <OPT VALUE="eComStationGuest"/>
+                                        <OPT VALUE="winNetDatacenter64Guest"/>
+                                        <OPT VALUE="freebsdGuest"/>
+                                        <OPT VALUE="oesGuest"/>
+                                        <OPT VALUE="solaris11_64Guest"/>
+                                        <OPT VALUE="suse64Guest"/>
+                                        <OPT VALUE="os2Guest"/>
+                                        <OPT VALUE="oracleLinuxGuest"/>
+                                        <OPT VALUE="sjdsGuest"/>
+                                        <OPT VALUE="rhel3_64Guest"/>
+                                        <OPT VALUE="windows8_64Guest"/>
+                                        <OPT VALUE="rhel6_64Guest"/>
+                                        <OPT VALUE="darwin16_64Guest"/>
+                                        <OPT VALUE="darwin13_64Guest"/>
+                                        <OPT VALUE="winNetStandardGuest"/>
+                                        <OPT VALUE="darwin10_64Guest"/>
+                                        <OPT VALUE="other3xLinux64Guest"/>
+                                        <OPT VALUE="winNetEnterprise64Guest"/>
+                                        <OPT VALUE="centos7Guest"/>
+                                        <OPT VALUE="centos6_64Guest"/>
+                                        <OPT VALUE="oracleLinux6_64Guest"/>
+                                        <OPT VALUE="centos6Guest"/>
+                                        <OPT VALUE="sles10_64Guest"/>
+                                        <OPT VALUE="slesGuest"/>
+                                        <OPT VALUE="coreos64Guest"/>
+                                        <OPT VALUE="winNetDatacenterGuest"/>
+                                        <OPT VALUE="dosGuest"/>
+                                        <OPT VALUE="rhel5_64Guest"/>
+                                        <OPT VALUE="vmkernel5Guest"/>
+                                        <OPT VALUE="winNetWebGuest"/>
+                                        <OPT VALUE="debian5Guest"/>
+                                        <OPT VALUE="sles11_64Guest"/>
+                                        <OPT VALUE="winXPHomeGuest"/>
+                                        <OPT VALUE="asianux3Guest"/>
+                                        <OPT VALUE="other3xLinuxGuest"/>
+                                        <OPT VALUE="debian10_64Guest"/>
+                                        <OPT VALUE="rhel3Guest"/>
+                                        <OPT VALUE="windows7Server64Guest"/>
+                                        <OPT VALUE="mandrakeGuest"/>
+                                        <OPT VALUE="oracleLinux7_64Guest"/>
+                                        <OPT VALUE="vmkernel65Guest"/>
+                                        <OPT VALUE="asianux3_64Guest"/>
+                                        <OPT VALUE="opensuse64Guest"/>
+                                        <OPT VALUE="debian8_64Guest"/>
+                                        <OPT VALUE="debian5_64Guest"/>
+                                        <OPT VALUE="winLonghorn64Guest"/>
+                                        <OPT VALUE="freebsd64Guest"/>
+                                        <OPT VALUE="centos7_64Guest"/>
+                                        <OPT VALUE="solaris10_64Guest"/>
+                                        <OPT VALUE="rhel5Guest"/>
+                                        <OPT VALUE="sles12Guest"/>
+                                        <OPT VALUE="asianux7_64Guest"/>
+                                        <OPT VALUE="darwin12_64Guest"/>
+                                        <OPT VALUE="debian7Guest"/>
+                                        <OPT VALUE="winXPProGuest"/>
+                                        <OPT VALUE="windows7Guest"/>
+                                        <OPT VALUE="windows9Guest"/>
+                                        <OPT VALUE="winNetEnterpriseGuest"/>
+                                        <OPT VALUE="asianux4_64Guest"/>
+                                        <OPT VALUE="debian9Guest"/>
+                                        <OPT VALUE="otherGuest64"/>
+                                        <OPT VALUE="rhel7Guest"/>
+                                        <OPT VALUE="openServer6Guest"/>
+                                        <OPT VALUE="solaris9Guest"/>
+                                        <OPT VALUE="darwin15_64Guest"/>
+                                        <OPT VALUE="sles12_64Guest"/>
+                                        <OPT VALUE="win98Guest"/>
+                                        <OPT VALUE="openServer5Guest"/>
+                                        <OPT VALUE="solaris7Guest"/>
+                                        <OPT VALUE="otherLinux64Guest"/>
+                                        <OPT VALUE="other26xLinux64Guest"/>
+                                        <OPT VALUE="win95Guest"/>
+                                        <OPT VALUE="netware5Guest"/>
+                                        <OPT VALUE="netware4Guest"/>
+                                        <OPT VALUE="winNetStandard64Guest"/>
+                                        <OPT VALUE="centos64Guest"/>
+                                        <OPT VALUE="solaris8Guest"/>
+                                        <OPT VALUE="winXPPro64Guest"/>
+                                        <OPT VALUE="turboLinux64Guest"/>
+                                        <OPT VALUE="win2000ServGuest"/>
+                                        <OPT VALUE="winVista64Guest"/>
+                                        <OPT VALUE="sles10Guest"/>
+                                        <OPT VALUE="sles64Guest"/>
+                                        <OPT VALUE="sles11Guest"/>
+                                        <OPT VALUE="oracleLinux7Guest"/>
+                                        <OPT VALUE="winNetBusinessGuest"/>
+                                        <OPT VALUE="windows8Server64Guest"/>
+                                        <OPT VALUE="windows9_64Guest"/>
+                                        <OPT VALUE="solaris6Guest"/>
+                                        <OPT VALUE="rhel4_64Guest"/>
+                                        <OPT VALUE="win2000AdvServGuest"/>
+                                        <OPT VALUE="rhel7_64Guest"/>
+                                        <OPT VALUE="mandrivaGuest"/>
+                                        <OPT VALUE="darwin11Guest"/>
+                                        <OPT VALUE="vmkernelGuest"/>
+                                        <OPT VALUE="darwin10Guest"/>
+                                        <OPT VALUE="darwin64Guest"/>
+                                        <OPT VALUE="nld9Guest"/>
+                                        <OPT VALUE="oracleLinux6Guest"/>
+                                        <OPT VALUE="winNTGuest"/>
+                                        <OPT VALUE="winVistaGuest"/>
+                                        <OPT VALUE="oracleLinux64Guest"/>
+                                        <OPT VALUE="netware6Guest"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2768621743093648077" NAME="VPN" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: VPN-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vpn_ip" LABEL="VPN IP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7013751226418076776" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1900150389342187214" NAME="Wireless" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Wireless-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="wifi_ssid" LABEL="WLAN SSID" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-4987046732618403633" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="to" VALUE="modifyme@demofs.com"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected  event. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;&#10;"/>
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {ip}"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4741016681602912390" NAME="Wired" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Wired-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2472191199223971748" TYPE="any">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="to" VALUE="modifyme@demofs.com"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected  event. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;&#10;"/>
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {ip}"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="3600" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3509463287516898485" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="true" NAME="sendmail">
+                            <PARAM NAME="to" VALUE="modifyme@demofs.com"/>
+                            <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected  event. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;&#10;"/>
+                            <PARAM NAME="signature" VALUE="default"/>
+                            <PARAM NAME="subject" VALUE="CounterACT: event at {ip}"/>
+                            <PARAM NAME="aggregate" VALUE="false"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7481683960702161532" NAME="SNMP MAC Trap" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8845808529574706757" NAME="SNMP MAC Trap Received" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SNMP MAC Trap Received-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="trap_received" LABEL="Trap Received" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="7744971956852494136" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400"/>
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="7955395717610772831" OPTIONS_DIGEST="1400a2169f8ce9a9e80526c8fa9d3b52">
+                                    <OPT VALUE="mac_learned"/>
+                                    <OPT VALUE="wireless_address_removed"/>
+                                    <OPT VALUE="wireless_address_learned"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7132217681181244532" NAME="No SNMP MAC Trap Received" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="9026523073573473245" NAME="DHCP Seen" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1533095559675872413" NAME="DHCP Request Fingerprint Seen" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: DHCP Request Fingerprint Seen-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-6199727391121797170" TYPE="contains">
+                                    <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2793924359111093611" NAME="No DHCP Request Fingerprint" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="9183630893149688495" NAME="(Discover Devices Passively)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="60000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <RESERVED>
+                    <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                </RESERVED>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8634639378131754328" NAME="Passive Learning By Default" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Passive Learning By Default-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7668824576118597496">
+                                        <GROUP ID="2239937719587381431" NAME="0.0 Active Probing - OK"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:-2;name:Properties - Passive Learning"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Delayed" TIMEPERIOD="30 SECOND"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7502542494781834703" NAME="Active Learning Endpoints" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

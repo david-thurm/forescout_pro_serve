@@ -1,0 +1,1637 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="4445322278549725449" NAME="3.5 IoT">
+    <ENC VALUE="SWQn3jH+5Vw=~lFHAx4Yaxw0NkJEo85LswPGpc7A="/>
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-7604603620175974760" META_TYPE="COMPLY" NAME="SSH Credential Vuln" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="864000000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: SSH Credential Vuln-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="5669665949200350000" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security/Surveillance/IP Camera"/>
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1862758376304600603" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Networking/Router or Switch"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="392805716983116197" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Accessory/Printer"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's port is not open for this protocol." ID="-8166790952804688457" NAME="Port Not Open - SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Port Not Open - SSH-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" INNER_NOT="true" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="7668731277024814810">
+                                        <VALUE FROM="22/TCP" TO="22/TCP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are known to CounterACT as the default credentials for this device using this protocol." ID="5556068325857993790" NAME="Factory Default Credentials - SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Factory Default Credentials - SSH-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.3b8b19903f3d3ca0a1e07986d05d5ea8" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Factory Default, Communication Protocol:SSH" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.3b8b19903f3d3ca0a1e07986d05d5ea8">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Factory Default"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SSH"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="4783129072782454811" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:6429767898225885956;name:Factory Default Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Factory Default Credentials SSH"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are included in the custom credential list for this protocol in CounterACT Options &gt; IoT Posture Assessment Engine." ID="8742862424572611232" NAME="Custom Credentials - SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Custom Credentials - SSH-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.f7f2960079a8365234d69238aca27ae3" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Custom List, Communication Protocol:SSH" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.f7f2960079a8365234d69238aca27ae3">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Custom List"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SSH"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-5104422029513008028" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4313553472429431718;name:Custom Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Custom Credentials SSH"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are known to CounterACT as commonly used credentials that are likely to be compromised during a brute-force attack using this protocol." ID="4195088945137254382" NAME="Commonly Used Credentials - SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Commonly Used Credentials - SSH-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.e132298201eeb9bb8c9daf6e7adfe560" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Commonly Used, Communication Protocol:SSH" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.e132298201eeb9bb8c9daf6e7adfe560">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Commonly Used"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SSH"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-8930370522509849430" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:535399813186959720;name:Commonly Used Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials using this protocol are not known to CounterACT." ID="-5781463157988361962" NAME="No Known Credential - SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-7154234577172519155" META_TYPE="COMPLY" NAME="cURL Axis IP Camera Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: cURL Axis IP Camera Clarification-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="2618434172122834267" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security/Surveillance/IP Camera"/>
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="7708215196653121008" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security"/>
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5767636016735950852" NAME="Port Not Open OR Active Inspection Blocked" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Port Not Open OR Active Inspection Blocked-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" INNER_NOT="true" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2233780115893848412">
+                                        <VALUE FROM="80/TCP" TO="80/TCP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3458290401366048361" NAME="Current Admin Credential In Use" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Current Admin Credential In Use-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.62566af1164bb14bb9ece1c1bd9c26f2" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:admin, URL:http://{ip}/view/viewer_index.shtml, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="goodies_curl" NAME="goodies_curl.62566af1164bb14bb9ece1c1bd9c26f2">
+                                    <PARAM NAME="password" TYPE="encrypted" VALUE="TjwSxE7d6q8=~EbkNfFK2cSaMcPmGKrfU4g=="/>
+                                    <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                    <PARAM NAME="user" TYPE="string" VALUE="admin"/>
+                                    <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/view/viewer_index.shtml"/>
+                                    <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3897162003154903652" TYPE="contains">
+                                    <VALUE VALUE2="Live view"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7434266763134676671" NAME="Previous Credential In Use" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Previous Credential In Use-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.1b938bfc0d42f7420bedb5678971cfea" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:admin, URL:http://{ip}/view/viewer_index.shtml, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="goodies_curl" NAME="goodies_curl.1b938bfc0d42f7420bedb5678971cfea">
+                                    <PARAM NAME="password" TYPE="encrypted" VALUE="f/eO+wUZizI=~Cl/NFX+JxG2ze7gZ4knZ2A=="/>
+                                    <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                    <PARAM NAME="user" TYPE="string" VALUE="admin"/>
+                                    <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/view/viewer_index.shtml"/>
+                                    <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5429021155362913896" TYPE="contains">
+                                    <VALUE VALUE2="Live view"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="21674220545872219" NAME="Incorrect Credential In Use - Possible Rogue Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Incorrect Credential In Use - Possible Rogue Device-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_curl.62566af1164bb14bb9ece1c1bd9c26f2" LABEL="URL Content Password:*******, Filter:*UNUSED*, Ignore failed script result:false, Kerberos Domain:*UNUSED*, Scrub HTML:true, User:admin, URL:http://{ip}/view/viewer_index.shtml, Extra curl options:--max-time 5 --negotiate --anyauth -L -k" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="goodies_curl" NAME="goodies_curl.62566af1164bb14bb9ece1c1bd9c26f2">
+                                    <PARAM NAME="password" TYPE="encrypted" VALUE="ypEZJvzLaAs=~p9lQN2c8SEgYFbvTXPxPHw=="/>
+                                    <PARAM NAME="awk" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="krb" TYPE="string" VALUE="*UNUSED*"/>
+                                    <PARAM NAME="scrub" TYPE="string" VALUE="true"/>
+                                    <PARAM NAME="user" TYPE="string" VALUE="admin"/>
+                                    <PARAM NAME="url" TYPE="string" VALUE="http://{ip}/view/viewer_index.shtml"/>
+                                    <PARAM NAME="extra_param" TYPE="string" VALUE="--max-time 5 --negotiate --anyauth -L -k"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5183215991900244794" TYPE="contains">
+                                    <VALUE VALUE2="401 Unauthorized"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2653612678525920130" NAME="No Known Credential" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-416356077399433090" NAME="Ripple20 Detection" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <FREE_ATTRIBUTES>
+                    <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="INITIALIZED"/>
+                    <FREE_ATTRIBUTE NAME="widgetID" VALUE="266ec5d2-63c1-8144-0837-abd5a39fd2dd"/>
+                    <FREE_ATTRIBUTE NAME="widgetPredefinedPosition" VALUE="1"/>
+                    <FREE_ATTRIBUTE NAME="widgetType" VALUE="PIE"/>
+                </FREE_ATTRIBUTES>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-4857410425954064" NAME="Vulnerable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Vulnerable-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="5190047464297428081">
+                                    <GROUP ID="3685010990910910752" NAME="Treck - Vulnerable"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2511024387142517749;name:Treck - Potentially Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="FROM_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:;TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-8221575989902957726" NAME="Potentially Vulnerable (Very High certainty)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Potentially Vulnerable (Very High certainty)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcpv6_req_fingerprint" LABEL="DHCPv6 Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-676226690573060584" TYPE="startswith">
+                                                <VALUE VALUE2="13,12,23,24"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1555376146685999153" TYPE="startswith">
+                                                <VALUE VALUE2="6,3,1,15,66,67,13,44"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_icmp_ms_sync.py" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c">
+                                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_icmp_ms_sync.py"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-7493926142404598022" TYPE="contains">
+                                                <VALUE VALUE2="MS_SYNC_RSP"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.597cc823dbecfb72fe5ccf89727ac7ad" LABEL="Service Banner Service (example: 80/TCP):21/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.597cc823dbecfb72fe5ccf89727ac7ad">
+                                                <PARAM NAME="port" TYPE="port" VALUE="21/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1675692036231467812" TYPE="contains">
+                                                <VALUE VALUE2="Treck"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.c7142481e60e6c16d2e40ef6dc9fe751" LABEL="Service Banner Service (example: 80/TCP):23/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.c7142481e60e6c16d2e40ef6dc9fe751">
+                                                <PARAM NAME="port" TYPE="port" VALUE="23/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1784727220232433781" TYPE="contains">
+                                                <VALUE VALUE2="Treck"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FILTER FILTER_ID="-998305443051156255" MATCH_SUBTREE="false">
+                                                        <PATH VALUE="HP/HP Integrated Lights Out"/>
+                                                        <PATH VALUE="HP"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                    <FILTER FILTER_ID="-8698866938514631373" MATCH_SUBTREE="true">
+                                                        <PATH VALUE="Information Technology/Accessory/Out Of Band Controller"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FILTER FILTER_ID="-7528668342182173885" MATCH_SUBTREE="false">
+                                                        <PATH VALUE="American Power Conversion/APC Network Management Card"/>
+                                                        <PATH VALUE="American Power Conversion/APC Uninterruptible Power Supply"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                    <FILTER FILTER_ID="-1023873780326944121" MATCH_SUBTREE="true">
+                                                        <PATH VALUE="Operational Technology/Facilities/Building Automation/Uninterruptible Power Supply"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="123329470766531222" TYPE="regexp">
+                                                <VALUE VALUE2="3Com 3016 router|3Com Baseline Switch 2250-SFP Plus|3M Filtrete 3M-50 thermostat|Alcatel SpeedTouch Pro ADSL Modem|APC power distribution unit \(AOS 2.7.0\)|APC AP7851 power distribution unit \(AOS 2.7.0\)|APC AP7930 power distribution unit \(AOS 3.3.4\)|APC AP9619 Network Management Card \(AOS 3.3.1 - 3.6.1\)|APC Network Management Card \(AOS 3.3.4 - 3.5.5\)|APC Smart-UPS \(AOS 3.3.4\)|APC Silicon DP320E UPS|APC Smart-UPS RT 8000 RM XL UPS|APC AP9319 Environmental Monitoring Unit or Smart-UPS 1000 RM UPS|Asus RX4031 or TRENDnet TW100-S4W1CA router|BECK IPC@CHIP|Belkin F1DR101N KVM console|Blue Coat SG200 proxy server \(SGOS 4.2.2.8 - 4.2.6.1\)|Bosch Divar security system|Brother DCP-7070DW printer|Brother DCP-8065D printer|Brother HL-2270DW printer|Brother HL-2270DW printer|Brother HL-495CW printer|Brother HL-5250DN or DCP-8065D printer|Brother HL-5250DN printer|Brother HL-5250DN printer|Brother HL-5370DW or MFC-7840W printer|Brother HL-5380dn printer|Brother MFC-8460N or HL-2250DN or HP LaserJet P2015, 2600n, or 3055 printer; or Sony SNC-Z20N network camera|Brother MFC-J615W, MFC-9325CW, or HL-5370DW printer|Brother MFC-J6510DW printer|Calix C7 switch \(R5.0\)|Linksys WAP11 WAP; or Cameo SOHO-IS104A or SMC SMCWBR14-G or SMC2804WBR broadband router|Check Point NGX R65 firewall \(IPSO 4.2\)|Check Point VPN-1 firewall \(IPSO 4.1\)|Cisco C7200 router \(IOS 15\)|Comtrend CT-800 VoIP adapter|D-Link DIR-100 DSL router or Motorola Canopy cluster management module 2.2|D-Link DES-3010G switch|D-Link DGS-1510 switch|D-Link DGS-3324SR, DSG-3612G, or DES-3828 switch|D-Link DXS-3326GSR switch|D-Link DXS-3600 switch|Dell EqualLogic PeerStorage PS3000 or PS4000 NAS device|Dell PowerConnect 3024 switch|Dell EqualLogic PeerStorage PS100E NAS device \(NetBSD 1.6.2\)|Digi NET+OS 7|Digitus DN-13008 or Sitecom print server|Enterasys XSR firewall|Enterasys XP-8000 switch|Enterasys SSR router or XP switch"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8426811063289615613" TYPE="regexp">
+                                                <VALUE VALUE2="Force10 S50N switch \(FTOS 1.0\)|Fujitsu Siemens ReliantUNIX-N \(SINIX-N\) on RM400|Green Hills Probe hardware debugger|HP DeskJet 6127 or 6840, Officejet 7400, Officejet Pro K550, or Photosmart 2710 or 8400 printer|HP Deskjet 6940 printer|HP LaserJet \(1020-, 2010-, 2600-, 2800-, 3050-, or 3390-series\), or Brother \(DCP-375CW, HL-5250DN, HL-22700W, MFC-7840N, MFC-8860DN, or MFC-9970CDW\) printer; or Sony SNC-RZ30N network camera|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2605dn printer|HP LaserJet 2840 printer|HP Laserjet CP1515n printer|HP LaserJet CP1518ni printer|HP LaserJet M2727nf or P1505n printer|HP LaserJet P2015 printer|HP Officejet J4680 printer|HP Officejet J6480 printer|HP Photosmart 8750 printer|HP Photosmart C4380 printer|HP Photosmart C4500 or C7280, or Officejet J6450 printer|HP printer \(M1120n, M1522n, CP1515n, CP2025dn, or CP2525dn\)|HP printer: Photosmart 4300-, 6500-, 7200-, or 8100-series, or Officejet 6000-series|HP 1905 switch|HP 1905 switch|HP iLO 3 or iLO 4 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface or Hay Systems HSL 2.75G Femtocell|HP iLO 3 or iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO remote management interface|HP NonStop OS H06.19.00|HP OpenVMS 7.3 - 8.3|IBM AIX 4.3|IBM AIX 5.2|IBM AIX 5.3|IBM AIX 5.3|Lanier LD150 \(Ricoh MP 5001\) printer"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2788023812713785068" TYPE="regexp">
+                                                <VALUE VALUE2="NetBSD 1.4.2 - 1.5.2; Lanier LS232c, NRG DSc428, Ricoh Aficio 2020, Ricoh NRG MP 161, or Savin 8055 printer; or Panasonic Network Camera \(BB-HCM331, BB-HCM381, BCL-30A, BL-C1CE, or BL-C10CE\)|Microware OS-9/PowerPC 4.8|Motorola QIP2500 set top box|Motorola QIP2500-3 set top box|Motorola QIP6416-2 set top box|Nashuatec Aficio MP C3000 printer|NEC Univerge SV8300 PBX|NetBSD 2.1.0_STABLE or Ricoh C720S, 1107EX, MP 2550, or MP 7001 printer|Netcomm V300 VoIP adapter|Nokia IP330 firewall appliance \(IPSO 4.1 - 4.2\)|Nokia IP650 firewall \(IPSO 4.0 and CheckPoint Firewall-1/VPN-1 software\)|Nortel DMS-10 telephony switch|Nortel Ethernet Routing Switch 8010 or 8606|NRG MP C4500 printer|Panasonic DP-8045 printer|Panasonic BB-HCM511A or BL-C140A Network Camera|Panasonic BL-C140 Network Camera|Panasonic BL-C140 Network Camera|Philips DTERM VoIP phone|Redback Networks SmartEdge router \(SmartEdge OS 5.0\)|Redback Networks SmartEdge 600 router \(SmartEdge OS\)|Ricoh Aficio 1022 copier|Ricoh Aficio 1060 or 2035e printer|Ricoh Aficio 1224C or AP400N printer|Ricoh Aficio MP C2550 printer|Ricoh Aficio MP C6000 or GX3050N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP C420DN printer|RISCOS Ltd RISC OS 4.39|Sequent DYNIX \(BSD-based Unix\)|SGI IRIX 5.3|IRIX64 IRIS 6.5|SGI IRIX 6.5|SGI IRIX 6.5|SGI IRIX 6.5.15m|SGI IRIX 6.5.22m - 6.5.30f|SGI IRIX 6.5.30|SGI IRIX 6.5.6m|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5.15m|SGI IRIX64 6.5.19f|SGI IRIX64 6.5.22f|Sony PSP game console \(modified, running Custom Firmware 3.90 - 5.50\)|UTStarcom WA3002G4 router|Zebra QLn420 mobile printer|Zelax MM-201R-UNI router|Zyfer GSync 391 clock"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" INNER_NOT="true" LABEL="DHCP Vendor Class (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-8594488419132479841" TYPE="equals">
+                                            <VALUE VALUE2="MSFT 5.0"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" INNER_NOT="true" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-3297714029632920746" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" INNER_NOT="true" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3223493788549587695" TYPE="regexp">
+                                                    <VALUE VALUE2=".*,.*"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3446971168254261910" TYPE="regexp">
+                                                <VALUE VALUE2="\s*|6,3,1,15,66,67,13,44(,.*)?"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" INNER_NOT="true" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="6451934208542597079" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Apple"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="5932059189404865265" MATCH_SUBTREE="true">
+                                                <PATH VALUE="Toshiba"/>
+                                                <PATH VALUE="Rockwell Automation"/>
+                                                <PATH VALUE="HP/HP Printer"/>
+                                                <PATH VALUE="Zhone Technologies"/>
+                                                <PATH VALUE="Cradlepoint"/>
+                                                <PATH VALUE="Intel"/>
+                                                <PATH VALUE="Digiboard"/>
+                                                <PATH VALUE="Digi International"/>
+                                                <PATH VALUE="T &amp; D"/>
+                                                <PATH VALUE="Canon"/>
+                                                <PATH VALUE="Brother"/>
+                                                <PATH VALUE="B Braun Melsungen"/>
+                                                <PATH VALUE="Panasonic"/>
+                                                <PATH VALUE="American Power Conversion"/>
+                                                <PATH VALUE="Yamaha"/>
+                                                <PATH VALUE="Bosch"/>
+                                                <PATH VALUE="Sony"/>
+                                                <PATH VALUE="Fujitsu Technology"/>
+                                                <PATH VALUE="Baxter Healthcare"/>
+                                                <PATH VALUE="Denso"/>
+                                                <PATH VALUE="Eaton"/>
+                                                <PATH VALUE="NEC"/>
+                                                <PATH VALUE="Ricoh"/>
+                                                <PATH VALUE="Murata Machinery"/>
+                                                <PATH VALUE="Samsung"/>
+                                                <PATH VALUE="Yaskawa"/>
+                                                <PATH VALUE="Schneider Electric"/>
+                                                <PATH VALUE="Baxter/Baxter Healthcare"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="8915595003523859256" MATCH_SUBTREE="false">
+                                                <PATH VALUE="HPE"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_vendor_string" LABEL="NIC Vendor Value" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1784935647727644124" TYPE="regexp">
+                                                <VALUE VALUE2=".*(caterpillar|sandia national lab|pitney bowes|Teltonika|Pepwave|GREEN HILLS|CARESTREAM HEALTH|TERADICI CORPORATION).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2511024387142517749;name:Treck - Potentially Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="FROM_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:;TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="1326954366180522270" NAME="Potentially Vulnerable (High certainty)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Potentially Vulnerable (High certainty)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcpv6_req_fingerprint" LABEL="DHCPv6 Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-676226690573060584" TYPE="startswith">
+                                                <VALUE VALUE2="13,12,23,24"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1555376146685999153" TYPE="startswith">
+                                                <VALUE VALUE2="6,3,1,15,66,67,13,44"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_icmp_ms_sync.py" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c">
+                                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_icmp_ms_sync.py"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-7493926142404598022" TYPE="contains">
+                                                <VALUE VALUE2="MS_SYNC_RSP"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.597cc823dbecfb72fe5ccf89727ac7ad" LABEL="Service Banner Service (example: 80/TCP):21/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.597cc823dbecfb72fe5ccf89727ac7ad">
+                                                <PARAM NAME="port" TYPE="port" VALUE="21/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8445786915415963999" TYPE="contains">
+                                                <VALUE VALUE2="Treck"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="banner.c7142481e60e6c16d2e40ef6dc9fe751" LABEL="Service Banner Service (example: 80/TCP):23/TCP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FIELD METANAME="banner" NAME="banner.c7142481e60e6c16d2e40ef6dc9fe751">
+                                                <PARAM NAME="port" TYPE="port" VALUE="23/TCP"/>
+                                            </FIELD>
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-877959624281084006" TYPE="contains">
+                                                <VALUE VALUE2="Treck"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1469117026826872487" TYPE="regexp">
+                                                <VALUE VALUE2="3Com 3016 router|3Com Baseline Switch 2250-SFP Plus|3M Filtrete 3M-50 thermostat|Alcatel SpeedTouch Pro ADSL Modem|APC power distribution unit \(AOS 2.7.0\)|APC AP7851 power distribution unit \(AOS 2.7.0\)|APC AP7930 power distribution unit \(AOS 3.3.4\)|APC AP9619 Network Management Card \(AOS 3.3.1 - 3.6.1\)|APC Network Management Card \(AOS 3.3.4 - 3.5.5\)|APC Smart-UPS \(AOS 3.3.4\)|APC Silicon DP320E UPS|APC Smart-UPS RT 8000 RM XL UPS|APC AP9319 Environmental Monitoring Unit or Smart-UPS 1000 RM UPS|Asus RX4031 or TRENDnet TW100-S4W1CA router|BECK IPC@CHIP|Belkin F1DR101N KVM console|Blue Coat SG200 proxy server \(SGOS 4.2.2.8 - 4.2.6.1\)|Bosch Divar security system|Brother DCP-7070DW printer|Brother DCP-8065D printer|Brother HL-2270DW printer|Brother HL-2270DW printer|Brother HL-495CW printer|Brother HL-5250DN or DCP-8065D printer|Brother HL-5250DN printer|Brother HL-5250DN printer|Brother HL-5370DW or MFC-7840W printer|Brother HL-5380dn printer|Brother MFC-8460N or HL-2250DN or HP LaserJet P2015, 2600n, or 3055 printer; or Sony SNC-Z20N network camera|Brother MFC-J615W, MFC-9325CW, or HL-5370DW printer|Brother MFC-J6510DW printer|Calix C7 switch \(R5.0\)|Linksys WAP11 WAP; or Cameo SOHO-IS104A or SMC SMCWBR14-G or SMC2804WBR broadband router|Check Point NGX R65 firewall \(IPSO 4.2\)|Check Point VPN-1 firewall \(IPSO 4.1\)|Cisco C7200 router \(IOS 15\)|Comtrend CT-800 VoIP adapter|D-Link DIR-100 DSL router or Motorola Canopy cluster management module 2.2|D-Link DES-3010G switch|D-Link DGS-1510 switch|D-Link DGS-3324SR, DSG-3612G, or DES-3828 switch|D-Link DXS-3326GSR switch|D-Link DXS-3600 switch|Dell EqualLogic PeerStorage PS3000 or PS4000 NAS device|Dell PowerConnect 3024 switch|Dell EqualLogic PeerStorage PS100E NAS device \(NetBSD 1.6.2\)|Digi NET+OS 7|Digitus DN-13008 or Sitecom print server|Enterasys XSR firewall|Enterasys XP-8000 switch|Enterasys SSR router or XP switch"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1940007985406489551" TYPE="regexp">
+                                                <VALUE VALUE2="Force10 S50N switch \(FTOS 1.0\)|Fujitsu Siemens ReliantUNIX-N \(SINIX-N\) on RM400|Green Hills Probe hardware debugger|HP DeskJet 6127 or 6840, Officejet 7400, Officejet Pro K550, or Photosmart 2710 or 8400 printer|HP Deskjet 6940 printer|HP LaserJet \(1020-, 2010-, 2600-, 2800-, 3050-, or 3390-series\), or Brother \(DCP-375CW, HL-5250DN, HL-22700W, MFC-7840N, MFC-8860DN, or MFC-9970CDW\) printer; or Sony SNC-RZ30N network camera|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2605dn printer|HP LaserJet 2840 printer|HP Laserjet CP1515n printer|HP LaserJet CP1518ni printer|HP LaserJet M2727nf or P1505n printer|HP LaserJet P2015 printer|HP Officejet J4680 printer|HP Officejet J6480 printer|HP Photosmart 8750 printer|HP Photosmart C4380 printer|HP Photosmart C4500 or C7280, or Officejet J6450 printer|HP printer \(M1120n, M1522n, CP1515n, CP2025dn, or CP2525dn\)|HP printer: Photosmart 4300-, 6500-, 7200-, or 8100-series, or Officejet 6000-series|HP 1905 switch|HP 1905 switch|HP iLO 3 or iLO 4 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface or Hay Systems HSL 2.75G Femtocell|HP iLO 3 or iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO remote management interface|HP NonStop OS H06.19.00|HP OpenVMS 7.3 - 8.3|IBM AIX 4.3|IBM AIX 5.2|IBM AIX 5.3|IBM AIX 5.3|Lanier LD150 \(Ricoh MP 5001\) printer"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8046060714066649911" TYPE="regexp">
+                                                <VALUE VALUE2="NetBSD 1.4.2 - 1.5.2; Lanier LS232c, NRG DSc428, Ricoh Aficio 2020, Ricoh NRG MP 161, or Savin 8055 printer; or Panasonic Network Camera \(BB-HCM331, BB-HCM381, BCL-30A, BL-C1CE, or BL-C10CE\)|Microware OS-9/PowerPC 4.8|Motorola QIP2500 set top box|Motorola QIP2500-3 set top box|Motorola QIP6416-2 set top box|Nashuatec Aficio MP C3000 printer|NEC Univerge SV8300 PBX|NetBSD 2.1.0_STABLE or Ricoh C720S, 1107EX, MP 2550, or MP 7001 printer|Netcomm V300 VoIP adapter|Nokia IP330 firewall appliance \(IPSO 4.1 - 4.2\)|Nokia IP650 firewall \(IPSO 4.0 and CheckPoint Firewall-1/VPN-1 software\)|Nortel DMS-10 telephony switch|Nortel Ethernet Routing Switch 8010 or 8606|NRG MP C4500 printer|Panasonic DP-8045 printer|Panasonic BB-HCM511A or BL-C140A Network Camera|Panasonic BL-C140 Network Camera|Panasonic BL-C140 Network Camera|Philips DTERM VoIP phone|Redback Networks SmartEdge router \(SmartEdge OS 5.0\)|Redback Networks SmartEdge 600 router \(SmartEdge OS\)|Ricoh Aficio 1022 copier|Ricoh Aficio 1060 or 2035e printer|Ricoh Aficio 1224C or AP400N printer|Ricoh Aficio MP C2550 printer|Ricoh Aficio MP C6000 or GX3050N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP C420DN printer|RISCOS Ltd RISC OS 4.39|Sequent DYNIX \(BSD-based Unix\)|SGI IRIX 5.3|IRIX64 IRIS 6.5|SGI IRIX 6.5|SGI IRIX 6.5|SGI IRIX 6.5.15m|SGI IRIX 6.5.22m - 6.5.30f|SGI IRIX 6.5.30|SGI IRIX 6.5.6m|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5.15m|SGI IRIX64 6.5.19f|SGI IRIX64 6.5.22f|Sony PSP game console \(modified, running Custom Firmware 3.90 - 5.50\)|UTStarcom WA3002G4 router|Zebra QLn420 mobile printer|Zelax MM-201R-UNI router|Zyfer GSync 391 clock"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" INNER_NOT="true" LABEL="DHCP Vendor Class (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1037112922785043895" TYPE="equals">
+                                            <VALUE VALUE2="MSFT 5.0"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" INNER_NOT="true" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-7284459514414330531" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Windows"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" INNER_NOT="true" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="MATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-7375780676980447536" MATCH_SUBTREE="true">
+                                            <PATH VALUE="Apple"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" INNER_NOT="true" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="8744287264472527106" TYPE="regexp">
+                                                    <VALUE VALUE2=".*,.*"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3148347563604591422" TYPE="regexp">
+                                                <VALUE VALUE2="\s*|6,3,1,15,66,67,13,44(,.*)?"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2511024387142517749;name:Treck - Potentially Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="FROM_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:;TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-4258256871262641854" NAME="Potentially Vulnerable (Medium certainty)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Potentially Vulnerable (Medium certainty)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="2" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FILTER FILTER_ID="3639082520372584350" MATCH_SUBTREE="true">
+                                                        <PATH VALUE="Ricoh"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                                    <FILTER FILTER_ID="-1848494708129237410" MATCH_SUBTREE="false">
+                                                        <PATH VALUE="Information Technology/Accessory/Printer"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="6470565114509952454" TYPE="regexp">
+                                                <VALUE VALUE2="(?!Possibly ).*(3Com 3016 router|3Com Baseline Switch 2250-SFP Plus|3M Filtrete 3M-50 thermostat|Alcatel SpeedTouch Pro ADSL Modem|APC power distribution unit \(AOS 2.7.0\)|APC AP7851 power distribution unit \(AOS 2.7.0\)|APC AP7930 power distribution unit \(AOS 3.3.4\)|APC AP9619 Network Management Card \(AOS 3.3.1 - 3.6.1\)|APC Network Management Card \(AOS 3.3.4 - 3.5.5\)|APC Smart-UPS \(AOS 3.3.4\)|APC Silicon DP320E UPS|APC Smart-UPS RT 8000 RM XL UPS|APC AP9319 Environmental Monitoring Unit or Smart-UPS 1000 RM UPS|Asus RX4031 or TRENDnet TW100-S4W1CA router|BECK IPC@CHIP|Belkin F1DR101N KVM console|Blue Coat SG200 proxy server \(SGOS 4.2.2.8 - 4.2.6.1\)|Bosch Divar security system|Brother DCP-7070DW printer|Brother DCP-8065D printer|Brother HL-2270DW printer|Brother HL-2270DW printer|Brother HL-495CW printer|Brother HL-5250DN or DCP-8065D printer|Brother HL-5250DN printer|Brother HL-5250DN printer|Brother HL-5370DW or MFC-7840W printer|Brother HL-5380dn printer|Brother MFC-8460N or HL-2250DN or HP LaserJet P2015, 2600n, or 3055 printer; or Sony SNC-Z20N network camera|Brother MFC-J615W, MFC-9325CW, or HL-5370DW printer|Brother MFC-J6510DW printer|Calix C7 switch \(R5.0\)|Linksys WAP11 WAP; or Cameo SOHO-IS104A or SMC SMCWBR14-G or SMC2804WBR broadband router|Check Point NGX R65 firewall \(IPSO 4.2\)|Check Point VPN-1 firewall \(IPSO 4.1\)|Cisco C7200 router \(IOS 15\)|Comtrend CT-800 VoIP adapter|D-Link DIR-100 DSL router or Motorola Canopy cluster management module 2.2|D-Link DES-3010G switch|D-Link DGS-1510 switch|D-Link DGS-3324SR, DSG-3612G, or DES-3828 switch|D-Link DXS-3326GSR switch|D-Link DXS-3600 switch|Dell EqualLogic PeerStorage PS3000 or PS4000 NAS device|Dell PowerConnect 3024 switch|Dell EqualLogic PeerStorage PS100E NAS device \(NetBSD 1.6.2\)|Digi NET+OS 7|Digitus DN-13008 or Sitecom print server|Enterasys XSR firewall|Enterasys XP-8000 switch|Enterasys SSR router or XP switch).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="5055363756692096544" TYPE="regexp">
+                                                <VALUE VALUE2="(?!Possibly ).*(Force10 S50N switch \(FTOS 1.0\)|Fujitsu Siemens ReliantUNIX-N \(SINIX-N\) on RM400|Green Hills Probe hardware debugger|HP DeskJet 6127 or 6840, Officejet 7400, Officejet Pro K550, or Photosmart 2710 or 8400 printer|HP Deskjet 6940 printer|HP LaserJet \(1020-, 2010-, 2600-, 2800-, 3050-, or 3390-series\), or Brother \(DCP-375CW, HL-5250DN, HL-22700W, MFC-7840N, MFC-8860DN, or MFC-9970CDW\) printer; or Sony SNC-RZ30N network camera|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2605dn printer|HP LaserJet 2840 printer|HP Laserjet CP1515n printer|HP LaserJet CP1518ni printer|HP LaserJet M2727nf or P1505n printer|HP LaserJet P2015 printer|HP Officejet J4680 printer|HP Officejet J6480 printer|HP Photosmart 8750 printer|HP Photosmart C4380 printer|HP Photosmart C4500 or C7280, or Officejet J6450 printer|HP printer \(M1120n, M1522n, CP1515n, CP2025dn, or CP2525dn\)|HP printer: Photosmart 4300-, 6500-, 7200-, or 8100-series, or Officejet 6000-series|HP 1905 switch|HP 1905 switch|HP iLO 3 or iLO 4 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface or Hay Systems HSL 2.75G Femtocell|HP iLO 3 or iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO remote management interface|HP NonStop OS H06.19.00|HP OpenVMS 7.3 - 8.3|IBM AIX 4.3|IBM AIX 5.2|IBM AIX 5.3|IBM AIX 5.3|Lanier LD150 \(Ricoh MP 5001\) printer).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="7417332676077773322" TYPE="regexp">
+                                                <VALUE VALUE2="(?!Possibly ).*(NetBSD 1.4.2 - 1.5.2; Lanier LS232c, NRG DSc428, Ricoh Aficio 2020, Ricoh NRG MP 161, or Savin 8055 printer; or Panasonic Network Camera \(BB-HCM331, BB-HCM381, BCL-30A, BL-C1CE, or BL-C10CE\)|Microware OS-9/PowerPC 4.8|Motorola QIP2500 set top box|Motorola QIP2500-3 set top box|Motorola QIP6416-2 set top box|Nashuatec Aficio MP C3000 printer|NEC Univerge SV8300 PBX|NetBSD 2.1.0_STABLE or Ricoh C720S, 1107EX, MP 2550, or MP 7001 printer|Netcomm V300 VoIP adapter|Nokia IP330 firewall appliance \(IPSO 4.1 - 4.2\)|Nokia IP650 firewall \(IPSO 4.0 and CheckPoint Firewall-1/VPN-1 software\)|Nortel DMS-10 telephony switch|Nortel Ethernet Routing Switch 8010 or 8606|NRG MP C4500 printer|Panasonic DP-8045 printer|Panasonic BB-HCM511A or BL-C140A Network Camera|Panasonic BL-C140 Network Camera|Panasonic BL-C140 Network Camera|Philips DTERM VoIP phone|Redback Networks SmartEdge router \(SmartEdge OS 5.0\)|Redback Networks SmartEdge 600 router \(SmartEdge OS\)|Ricoh Aficio 1022 copier|Ricoh Aficio 1060 or 2035e printer|Ricoh Aficio 1224C or AP400N printer|Ricoh Aficio MP C2550 printer|Ricoh Aficio MP C6000 or GX3050N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP C420DN printer|RISCOS Ltd RISC OS 4.39|Sequent DYNIX \(BSD-based Unix\)|SGI IRIX 5.3|IRIX64 IRIS 6.5|SGI IRIX 6.5|SGI IRIX 6.5|SGI IRIX 6.5.15m|SGI IRIX 6.5.22m - 6.5.30f|SGI IRIX 6.5.30|SGI IRIX 6.5.6m|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5.15m|SGI IRIX64 6.5.19f|SGI IRIX64 6.5.22f|Sony PSP game console \(modified, running Custom Firmware 3.90 - 5.50\)|UTStarcom WA3002G4 router|VxWorks|Zebra QLn420 mobile printer|Zelax MM-201R-UNI router|Zyfer GSync 391 clock).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" INNER_NOT="true" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7004313479880867012" TYPE="regexp">
+                                                    <VALUE VALUE2=".*,.*"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="2225817218376806252" TYPE="regexp">
+                                                <VALUE VALUE2="\s*|6,3,1,15,66,67,13,44(,.*)?"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" INNER_NOT="true" LABEL="DHCP Vendor Class (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-6246718335002871087" TYPE="equals">
+                                            <VALUE VALUE2="MSFT 5.0"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2511024387142517749;name:Treck - Potentially Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="FROM_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:;TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="3682171687069192836" NAME="Potentially Vulnerable (Low certainty)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Potentially Vulnerable (Low certainty)-->
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                        <EXPRESSION EXPR_TYPE="AND">
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_icmp_ms_sync.py" LEFT_PARENTHESIS="2" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                                    <FIELD METANAME="cact_script_result" NAME="cact_script_result.2a1b2d019d0fb891a7c8d7c32d3f8a6c">
+                                                        <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                                        <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_icmp_ms_sync.py"/>
+                                                    </FIELD>
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1084327898810645269" TYPE="regexp">
+                                                        <VALUE VALUE2=".*IP TTL (2[0-9][0-9]).*"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="p0f_sa" LABEL="TCP/IP Syn Ack Fingerprint(Raw)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7120204555888218025" TYPE="regexp">
+                                                        <VALUE VALUE2="[^;]*;4;[56][0-9]+.*"/>
+                                                    </FILTER>
+                                                </CONDITION>
+                                            </EXPRESSION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5428332627538181994" TYPE="regexp">
+                                                <VALUE VALUE2=".*(3Com 3016 router|3Com Baseline Switch 2250-SFP Plus|3M Filtrete 3M-50 thermostat|Alcatel SpeedTouch Pro ADSL Modem|APC power distribution unit \(AOS 2.7.0\)|APC AP7851 power distribution unit \(AOS 2.7.0\)|APC AP7930 power distribution unit \(AOS 3.3.4\)|APC AP9619 Network Management Card \(AOS 3.3.1 - 3.6.1\)|APC Network Management Card \(AOS 3.3.4 - 3.5.5\)|APC Smart-UPS \(AOS 3.3.4\)|APC Silicon DP320E UPS|APC Smart-UPS RT 8000 RM XL UPS|APC AP9319 Environmental Monitoring Unit or Smart-UPS 1000 RM UPS|Asus RX4031 or TRENDnet TW100-S4W1CA router|BECK IPC@CHIP|Belkin F1DR101N KVM console|Blue Coat SG200 proxy server \(SGOS 4.2.2.8 - 4.2.6.1\)|Bosch Divar security system|Brother DCP-7070DW printer|Brother DCP-8065D printer|Brother HL-2270DW printer|Brother HL-2270DW printer|Brother HL-495CW printer|Brother HL-5250DN or DCP-8065D printer|Brother HL-5250DN printer|Brother HL-5250DN printer|Brother HL-5370DW or MFC-7840W printer|Brother HL-5380dn printer|Brother MFC-8460N or HL-2250DN or HP LaserJet P2015, 2600n, or 3055 printer; or Sony SNC-Z20N network camera|Brother MFC-J615W, MFC-9325CW, or HL-5370DW printer|Brother MFC-J6510DW printer|Calix C7 switch \(R5.0\)|Linksys WAP11 WAP; or Cameo SOHO-IS104A or SMC SMCWBR14-G or SMC2804WBR broadband router|Check Point NGX R65 firewall \(IPSO 4.2\)|Check Point VPN-1 firewall \(IPSO 4.1\)|Cisco C7200 router \(IOS 15\)|Comtrend CT-800 VoIP adapter|D-Link DIR-100 DSL router or Motorola Canopy cluster management module 2.2|D-Link DES-3010G switch|D-Link DGS-1510 switch|D-Link DGS-3324SR, DSG-3612G, or DES-3828 switch|D-Link DXS-3326GSR switch|D-Link DXS-3600 switch|Dell EqualLogic PeerStorage PS3000 or PS4000 NAS device|Dell PowerConnect 3024 switch|Dell EqualLogic PeerStorage PS100E NAS device \(NetBSD 1.6.2\)|Digi NET+OS 7|Digitus DN-13008 or Sitecom print server|Enterasys XSR firewall|Enterasys XP-8000 switch|Enterasys SSR router or XP switch).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1692650894444397653" TYPE="regexp">
+                                                <VALUE VALUE2=".*(Force10 S50N switch \(FTOS 1.0\)|Fujitsu Siemens ReliantUNIX-N \(SINIX-N\) on RM400|Green Hills Probe hardware debugger|HP DeskJet 6127 or 6840, Officejet 7400, Officejet Pro K550, or Photosmart 2710 or 8400 printer|HP Deskjet 6940 printer|HP LaserJet \(1020-, 2010-, 2600-, 2800-, 3050-, or 3390-series\), or Brother \(DCP-375CW, HL-5250DN, HL-22700W, MFC-7840N, MFC-8860DN, or MFC-9970CDW\) printer; or Sony SNC-RZ30N network camera|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2600n printer|HP LaserJet 2605dn printer|HP LaserJet 2840 printer|HP Laserjet CP1515n printer|HP LaserJet CP1518ni printer|HP LaserJet M2727nf or P1505n printer|HP LaserJet P2015 printer|HP Officejet J4680 printer|HP Officejet J6480 printer|HP Photosmart 8750 printer|HP Photosmart C4380 printer|HP Photosmart C4500 or C7280, or Officejet J6450 printer|HP printer \(M1120n, M1522n, CP1515n, CP2025dn, or CP2525dn\)|HP printer: Photosmart 4300-, 6500-, 7200-, or 8100-series, or Officejet 6000-series|HP 1905 switch|HP 1905 switch|HP iLO 3 or iLO 4 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface|HP iLO 3 remote management interface or Hay Systems HSL 2.75G Femtocell|HP iLO 3 or iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO 4 remote management interface|HP iLO remote management interface|HP NonStop OS H06.19.00|HP OpenVMS 7.3 - 8.3|IBM AIX 4.3|IBM AIX 5.2|IBM AIX 5.3|IBM AIX 5.3|Lanier LD150 \(Ricoh MP 5001\) printer).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5703291457623934798" TYPE="regexp">
+                                                <VALUE VALUE2=".*(NetBSD 1.4.2 - 1.5.2; Lanier LS232c, NRG DSc428, Ricoh Aficio 2020, Ricoh NRG MP 161, or Savin 8055 printer; or Panasonic Network Camera \(BB-HCM331, BB-HCM381, BCL-30A, BL-C1CE, or BL-C10CE\)|Microware OS-9/PowerPC 4.8|Motorola QIP2500 set top box|Motorola QIP2500-3 set top box|Motorola QIP6416-2 set top box|Nashuatec Aficio MP C3000 printer|NEC Univerge SV8300 PBX|NetBSD 2.1.0_STABLE or Ricoh C720S, 1107EX, MP 2550, or MP 7001 printer|Netcomm V300 VoIP adapter|Nokia IP330 firewall appliance \(IPSO 4.1 - 4.2\)|Nokia IP650 firewall \(IPSO 4.0 and CheckPoint Firewall-1/VPN-1 software\)|Nortel DMS-10 telephony switch|Nortel Ethernet Routing Switch 8010 or 8606|NRG MP C4500 printer|Panasonic DP-8045 printer|Panasonic BB-HCM511A or BL-C140A Network Camera|Panasonic BL-C140 Network Camera|Panasonic BL-C140 Network Camera|Philips DTERM VoIP phone|QNX 6.2|QNX 6.2.1 \(x86\)|QNX 6.3|QNX|Redback Networks SmartEdge router \(SmartEdge OS 5.0\)|Redback Networks SmartEdge 600 router \(SmartEdge OS\)|Ricoh Aficio 1022 copier|Ricoh Aficio 1060 or 2035e printer|Ricoh Aficio 1224C or AP400N printer|Ricoh Aficio MP C2550 printer|Ricoh Aficio MP C6000 or GX3050N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP 4100N printer|Ricoh Aficio SP C420DN printer|RISCOS Ltd RISC OS 4.39|Sequent DYNIX \(BSD-based Unix\)|SGI IRIX 5.3|IRIX64 IRIS 6.5|SGI IRIX 6.5|SGI IRIX 6.5|SGI IRIX 6.5.15m|SGI IRIX 6.5.22m - 6.5.30f|SGI IRIX 6.5.30|SGI IRIX 6.5.6m|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5|SGI IRIX64 6.5.15m|SGI IRIX64 6.5.19f|SGI IRIX64 6.5.22f|Sony PSP game console \(modified, running Custom Firmware 3.90 - 5.50\)|UTStarcom WA3002G4 router|VxWorks|Zebra QLn420 mobile printer|Zelax MM-201R-UNI router|Zyfer GSync 391 clock).*"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                                <EXPRESSION EXPR_TYPE="OR">
+                                    <EXPRESSION EXPR_TYPE="NOT">
+                                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" INNER_NOT="true" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="1" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7004313479880867012" TYPE="regexp">
+                                                    <VALUE VALUE2=".*,.*"/>
+                                                </FILTER>
+                                            </CONDITION>
+                                        </EXPRESSION>
+                                    </EXPRESSION>
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                            <FILTER CASE_SENSITIVE="false" FILTER_ID="2225817218376806252" TYPE="regexp">
+                                                <VALUE VALUE2="\s*|6,3,1,15,66,67,13,44(,.*)?"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" INNER_NOT="true" LABEL="DHCP Vendor Class (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-6246718335002871087" TYPE="equals">
+                                            <VALUE VALUE2="MSFT 5.0"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:-2511024387142517749;name:Treck - Potentially Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="true" NAME="virtual-fw-rule">
+                            <PARAM NAME="blocking_rule" VALUE="FROM_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:;TO_-1548524325910511786#No Name Assigned#All IPv4@:BLOCK:PORT_Any:"/>
+                            <PARAM NAME="exception_rule" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="5418359719253920756" NAME="Not Vulnerable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Not Vulnerable-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_req_fingerprint" LABEL="DHCP Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-4268336311849968031" TYPE="contains">
+                                        <VALUE VALUE2=","/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcpv6_req_fingerprint" LABEL="DHCPv6 Request Fingerprint (Obsolete)" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7235544833254800005" TYPE="contains">
+                                        <VALUE VALUE2=","/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1494842689058220688" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2289733309980626769" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Texas Instruments"/>
+                                        <PATH VALUE="Medtronic"/>
+                                        <PATH VALUE="Technicolor"/>
+                                        <PATH VALUE="BlackBerry"/>
+                                        <PATH VALUE="BlackBerry Limited"/>
+                                        <PATH VALUE="Synology"/>
+                                        <PATH VALUE="Zyxel"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_vendor_string" LABEL="NIC Vendor Value" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="9005650162034480317" TYPE="regexp">
+                                        <VALUE VALUE2="(AFERO|LANCOM|NVIDIA|NVIDIA CORPORATION|PHILIPS ELECTRONICS|SIERRA WIRELESS|SYSTECH|WIND RIVER).*"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="9212690593152139987" NAME="Offline" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Offline-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2237400553742245843" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20&#10;Name:treck&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-1144831097094152388" NAME="Others" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1015068970389083400" META_TYPE="COMPLY" NAME="SNMP Credential Vuln" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="864000000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: SNMP Credential Vuln-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="5669665949200350000" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security/Surveillance/IP Camera"/>
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1862758376304600603" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Networking/Router or Switch"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="392805716983116197" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Accessory/Printer"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's port is not open for this protocol." ID="3913281595754540986" NAME="Port Not Open -SNMP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Port Not Open -SNMP-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" INNER_NOT="true" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1627829142018295925">
+                                        <VALUE FROM="161/UDP" TO="161/UDP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are included in the custom credential list for this protocol in CounterACT Options &gt; IoT Posture Assessment Engine." ID="3785436529088043059" NAME="Custom Credentials - SNMP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Custom Credentials - SNMP-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.c71be538c6c42b398267822538fb6444" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Custom List, Communication Protocol:SNMP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.c71be538c6c42b398267822538fb6444">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Custom List"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SNMP"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="2054559579902255624" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4313553472429431718;name:Custom Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Custom Credentials SNMP"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are known to CounterACT as commonly used credentials that are likely to be compromised during a brute-force attack using this protocol." ID="-2266273033247648903" NAME="Commonly Used Credentials - SNMP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Commonly Used Credentials - SNMP-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.54ec5045b4540b776cd2e508df079a20" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Commonly Used, Communication Protocol:SNMP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.54ec5045b4540b776cd2e508df079a20">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Commonly Used"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SNMP"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-471112170620040079" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:535399813186959720;name:Commonly Used Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Common Credentials SNMP"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2221935645264037771" NAME="Factory SNMP Strings" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Factory SNMP Strings-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.0c5eacbe17e2ceb894ebd4e57a8f4f45" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:No, Login Credentials:Factory Default, Communication Protocol:SNMP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.0c5eacbe17e2ceb894ebd4e57a8f4f45">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="No"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Factory Default"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="SNMP"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-7912495184041405434" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:6429767898225885956;name:Factory Default Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials using this protocol are not known to CounterACT." ID="7098418636291607805" NAME="No Known Credential - SNMP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1251779124195367295" META_TYPE="COMPLY" NAME="Telnet Credential Vuln" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="864000000" USE_DEFAULT="false"/>
+                <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="false"/>
+                <MATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Telnet Credential Vuln-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="5669665949200350000" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Non-Industry Specific/Facilities/Physical Security/Surveillance/IP Camera"/>
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1862758376304600603" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Networking/Router or Switch"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="392805716983116197" MATCH_SUBTREE="true">
+                                <PATH VALUE="Information Technology/Accessory/Printer"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="1209600" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's port is not open for this protocol." ID="5781161794853086144" NAME="Port Not Open - Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Port Not Open - Telnet-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" INNER_NOT="true" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8291604041164944706">
+                                        <VALUE FROM="23/TCP" TO="23/TCP"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are known to CounterACT as the default credentials for this device using this protocol." ID="-4947194088804707466" NAME="Factory Default Credentials - Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Factory Default Credentials - Telnet-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.67b6a3303858b01d103788f623e0f219" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Factory Default, Communication Protocol:Telnet" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.67b6a3303858b01d103788f623e0f219">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Factory Default"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="Telnet"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="5219009231029986117" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:6429767898225885956;name:Factory Default Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Factory Default Telnet"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are included in the custom credential list for this protocol in CounterACT Options &gt; IoT Posture Assessment Engine." ID="2269267650813956429" NAME="Custom Credentials - Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Custom Credentials - Telnet-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.7cfa3de4066ebb9c7dc2748bd4910f92" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Custom List, Communication Protocol:Telnet" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.7cfa3de4066ebb9c7dc2748bd4910f92">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Custom List"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="Telnet"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-7220278438445112323" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:4313553472429431718;name:Custom Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Custom Credentials Telnet"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-rule matches if the device's login credentials are known to CounterACT as commonly used credentials that are likely to be compromised during a brute-force attack using this protocol." ID="5251322924321562452" NAME="Commonly Used Credentials - Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                        <MATCH_TIMING RATE="172800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Commonly Used Credentials - Telnet-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="posture_scan_protocol.2f6498abb3ae56c8730595162cbddcbd" LABEL="Credential Vulnerability Save Login Credentials in Host Log?:Yes, Login Credentials:Commonly Used, Communication Protocol:Telnet" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="posture_scan_protocol" NAME="posture_scan_protocol.2f6498abb3ae56c8730595162cbddcbd">
+                                    <PARAM NAME="posture_debug_type" TYPE="string" VALUE="Yes"/>
+                                    <PARAM NAME="posture_scan_type" TYPE="string" VALUE="Commonly Used"/>
+                                    <PARAM NAME="posture_protocol_type" TYPE="string" VALUE="Telnet"/>
+                                </FIELD>
+                                <FILTER FILTER_ID="-3589195762095248847" VALUE="true"/>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:535399813186959720;name:Commonly Used Credentials"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="864000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6357689290860765631" NAME="No Known Credential - Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="2280112782039218331" META_TYPE="COMPLY" NAME="Approved Vendor Cameras" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Approved Vendor Cameras-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="8800437971581779704" MATCH_SUBTREE="true">
+                            <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3070427450641727893" NAME="Approved Axis Cameras" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Approved Axis Cameras-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="2364083353645249360" MATCH_SUBTREE="true">
+                                    <PATH VALUE="Axis/Axis Network Camera"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5508639778788509389" NAME="Unapproved IP Cameras" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <ACTION DISABLED="false" NAME="goodies_label_action">
+                            <PARAM NAME="label" VALUE="2 Medium Unapproved IP Camera"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6791927145482195861" NAME="VR Ripple20 Vulnerability Scanner" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: VR Ripple20 Vulnerability Scanner-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="7694371269522061449">
+                            <GROUP ID="-2511024387142517749" NAME="Treck - Potentially Vulnerable"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <FREE_ATTRIBUTES>
+                    <FREE_ATTRIBUTE NAME="dashboardItemType" VALUE="INITIALIZED"/>
+                    <FREE_ATTRIBUTE NAME="widgetID" VALUE="ffb58264-28c7-495c-85e3-5d0f50de433a"/>
+                    <FREE_ATTRIBUTE NAME="widgetPredefinedPosition" VALUE="1"/>
+                    <FREE_ATTRIBUTE NAME="widgetType" VALUE="PIE"/>
+                </FREE_ATTRIBUTES>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="5613367605708743109" NAME="Vulnerable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Vulnerable-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_ip_opt7.py" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="cact_script_result" NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb">
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_ip_opt7.py"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3684490559584896388" TYPE="contains">
+                                    <VALUE VALUE2="Treck"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3685010990910910752;name:Treck - Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-9218899738268069123" NAME="Likely Vulnerable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Likely Vulnerable-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_ip_opt7.py" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="cact_script_result" NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb">
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_ip_opt7.py"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-6144735761378127817" TYPE="contains">
+                                    <VALUE VALUE2="Vulnerable"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="true" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:3685010990910910752;name:Treck - Vulnerable"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-8805430771461290645" NAME="Likely not Vulnerable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Likely not Vulnerable-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_ip_opt7.py" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="cact_script_result" NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb">
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_ip_opt7.py"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1893834114768215558" TYPE="regexp">
+                                    <VALUE VALUE2=".*State:.*'0x11'.*"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="8962545445759074092" NAME="No response" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: No response-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb" LABEL="CounterACT Script Result (Obsolete) Ignore failed script result:false, Command or Script:fs_test_ip_opt7.py" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="cact_script_result" NAME="cact_script_result.2f10a77eca4ae15dd4a37b586da9fafb">
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="fs_test_ip_opt7.py"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="5470139812607828994" TYPE="regexp">
+                                    <VALUE VALUE2=".*State:.*'0x0'.*"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-8964550949580332939" NAME="Offline" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Offline-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-2237400553742245843" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Plugin Name:Security Policy Templates&#10;Display Name:VR Ripple20 Vulnerability Scanner&#10;Name:treckscanner&#10;Version:20.0.6&#10;Comments:[CVE-2020-11896,CVE-2020-11914]; Automated Threats; OT and ICS; Campus IoT&#10;-  DO NOT EDIT ABOVE THIS LINE -&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" ID="-3530313968219906778" NAME="Others" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

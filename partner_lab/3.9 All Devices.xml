@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="5457448771032501585" NAME="3.9 All Devices">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-5291144375794682046" NAME="Location Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="311679771309206216" NAME="Singapore" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Singapore-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="3311369574601849830">
+                                    <RANGE FROM="10.0.61.0" TO="10.0.66.255"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:4339631288569903218;name:Singapore"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8399676483624277775" NAME="London" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: London-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="3726432134755159717">
+                                    <RANGE FROM="10.0.31.0" TO="10.0.36.255"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:8634915670373939465;name:London"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1456840844003105780" NAME="San Francisco" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: San Francisco-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-2099009664339149561">
+                                    <RANGE FROM="10.0.1.1" TO="10.0.1.214"/>
+                                    <RANGE FROM="10.0.2.2" TO="10.0.2.253"/>
+                                    <RANGE FROM="10.0.3.2" TO="10.0.3.253"/>
+                                    <RANGE FROM="10.0.4.2" TO="10.0.4.253"/>
+                                    <RANGE FROM="10.0.5.2" TO="10.0.5.253"/>
+                                    <RANGE FROM="10.0.11.0" TO="10.0.16.255"/>
+                                    <RANGE FROM="172.16.1.1" TO="172.16.1.253"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:3897859253790526737;name:San Francisco"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3789058153376848386" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2633941759169421964" NAME="Connectivity Clarificaiton" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7967529946714624745" NAME="AWS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: AWS-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-6783608321636256954">
+                                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:321325360606596868;name:AWS Network"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3730699907838460276" NAME="Azure" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Azure-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ip" LABEL="IPv4 Address" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="6350056565740720852">
+                                    <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:4734238864267294675;name:Azure Network"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8160487565837649813" NAME="VPN" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: VPN-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-386778818008804909" TYPE="any">
+                                        <VALUE VALUE2="Any"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vpn_login" LABEL="Connectivity Type VPN" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="5316663725340700821" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:4999644867888954588;name:VPN Network"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-9042669152269466793" NAME="Data Center" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Data Center-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="1315652269812996382" TYPE="contains">
+                                        <VALUE VALUE2="Mgm"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-6538188645683811705" TYPE="contains">
+                                        <VALUE VALUE2="DC"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:7988907258106571348;name:Data Center Network"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7025225914091326205" NAME="Campus" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6896918178809140115;name:Campus Network"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2027340199050961233" NAME="HR App Server Role Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7562979125298551112" NAME="Web Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Web Server-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_name" LABEL="EC2 Instance Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-7365678338682968855" TYPE="startswith">
+                                        <VALUE VALUE2="web"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_name" LABEL="Azure VM Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7474326965893757283" TYPE="contains">
+                                        <VALUE VALUE2="web"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hostname" LABEL="DNS Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6014255532405445427" TYPE="contains">
+                                        <VALUE VALUE2="NakCorp-Web-Srv"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:2198858426207002006;name:Web - HR System"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5711533742737079448" NAME="App Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: App Server-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_name" LABEL="EC2 Instance Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2488412325926355828" TYPE="startswith">
+                                        <VALUE VALUE2="app"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_name" LABEL="Azure VM Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-210759895991572283" TYPE="contains">
+                                        <VALUE VALUE2="app"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hostname" LABEL="DNS Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7420270687305855228" TYPE="contains">
+                                        <VALUE VALUE2="NakCorp-App-Srv"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:3958790441255898471;name:App - HR System"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1815812019529821220" NAME="DB Server" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: DB Server-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_name" LABEL="EC2 Instance Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7411727266538860120" TYPE="startswith">
+                                        <VALUE VALUE2="db"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_name" LABEL="Azure VM Name" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="6013157150022256952" TYPE="contains">
+                                        <VALUE VALUE2="db"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hostname" LABEL="DNS Name" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="8867682061232804610" TYPE="contains">
+                                        <VALUE VALUE2="NakCorp-DB-Srv"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:8684698236385952937;name:DB - HR System"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3691923897361975672" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="535331922203558974" NAME="Users Role Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Users Role Clarification-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="4327188963402127033" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-3012029756009900117">
+                                <GROUP ID="112990886261714940" NAME="Windows Desktop Form"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8565381131295589305" NAME="SG_HumanResources" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_HumanResources-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2476240154061388445" TYPE="contains">
+                                    <VALUE VALUE2="SG_HumanResources"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:2299491369075241878;name:U - Human Resources"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="873488850751222392" NAME="SG_Legal" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_Legal-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3616999408496729210" TYPE="contains">
+                                    <VALUE VALUE2="SG_Legal"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:591509812847046360;name:U - Legal"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8152515125239500794" NAME="SG_Finance" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_Finance-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8649039814913187804" TYPE="contains">
+                                    <VALUE VALUE2="SG_Finance"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6454569063944528918;name:U - Finance"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4661702496880315396" NAME="SG_Sales" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_Sales-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8588511686828063522" TYPE="contains">
+                                    <VALUE VALUE2="SG_Sales"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:5445112692840291810;name:U - Sales"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6063104769430574228" NAME="SG_Desktop-LinuxAdmins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_Desktop-LinuxAdmins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-5203015479968191822" TYPE="contains">
+                                    <VALUE VALUE2="SG_DesktopAdmins"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:89372397233316159;name:U - Desktop Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:717970916651966909;name:U - Linux Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6634035710456133859" NAME="SG_DomainAdmins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: SG_DomainAdmins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1517971357149460208" TYPE="contains">
+                                    <VALUE VALUE2="Domain Admins"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6710171409910479998;name:U - Domain Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6114595851942720458" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6244193811384482845" NAME="User Department Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: User Department Clarification-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="4327188963402127033" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="1317253441105220476">
+                                <GROUP ID="112990886261714940" NAME="Windows Desktop Form"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="5305124740861699347" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.255.255.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+                    <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1848035850089009056" NAME="Human Resources" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Human Resources-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3885655341827347308" TYPE="contains">
+                                    <VALUE VALUE2="Human Resources"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:2299491369075241878;name:U - Human Resources"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8940787572711796824" NAME="Legal" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Legal-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="7832796446897531720" TYPE="contains">
+                                    <VALUE VALUE2="Legal"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:591509812847046360;name:U - Legal"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3697727962390447722" NAME="Finance" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Finance-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="4642140747746599255" TYPE="contains">
+                                    <VALUE VALUE2="Finance"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6454569063944528918;name:U - Finance"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7987461371978672737" NAME="Sales" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <!--Rule expression. Rule name is: Sales-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="276702005837350034" TYPE="contains">
+                                        <VALUE VALUE2="Sales"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-3665195835213814364" TYPE="contains">
+                                        <VALUE VALUE2="Entertainment"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:5445112692840291810;name:U - Sales"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4042640625464275736" NAME="Desktop Admins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Desktop Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="223075639030990055" TYPE="contains">
+                                    <VALUE VALUE2="Desktop Admins"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:89372397233316159;name:U - Desktop Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="721127237929741276" NAME="Linux Admins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Linux Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3708652500532638213" TYPE="contains">
+                                    <VALUE VALUE2="Information Technology"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:717970916651966909;name:U - Linux Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1835746797929364465" NAME="DB Admins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: DB Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_department" LABEL="Department" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-6116595998912579102" TYPE="contains">
+                                    <VALUE VALUE2="Database Admins"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:9020404704447616497;name:U - DB Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6943796763445147371" NAME="Domain Admins" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Domain Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ad_memberof" LABEL="Member Of" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1517971357149460208" TYPE="contains">
+                                    <VALUE VALUE2="Domain Admins"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <PARAM NAME="group-name" VALUE="id:6710171409910479998;name:U - Domain Admins"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1165407110998742304" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>

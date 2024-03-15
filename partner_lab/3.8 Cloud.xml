@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="2108979103489914727" NAME="3.8 Cloud">
+    <POLICIES/>
+    <POLICY_FOLDER ID="3251932584024943428" NAME="AWS">
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-3469371752242961850" NAME="AWS EC2 Termination Protection" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS EC2 Termination Protection-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8518207382556585488" TYPE="contains">
+                                <VALUE VALUE2="AWS EC2"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4251667314052252407" NAME="Termination Protection Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Termination Protection Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_termination" LABEL="EC2 Termination Protection" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-3105301362537312231" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2755275722408528885" NAME="Termination Protection Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Termination Protection Disabled-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_termination" INNER_NOT="true" LABEL="EC2 Termination Protection" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="5234798735479792613" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1144002635183218094" NAME="Unknown" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-1330015853955021881" NAME="AWS VPC Peering Status" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS VPC Peering Status-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-855147478351936251" TYPE="contains">
+                                <VALUE VALUE2="AWS VPC"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <RESERVED>
+                        <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                    </RESERVED>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2546330009998471505" NAME="VPC with Peers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: VPC with Peers-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_peering_connection" LABEL="Peering Connection" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_peering_connection" FILTER_ID="9052006172314336395">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_pcx_id" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-125709780834812056" NAME="AWS EC2 External Instance Classification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This rule identifies an EC2 instance that is communicating, or is meant to communicate, to the outer network based on existence of a public IP address for that endpoint." ID="-3647626365636539954" NAME="AWS EC2 Internet Facing Instance" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: AWS EC2 Internet Facing Instance-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_public_ip" LABEL="EC2 Public IP" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="1331367420376648398">
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <PARAM NAME="group-name" VALUE="id:292904673122349114;name:Internet Facing AWS EC2 Instances"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1777873902428595901" NAME="AWS VPC Internet Gateway Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS VPC Internet Gateway Compliance-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-7002003867385416627" TYPE="contains">
+                                <VALUE VALUE2="AWS VPC"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <RESERVED>
+                        <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                    </RESERVED>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Flowlog Not Enabled" ID="-984646065875356069" NAME="Non Compliant IG Attached" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Non Compliant IG Attached-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_vpc_ig" LABEL="VPC Internet Gateway Information" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_vpc_ig" FILTER_ID="5116586955601052803">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_igw_state" TYPE="equals">
+                                            <VALUE VALUE2="attached"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_igw_id" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5725045328397456378" NAME="VPC Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="4138564431203302705" NAME="AWS EC2 Encryption Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS EC2 Encryption Compliance-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5449724848135362970" TYPE="contains">
+                                <VALUE VALUE2="AWS EC2"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-9133927219811772837" NAME="AWS EBS Encryption Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: AWS EBS Encryption Compliant-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_abd" LABEL="EC2 Attached Block Devices" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_instance_abd" FILTER_ID="-1323033349403511383">
+                                        <SUB_FILTER HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="encrypted" VALUE="true"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6923148940007604174" NAME="AWS EBS Encryption Non Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="4326147842316109003" NAME="AWS VPC State" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS VPC State-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="2856403672438656168" TYPE="contains">
+                                <VALUE VALUE2="AWS VPC"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <RESERVED>
+                        <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                    </RESERVED>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7267434927984440423" NAME="AWS VPC Deleted" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: AWS VPC Deleted-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_state" LABEL="AWS Resource State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-7704226766355230876" OPTIONS_DIGEST="dd859efc66cd57eb8767b5f130b13f91">
+                                        <OPT VALUE="deleted"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6384652686876998845" NAME="AWS VPC Created" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: AWS VPC Created-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="adm" LABEL="Admission" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-400971967675331525" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="3600"/>
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="7360275110976401463" OPTIONS_DIGEST="b8a132a97efb3331b5a1d042366df928">
+                                        <OPT VALUE="new"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="5427851173861774566" NAME="AWS EC2 Instance By Type/Size" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS EC2 Instance By Type/Size-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5413379761735817396" TYPE="contains">
+                                <VALUE VALUE2="AWS EC2"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-6661175092132730577" NAME="Data Center &amp; Other Areas">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4641501871028933015" NAME="1vCPU-0.5GB t2.nano" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 1vCPU-0.5GB t2.nano-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5622396561241673737" TYPE="contains">
+                                        <VALUE VALUE2="t2.nano"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7810034474421655617" NAME="1vCPU-1GB t2.micro" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 1vCPU-1GB t2.micro-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-8308346868347551457" TYPE="contains">
+                                        <VALUE VALUE2="t2.micro"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1285426024560997184" NAME="1vCPU-2GB t2.small" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 1vCPU-2GB t2.small-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="9190996993298846263" TYPE="contains">
+                                        <VALUE VALUE2="t2.small"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8836257728111572948" NAME="2vCPU-4GB t2.medium" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 2vCPU-4GB t2.medium-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="4588628081207928651" TYPE="contains">
+                                        <VALUE VALUE2="t2.medium"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5472696065138583096" NAME="2vCPU-8GB t2.large" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 2vCPU-8GB t2.large-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5860885659644205087" TYPE="contains">
+                                        <VALUE VALUE2="t2.large"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1325362656815707255" NAME="4vCPU-16GB t2.xlarge" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 4vCPU-16GB t2.xlarge-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5191691022290294047" TYPE="contains">
+                                        <VALUE VALUE2="t2.xlarge"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6585164226142527538" NAME="8vCPU-32GB t2.2xlarge" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 8vCPU-32GB t2.2xlarge-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-8956982390832296925" TYPE="contains">
+                                        <VALUE VALUE2="t2.2xlarge"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7474845094282125140" NAME="2vCPU-8GB m4.large" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 2vCPU-8GB m4.large-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-1061208494794467762" TYPE="contains">
+                                        <VALUE VALUE2="m4.large"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3058201975068872654" NAME="4vCPU-16GB m4.xlarge" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 4vCPU-16GB m4.xlarge-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-9075052010533655105" TYPE="contains">
+                                        <VALUE VALUE2="m4.xlarge"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7910472142723538363" NAME="8vCPU-32GB m4.2xlarge" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 8vCPU-32GB m4.2xlarge-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="2452770007119885529" TYPE="contains">
+                                        <VALUE VALUE2="m4.2xlarge"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-763946700469740645" NAME="16vCPU-64GB m4.4xlarge" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: 16vCPU-64GB m4.4xlarge-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_type" LABEL="EC2 Instance Type" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-8404683491679991229" TYPE="contains">
+                                        <VALUE VALUE2="m4.4xlarge"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="5683764701074645365" META_TYPE="COMPLY" NAME="AWS EC2 Public IP" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS EC2 Public IP-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1862636029364158142" TYPE="contains">
+                                <VALUE VALUE2="AWS EC2"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This rule identifies an EC2 instance that is communicating, or is meant to communicate, to the outer network based on existence of a public IP address for that endpoint." ID="3942434271825929788" NAME="AWS EC2 With Public IP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="NOT_COMPLY"/>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: AWS EC2 With Public IP-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_public_ip" INNER_NOT="true" LABEL="EC2 Public IP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="1368963257055913740">
+                                            <RESERVED>
+                                                <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                                            </RESERVED>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="snow_service">
+                                <PARAM NAME="short_description" VALUE="AWS Cloud Instance [{aws_instance_name}] Public Interface Violation. Incident is created by the Forescout platform."/>
+                                <PARAM NAME="description" VALUE="The below AWS Instance Violation ** Public IP Detected **&#10;&#10;Server Name : {aws_instance_name}&#10;IP Address      : {ip}&#10;Region            : {aws_instance_location}&#10;&#10;ACTIONS&#10;Ticket Logged&#10;AWS Instance Shutdown&#10;SIEM Message Sent (Splunk)"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="true" NAME="aws_instance_stop">
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3363524873822245394" NAME="Internal Only" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <META_TYPE STATE="COMPLY"/>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6851859082322321571" NAME="AWS EC2 Instance State" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS EC2 Instance State-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8141068455775527942" TYPE="contains">
+                                <VALUE VALUE2="AWS EC2"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6688533478189130843" NAME="Instance Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_state" LABEL="EC2 State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-5906019580390078273" OPTIONS_DIGEST="337eac11ee513dad0634c007f670e2f1">
+                                        <OPT VALUE="running"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3598760511824758417" NAME="Instance Stopped" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Stopped-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_state" LABEL="EC2 State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="3514367850224483593" OPTIONS_DIGEST="337eac11ee513dad0634c007f670e2f1">
+                                        <OPT VALUE="stopped"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5172204172812233306" NAME="Instance Terminated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Terminated-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_state" LABEL="EC2 State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="375785004015102225" OPTIONS_DIGEST="6c51d4fef63e820f9c2c0b929e672272">
+                                        <OPT VALUE="terminated"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7017006805260036712" NAME="AWS EC2 - Authorized AMI" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="5053692706191212958" NAME="AWS">
+                        <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                        <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Edit this rule to define all known and allowed Amazon Machine Images. An endpoing whose AMI is not found among those defined will be classified as having Unauthorized AMI." ID="2349477987682173435" NAME="Unauthorized AMI" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <!--Rule expression. Rule name is: Unauthorized AMI-->
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_ld" LABEL="EC2 Launch Details" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                            <FILTER COMP_FIELD_NAME="aws_instance_ld" FILTER_ID="-9020650815870247535">
+                                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" LINKED="true" MEETS="true" SUB_FIELD_NAME="amiName">
+                                                    <LINK ID="4117043564731330900"/>
+                                                </SUB_FILTER>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_instance_id" LABEL="EC2 Instance ID" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3810252316240598584" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="sendmail">
+                                <PARAM NAME="to" VALUE="name@domain.com"/>
+                                <PARAM NAME="message" VALUE="Hello,&#10;&#10;CounterACT has detected an AWS EC2 instance with a rogue API. &#10;&#10;Host Information:&#10;&#10;IP Address: &#9;&#9;{ip}&#10;MAC Address: &#9;&#9;{mac}&#10;Hostname:&#9;&#9;{nbtdomain}/{nbthost}&#10;DNS Name:&#9;&#9;{hostname}&#10;Logged in User: &#9;{user}&#10;&#10;"/>
+                                <PARAM NAME="signature" VALUE="default"/>
+                                <PARAM NAME="subject" VALUE="CounterACT AWS: Instance {ip} has unauthorized AMI"/>
+                                <PARAM NAME="aggregate" VALUE="false"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <PROPERTY_LISTS>
+                        <HOST_PROPERTY_LIST DESCRIPTION="A whitelist of dummy AMI IDs; change this to contain authorized AMIs." FIELD="aws_instance_ld/amiName" ID="4117043564731330900" NAME="Authorized AMIs">
+                            <VALUES>
+                                <VALUE VALUE="ami-dummy-1"/>
+                                <VALUE VALUE="ami-dummy-2"/>
+                                <VALUE VALUE="ami-dummy-3"/>
+                            </VALUES>
+                        </HOST_PROPERTY_LIST>
+                    </PROPERTY_LISTS>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7627961301041019487" NAME="AWS VPC ELB" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: AWS VPC ELB-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_resource_tag" LABEL="AWS Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8350092187387017162" TYPE="contains">
+                                <VALUE VALUE2="AWS VPC"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <RESERVED>
+                        <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                    </RESERVED>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4113361714645646335" NAME="ELB Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: ELB Configured-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_vpc_lbs" LABEL="VPC Load Balancer Information" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_vpc_lbs" FILTER_ID="2760504738189987166">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_load_balancer_name" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4190479238242363983" NAME="No ELB Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="8617019557100255648" NAME="- (AWS) Non Compliant VPC" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: - (AWS) Non Compliant VPC-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="7016951765627901045">
+                                <GROUP ID="8219706029993151041" NAME="AWS VPCs"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <RESERVED>
+                        <RANGE FROM="224.0.0.0" TO="247.255.255.255"/>
+                    </RESERVED>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Flowlog Not Enabled" ID="5830044466640327331" NAME="Non Compliant IG Attached" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Non Compliant IG Attached-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_vpc_ig" LABEL="VPC Internet Gateway Information" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_vpc_ig" FILTER_ID="5116586955601052803">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_igw_state" TYPE="equals">
+                                            <VALUE VALUE2="attached"/>
+                                        </SUB_FILTER>
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_igw_id" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <PARAM NAME="group-name" VALUE="id:5968400662146833102;name:AWS Internet Gateways"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                            <ACTION DISABLED="false" NAME="goodies_add_to_list">
+                                <PARAM NAME="list_name" VALUE="AWS-NC-VPC"/>
+                                <PARAM NAME="value" VALUE="{aws_vpc_id}"/>
+                                <PARAM NAME="remove" VALUE="true"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8249220137410277072" NAME="Non Compliant IG" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Non Compliant IG-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="aws_vpc_ig" LABEL="VPC Internet Gateway Information" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER COMP_FIELD_NAME="aws_vpc_ig" FILTER_ID="6264902128844447607">
+                                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="aws_igw_id" TYPE="any">
+                                            <VALUE VALUE2="Any"/>
+                                        </SUB_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="false" NAME="add-to-group">
+                                <PARAM NAME="temporary" VALUE="true"/>
+                                <PARAM NAME="comment" VALUE=""/>
+                                <PARAM NAME="group-name" VALUE="id:5968400662146833102;name:AWS Internet Gateways"/>
+                                <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8689486804922413370" NAME="VPC Compliant" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+    <POLICY_FOLDER ID="1385661058509885600" NAME="Azure">
+        <POLICIES>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-7299841618850769647" NAME="(Azure Vnet protection)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: (Azure Vnet protection)-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_vnet_id" LABEL="VNet ID" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="8758322758494879651" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3685589507156119201" NAME="Azure">
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6906634623101039278" NAME="Vnet DDos Protection Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Vnet DDos Protection Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_vnet_ddos_protection_enabled" LABEL="VNet DDoS Protection Enabled" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-227437916890975242" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2981497883118991496" NAME="VM Protection Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: VM Protection Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_vnet_vm_protection_enabled" LABEL="VNet VM Protection Enabled" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-5561936647118539073" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4515579346055482378" NAME="Not protected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-5675366109732769097" NAME="Azure Instance State" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: Azure Instance State-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_resource_tag" LABEL="Azure Resource Tag" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1766082703821416588" TYPE="startswith">
+                                <VALUE VALUE2="Azure Instance:"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3685589507156119201" NAME="Azure">
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8554012504166096259" NAME="Instance Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Running-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_state" LABEL="Azure VM State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-3313345872683635112" OPTIONS_DIGEST="96cf69cdadf4da074be1be26832facd1">
+                                        <OPT VALUE="running"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3074902821567658386" NAME="Instance Stopped" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Stopped-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_state" LABEL="Azure VM State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-8356226117165114183" OPTIONS_DIGEST="96cf69cdadf4da074be1be26832facd1">
+                                        <OPT VALUE="stopped"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8175266509105377531" NAME="Instance Deallocated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Deallocated-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_state" LABEL="Azure VM State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="8455856666641084599" OPTIONS_DIGEST="96cf69cdadf4da074be1be26832facd1">
+                                        <OPT VALUE="deallocated"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5433593575509773597" NAME="Instance Terminated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Instance Terminated-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_state" LABEL="Azure VM State" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-3708599445332612134" OPTIONS_DIGEST="96cf69cdadf4da074be1be26832facd1">
+                                        <OPT VALUE="terminated"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2699854419423431168" NAME="Azure Instance Delete Protection" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: Azure Instance Delete Protection-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_id" LABEL="Azure VM ID" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3304482494016701037" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3685589507156119201" NAME="Azure">
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5519556928003432764" NAME="Delete Protection Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Delete Protection Enabled-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_delete_protected" LABEL="Azure VM Delete Protection Enabled" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="8953440978762841579" VALUE="true"/>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6530363028754533876" NAME="Delete Protection Disabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <!--Rule expression. Rule name is: Delete Protection Disabled-->
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_delete_protected" INNER_NOT="true" LABEL="Azure VM Delete Protection Enabled" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-6939206848571615403" VALUE="true"/>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                            <ACTION DISABLED="true" NAME="azure_instance_enable_delete_protection">
+                                <SCHEDULE>
+                                    <START Class="Immediately"/>
+                                    <OCCURENCE onStart="true"/>
+                                </SCHEDULE>
+                            </ACTION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6990680611516736815" NAME="Unknown" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+            <POLICY>
+                <RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-1727708881633946513" NAME="Azure Instance Public IP" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                    <GROUP_IN_FILTER/>
+                    <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                    <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                    <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </MATCH_TIMING>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <!--Rule expression. Rule name is: Azure Instance Public IP-->
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_id" LABEL="Azure VM ID" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1389839040102527820" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                    <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                    <ORIGIN NAME="CUSTOM"/>
+                    <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                        <ADMISSION ALL="true"/>
+                    </UNMATCH_TIMING>
+                    <SEGMENT ID="-3685589507156119201" NAME="Azure">
+                        <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                        <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    </SEGMENT>
+                    <RULE_CHAIN>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-80289330301197445" NAME="Azure Instance With Public IP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <!--Rule expression. Rule name is: Azure Instance With Public IP-->
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="azure_instance_public_ip" LABEL="Azure VM Public IP" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-7349717753356430133">
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </INNER_RULE>
+                        <INNER_RULE APP_VERSION="8.4.3-727" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7895387919036844485" NAME="Internal Only" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                            <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                <ADMISSION ALL="true"/>
+                            </MATCH_TIMING>
+                        </INNER_RULE>
+                    </RULE_CHAIN>
+                    <REPORT_TABLES/>
+                </RULE>
+            </POLICY>
+        </POLICIES>
+    </POLICY_FOLDER>
+</POLICY_FOLDER>
