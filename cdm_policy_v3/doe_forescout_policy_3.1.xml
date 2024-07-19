@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="8679938156830719045" NAME="IOC Policies 2.0">
+    <ENC VALUE="YksQeTCdjcc=~FRcBrfdk6A3pn5pAQluEkl8SSUE="/>
+    <POLICIES/>
+    <POLICY_FOLDER ID="4130308688609718931" NAME="1.0 See">
+        <ENC VALUE="VV3EMGbn3XM=~Cd8HLrXd6IWgk1aOFAN42cYBpM0="/>
+        <POLICIES/>
+        <POLICY_FOLDER ID="85032960535881701" NAME="1.1 Discover">
+            <ENC VALUE="UyZmwyZoS4Y=~KimsPJy1+d4ppk+r6mnZ03iTVQg="/>
+            <POLICIES>
+                <POLICY>
+                    <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-3908638603922825101" NAME="1.1.1 Enterprise Discover" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                        <GROUP_IN_FILTER/>
+                        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                        <ORIGIN NAME="CUSTOM"/>
+                        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </UNMATCH_TIMING>
+                        <SUBNET address="::" prefix="0"/>
+                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                        <RULE_CHAIN>
+                            <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7618830717975615904" NAME="CounterACT Device(s)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                                    <ADMISSION ALL="true"/>
+                                </MATCH_TIMING>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <!--Rule expression. Rule name is: CounterACT Device(s)-->
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor_classification" LABEL="Vendor and Model" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.4.0" PLUGIN_VESRION_NUMBER="14000073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER FILTER_ID="-4805311353252744151" MATCH_SUBTREE="true">
+                                            <PATH VALUE="ForeScout/ForeScout CounterACT"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <ACTION DISABLED="true" NAME="send_syslog">
+                                    <PARAM NAME="server" VALUE="Click here to replace default value"/>
+                                    <PARAM NAME="protocol" VALUE="udp"/>
+                                    <PARAM NAME="port" VALUE="Click here to replace default value"/>
+                                    <PARAM NAME="ident" VALUE="Click here to replace default value"/>
+                                    <PARAM NAME="tls" VALUE="false"/>
+                                    
+                                    <PARAM NAME="message" VALUE="device_role=&quot;Other I/O Device&quot;,device_type=&quot;Other&quot;,device_category=&quot;CounterACT&quot;,ip=&quot;{ip}&quot;,mac=&quot;{mac},ipv6=&quot;{ipv6},dns_hn=&quot;{hostname},dhcp_hn=&quot;{dhcp_hostname},hostname=&quot;{linux_hostname},netbios_domain=&quot;{nbtdomain},netbios_hn=&quot;{nbthost},network_fn=&quot;{va_netfunc},device_classification=&quot;{prim_classification}",wlan_type=&quot;{wireless_netfunc_role},os_fingerprint=&quot;{user_def_fp},os_cpe=&quot;{os_cpe},os_classification=&quot;{os_classification},is_manageable=&quot;Yes,nic_vendor=&quot;{vendor},compliance=&quot;{compliance},guest_corporate=&quot;{guest_corporate},online=&quot;{online},system_desc=&quot;{sw_netfunc_os},compliance_state=&quot;{compliance_state},pwd_lastset=&quot;{ad_pwdlastset},policy=&quot;{policy},div=&quot;{org_unit},fisma_id=&quot;{unknown}
+                                    <PARAM NAME="priority" VALUE="Click here to replace default value"/>
