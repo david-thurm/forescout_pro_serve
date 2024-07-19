@@ -430,3 +430,24 @@ device_role="Endpoint",device_type="Unknown",device_category="Macintosh",ip="{ip
 ```
 device_role="Endpoint",device_type="Unknown",device_category="Macintosh",ip="{ip}",mac="{mac}",ipv6="{ipv6}",dns_hn="{hostname}",dhcp_hn="{dhcp_hostname}",hostname="{mac_hostname}",netbios_domain="{nbtdomain}",netbios_hn="{nbthost}",network_fn="{va_netfunc}",device_classification="{prim_classification}",wlan_type="{wireless_netfunc_role}",os_fingerprint="{user_def_fp}",os_cpe="{os_cpe}",os_classification="{os_classification}",is_manageable="No",nic_vendor="{vendor}",compliance="{compliance}",guest_corporate="{guest_corporate}",online="{online}",system_desc="{sw_netfunc_os}",compliance_state="{compliance_state}",pwd_lastset="{ad_pwdlastset}",policy="{policy}",div="{org_unit}",fisma_id=""
 ```
+# Managed by Classification Method
+### There is something around Page 153 Word DOC that I didn't understand
+
+# Line 2275 -- Managed Switch Device (SW Plugin RO SNMP)
+
+## Line 2275 -- Old XML
+```
+<PARAM NAME="message" VALUE="device_role=&quot;Networking Device&quot;,device_type=&quot;Routers/Modems/Switches&quot;,device_category=&quot;Network&quot;,ip=&quot;{ip}&quot;,mac=&quot;{mac}&quot;,dns_hn=&quot;{hostname}&quot;,dhcp_hn=&quot;{dhcp_hostname}&quot;,hostname=&quot;{sw_hostname}&quot;,is_manageable=&quot;Yes&quot;,online=&quot;{online}&quot;,div=&quot;{org_unit}&quot;,nic_vendor=&quot;{vendor}&quot;,network_fn=&quot;{va_netfunc}&quot;,device_classification=&quot;{prim_classification}&quot;,os_fingerprint=&quot;{user_def_fp}&quot;,os_cpe=&quot;{os_cpe}&quot;,os_classification=&quot;{os_classification}&quot;,system_desc=&quot;{sw_netfunc_os}&quot;,compliance=&quot;{compliance}&quot;,compliance_state=&quot;{compliance_state}&quot;,guest_corporate=&quot;{guest_corporate}&quot;,ipv6=&quot;{ipv6}&quot;,policy=&quot;{policy}&quot;,pwd_lastset=&quot;{ad_pwdlastset}&quot;,wlan_type=&quot;{wireless_netfunc_role}&quot;"/>
+```
+
+## Line 2275 -- New GUI
+
+```
+device_role="Networking Device",device_type="Routers/Modems/Switches",device_category="Network",ip="{ip}",mac="{mac}",ipv6="{ipv6}",dns_hn="{hostname}",dhcp_hn="{dhcp_hostname}",hostname="{sw_hostname}",netbios_domain="{nbtdomain}",netbios_hn="{nbthost}",network_fn="{va_netfunc}",device_classification="{prim_classification}",wlan_type="{wireless_netfunc_role}",os_fingerprint="{user_def_fp}",os_cpe="{os_cpe}",os_classification="{os_classification}",is_manageable="Yes",nic_vendor="{vendor}",compliance="{compliance}",guest_corporate="{guest_corporate}",online="{online}",system_desc="{sw_netfunc_os}",compliance_state="{compliance_state}",pwd_lastset="{ad_pwdlastset}",policy="{policy}",div="{org_unit}",fisma_id=""
+```
+
+############################################
+
+Taking a break from documentation Page 154 of the word doc
+
+No idea what the Unique_ID Linux Policy on page 159 is. 
